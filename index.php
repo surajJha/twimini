@@ -1,192 +1,205 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-        <link rel="stylesheet" type="text/css" href="libs/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="libs/css/mystyle.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
 
-    </head>
-    <body style="background-image: url('libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
+/*
+ *---------------------------------------------------------------
+ * APPLICATION ENVIRONMENT
+ *---------------------------------------------------------------
+ *
+ * You can load different configurations depending on your
+ * current environment. Setting the environment also influences
+ * things like logging and error reporting.
+ *
+ * This can be set to anything, but default usage is:
+ *
+ *     development
+ *     testing
+ *     production
+ *
+ * NOTE: If you change these, also change the error_reporting() code below
+ *
+ */
+	define('ENVIRONMENT', 'development');
+/*
+ *---------------------------------------------------------------
+ * ERROR REPORTING
+ *---------------------------------------------------------------
+ *
+ * Different environments will require different levels of error reporting.
+ * By default development will show errors but testing and live will hide them.
+ */
+
+if (defined('ENVIRONMENT'))
+{
+	switch (ENVIRONMENT)
+	{
+		case 'development':
+			error_reporting(E_ALL);
+		break;
+	
+		case 'testing':
+		case 'production':
+			error_reporting(0);
+		break;
+
+		default:
+			exit('The application environment is not set correctly.');
+	}
+}
+
+/*
+ *---------------------------------------------------------------
+ * SYSTEM FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * This variable must contain the name of your "system" folder.
+ * Include the path if the folder is not in the same  directory
+ * as this file.
+ *
+ */
+	$system_path = 'system';
+
+/*
+ *---------------------------------------------------------------
+ * APPLICATION FOLDER NAME
+ *---------------------------------------------------------------
+ *
+ * If you want this front controller to use a different "application"
+ * folder then the default one you can set its name here. The folder
+ * can also be renamed or relocated anywhere on your server.  If
+ * you do, use a full server path. For more info please see the user guide:
+ * http://codeigniter.com/user_guide/general/managing_apps.html
+ *
+ * NO TRAILING SLASH!
+ *
+ */
+	$application_folder = 'application';
+
+/*
+ * --------------------------------------------------------------------
+ * DEFAULT CONTROLLER
+ * --------------------------------------------------------------------
+ *
+ * Normally you will set your default controller in the routes.php file.
+ * You can, however, force a custom routing by hard-coding a
+ * specific controller class/function here.  For most applications, you
+ * WILL NOT set your routing here, but it's an option for those
+ * special instances where you might want to override the standard
+ * routing in a specific front controller that shares a common CI installation.
+ *
+ * IMPORTANT:  If you set the routing here, NO OTHER controller will be
+ * callable. In essence, this preference limits your application to ONE
+ * specific controller.  Leave the function name blank if you need
+ * to call functions dynamically via the URI.
+ *
+ * Un-comment the $routing array below to use this feature
+ *
+ */
+	// The directory name, relative to the "controllers" folder.  Leave blank
+	// if your controller is not in a sub-folder within the "controllers" folder
+	// $routing['directory'] = '';
+
+	// The controller class file name.  Example:  Mycontroller
+	// $routing['controller'] = '';
+
+	// The controller function you wish to be called.
+	// $routing['function']	= '';
 
 
-        <div class="container">
-            <div class="row">
-
-                <center> <h1 class="twitter-heading"><strong>TwiMini App</strong></h1></center>
-
-            </div>
-
-
-
-            <!-- =========================================== FORM FOR LOGIN AND SIGNUP========================================-->
-
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4 ">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">TwiMini Login</h3>
-                        </div>
-                        <div class="panel-body">
-                            <form accept-charset="UTF-8" role="form">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="remember" type="checkbox" value="Remember Me"> Remember Me
-                                        </label>
-                                    </div>
-                                    <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
-                                </fieldset>
-                            </form>
-                            <hr/>
-                            <center><h4>OR</h4></center>
-
-                            <a href="#registerModal" role="button" class="btn btn-lg btn-facebook btn-block" data-toggle="modal">New User? Register</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- =====================================MODAL code goes here========================================-->
-
-            <div id="registerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                            <h3 id="myModalLabel">TwiMini Registration Form</h3>
-                        </div>
-                        <div class="modal-body">
-                            <!-- modal form goes here -->
-                            <form class="form-horizontal">
-                                <fieldset>
-
-                                    <!-- Form Name -->
-                                    <legend>Form Name</legend>
-
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="name">Name</label>  
-                                        <div class="col-md-4">
-                                            <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="handle">Handle</label>  
-                                        <div class="col-md-4">
-                                            <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Password input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="passwordinput">Password</label>
-                                        <div class="col-md-4">
-                                            <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Password input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="passwordconfirm">Confirm Password</label>
-                                        <div class="col-md-4">
-                                            <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Text input-->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="email">E-mail ID</label>  
-                                        <div class="col-md-4">
-                                            <input id="email" name="email" type="text" placeholder="" class="form-control input-md">
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Multiple Radios -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="gender">Gender</label>
-                                        <div class="col-md-4">
-                                            <div class="radio">
-                                                <label for="gender-0">
-                                                    <input type="radio" name="gender" id="gender-0" value="M" checked="checked">
-                                                    Male
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label for="gender-1">
-                                                    <input type="radio" name="gender" id="gender-1" value="F">
-                                                    Female
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Textarea -->
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="bio">Bio</label>
-                                        <div class="col-md-4">                     
-                                            <textarea class="form-control" id="bio" name="bio"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <!-- File Button --> 
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="profile_pic">Profile Picture</label>
-                                        <div class="col-md-4">
-                                            <input id="profile_pic" name="profile_pic" class="input-file" type="file">
-                                        </div>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                        <button class="btn btn-primary" type="submit">Register</button>
-                                    </div>
-
-                                </fieldset>
-                            </form>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+/*
+ * -------------------------------------------------------------------
+ *  CUSTOM CONFIG VALUES
+ * -------------------------------------------------------------------
+ *
+ * The $assign_to_config array below will be passed dynamically to the
+ * config class when initialized. This allows you to set custom config
+ * items or override any default config values found in the config.php file.
+ * This can be handy as it permits you to share one application between
+ * multiple front controller files, with each file containing different
+ * config values.
+ *
+ * Un-comment the $assign_to_config array below to use this feature
+ *
+ */
+	// $assign_to_config['name_of_config_item'] = 'value of config item';
 
 
 
+// --------------------------------------------------------------------
+// END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
+// --------------------------------------------------------------------
+
+/*
+ * ---------------------------------------------------------------
+ *  Resolve the system path for increased reliability
+ * ---------------------------------------------------------------
+ */
+
+	// Set the current directory correctly for CLI requests
+	if (defined('STDIN'))
+	{
+		chdir(dirname(__FILE__));
+	}
+
+	if (realpath($system_path) !== FALSE)
+	{
+		$system_path = realpath($system_path).'/';
+	}
+
+	// ensure there's a trailing slash
+	$system_path = rtrim($system_path, '/').'/';
+
+	// Is the system path correct?
+	if ( ! is_dir($system_path))
+	{
+		exit("Your system folder path does not appear to be set correctly. Please open the following file and correct this: ".pathinfo(__FILE__, PATHINFO_BASENAME));
+	}
+
+/*
+ * -------------------------------------------------------------------
+ *  Now that we know the path, set the main path constants
+ * -------------------------------------------------------------------
+ */
+	// The name of THIS file
+	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
+
+	// The PHP file extension
+	// this global constant is deprecated.
+	define('EXT', '.php');
+
+	// Path to the system folder
+	define('BASEPATH', str_replace("\\", "/", $system_path));
+
+	// Path to the front controller (this file)
+	define('FCPATH', str_replace(SELF, '', __FILE__));
+
+	// Name of the "system folder"
+	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
 
 
+	// The path to the "application" folder
+	if (is_dir($application_folder))
+	{
+		define('APPPATH', $application_folder.'/');
+	}
+	else
+	{
+		if ( ! is_dir(BASEPATH.$application_folder.'/'))
+		{
+			exit("Your application folder path does not appear to be set correctly. Please open the following file and correct this: ".SELF);
+		}
 
+		define('APPPATH', BASEPATH.$application_folder.'/');
+	}
 
+/*
+ * --------------------------------------------------------------------
+ * LOAD THE BOOTSTRAP FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+require_once BASEPATH.'core/CodeIgniter.php';
 
-
-
-
-
-
-            <script type="text/javascript" src="libs/js/jquery.min.js"></script>
-
-            <script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="libs/js/angular.min.js"></script>
-
-    </body>
-</html>
+/* End of file index.php */
+/* Location: ./index.php */
