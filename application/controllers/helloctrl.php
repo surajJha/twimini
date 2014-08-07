@@ -5,13 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class HelloController extends CI_Controller{
-    
-    function index(){
-        $this->load->view('welcome_message');
-    }
-    
-    
-    
-}
 
+class Helloctrl extends CI_Controller{
+   function index(){
+       echo '<h1>HELLO WORLD</h1>';
+   }
+}
