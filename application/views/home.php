@@ -8,12 +8,12 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="http://localhost/twimini/libs/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="http://localhost/twimini/libs/css/mystyle.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>libs/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>libs/css/mystyle.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
-    <body style="background-image: url('http://localhost/twimini/libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
+    <body style="background-image: url('<?php echo base_url();?>libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
 
 
         <div class="container">
@@ -29,18 +29,18 @@ and open the template in the editor.
 
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 ">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default login-form" >
                         <div class="panel-heading">
-                            <h3 class="panel-title">TwiMini Login</h3>
+                            <h3 class="panel-title login-form-heading">TwiMini Login</h3>
                         </div>
                         <div class="panel-body">
                             <form accept-charset="UTF-8" role="form">
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="yourmail@example.com" name="email" type="text">
+                                        <input class="form-control" placeholder="yourmail@example.com" name="email" type="email" required>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                        <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
                                     </div>
                                     <div class="checkbox">
                                         <label>
@@ -183,10 +183,10 @@ and open the template in the editor.
 
 
 
-            <script type="text/javascript" src="http://localhost/twimini/libs/js/jquery.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url();?>libs/js/jquery.min.js"></script>
 
-            <script type="text/javascript" src="http://localhost/twimini/libs/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="http://localhost/twimini/libs/js/angular.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url();?>libs/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url();?>libs/js/angular.min.js"></script>
 
     </body>
 </html>

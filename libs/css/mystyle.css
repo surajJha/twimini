@@ -52,3 +52,15 @@ body{
     .twitter-heading{
       
     }
+    
+    
+    .login-form{
+        opacity: 0.8;
+        background-color: paleturquoise;
+    }
+    
+    .login-form-heading{
+        font-family: monospace;
+        font-weight: 800;
+    }
+    

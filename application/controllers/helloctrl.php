@@ -8,7 +8,7 @@
 
 class Helloctrl extends CI_Controller{
    function index(){
-       $this->showQuery();
+      $this->load->view('home');
    }
    
    function showQuery(){
