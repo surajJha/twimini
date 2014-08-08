@@ -8,6 +8,12 @@
 
 class Helloctrl extends CI_Controller{
    function index(){
-       echo '<h1>HELLO WORLD</h1>';
+       $this->showQuery();
+   }
+   
+   function showQuery(){
+       $this->load->model('temp_database');
+       $res = $this->temp_database->getAll();
+       print_r($res);
    }
 }

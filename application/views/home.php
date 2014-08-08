@@ -8,12 +8,12 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="libs/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="libs/css/mystyle.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost/twimini/libs/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://localhost/twimini/libs/css/mystyle.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
-    <body style="background-image: url('libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
+    <body style="background-image: url('http://localhost/twimini/libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
 
 
         <div class="container">
@@ -183,10 +183,10 @@ and open the template in the editor.
 
 
 
-            <script type="text/javascript" src="libs/js/jquery.min.js"></script>
+            <script type="text/javascript" src="http://localhost/twimini/libs/js/jquery.min.js"></script>
 
-            <script type="text/javascript" src="libs/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="libs/js/angular.min.js"></script>
+            <script type="text/javascript" src="http://localhost/twimini/libs/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="http://localhost/twimini/libs/js/angular.min.js"></script>
 
     </body>
 </html>
