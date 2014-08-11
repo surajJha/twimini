@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "helloctrl";
+$route['default_controller'] ="mainApiController";
 $route['404_override'] = '';
 
 

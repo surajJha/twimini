@@ -1,0 +1,62 @@
+
+
+API Structure:
+
+1) Create Post
+
+	Description: Creates post on behalf of a particular user. It will accept a user handle, from which the user_id will be fetched from the database; alongwith the tweet to be stored and return a success status code. If post submission is unsuccesful it will return the appropriate error status code.
+	* Status codes will be included in the API docs.
+
+
+	public function createPost ($handle, $tweetText)
+	returns status_code
+
+2) Fetch users posts
+
+	Description: Fetches a particular user's posts from the database sorted by time in the desired result form (JSON or XML).
+
+
+	public function fetchPost ($handle, $returnType)
+	returns returnTypeObject(JSON or XML)
+
+	//Overloaded function for fetching particular no. of Tweets
+	public function fetchPost ($handle, $returnType, $noOfTweets)
+	returns returnTypeObject(JSON or XML)
+
+
+
+3)Fetch users news feed
+
+	Description: Fetches the posts of every user followed by a particular user and the posts of the user sorted by time in the desired result form (JSON or XML).
+
+	public function fetchFeed ($handle, $returnType,$count)
+	returns returnTypeObject(JSON or XML)
+
+	//Overloaded function for fetching particular no. of Tweets
+	public function fetchFeed ($handle, $returnType, $noOfTweets)
+	returns returnTypeObject(JSON or XML)
+
+
+4)Fetching followers
+
+	Description: Fetches the followers of a particular user.
+
+
+	public function fetchFollowers ($handle, $returnType)
+	returns returnTypeObject(JSON or XML)
+
+	//Overloaded function for fetching particular no. of Followers
+	public function fetchFollowers ($handle, $returnType, $noOfFollowers)
+	returns returnTypeObject(JSON or XML)
+
+5)Fetching following
+
+	Description: Fetches the list of users a particular user follows.
+
+
+	public function fetchFollowing ($handle, $returnType)
+	returns returnTypeObject(JSON or XML)
+
+	//Overloaded function for fetching particular no. of Following
+	public function fetchFollowing ($handle, $returnType, $noOfFollowing)
+	returns returnTypeObject(JSON or XML)

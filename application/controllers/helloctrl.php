@@ -8,12 +8,14 @@
 
 class Helloctrl extends CI_Controller{
    function index(){
-      $this->load->view('home');
+       $this->showQuery();
    }
    
    function showQuery(){
-       $this->load->model('temp_database');
-       $res = $this->temp_database->getAll();
+       $this->load->model('basemodel');
+       $res = $this->basemodel->createTweet('suraj','fdfdfdfdf');
        print_r($res);
+       echo $res;
+       
    }
 }

@@ -9,7 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title></title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>libs/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>libs/css/mystyle.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>libs/css/home.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
