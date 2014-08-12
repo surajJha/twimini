@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] ="mainApiController";
+$route['default_controller'] ="homeController";
 $route['404_override'] = '';
 
 

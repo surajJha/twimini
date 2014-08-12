@@ -8,12 +8,12 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>libs/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>libs/css/home.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/home.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
-    <body style="background-image: url('<?php echo base_url();?>libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
+    <body style="background-image: url('<?php echo base_url(); ?>libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
 
 
         <div class="container">
@@ -34,7 +34,7 @@ and open the template in the editor.
                             <h3 class="panel-title login-form-heading">TwiMini Login</h3>
                         </div>
                         <div class="panel-body">
-                            <form accept-charset="UTF-8" role="form">
+                            <form accept-charset="UTF-8" role="form" method="post" action="<?php echo base_url();?>index.php/loginController/login/">
                                 <fieldset>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="yourmail@example.com" name="email" type="email" required>
@@ -46,6 +46,10 @@ and open the template in the editor.
                                         <label>
                                             <input name="remember" type="checkbox" value="Remember Me"> Remember Me
                                         </label>
+                                    </div>
+                                    <div >
+                                        
+                                        <strong><?php echo @$error  ; ?></strong> .
                                     </div>
                                     <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                                 </fieldset>
@@ -183,10 +187,10 @@ and open the template in the editor.
 
 
 
-            <script type="text/javascript" src="<?php echo base_url();?>libs/js/jquery.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery.min.js"></script>
 
-            <script type="text/javascript" src="<?php echo base_url();?>libs/js/bootstrap.min.js"></script>
-            <script type="text/javascript" src="<?php echo base_url();?>libs/js/angular.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
+            
 
     </body>
 </html>

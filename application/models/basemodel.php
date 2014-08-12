@@ -108,5 +108,26 @@ class basemodel extends CI_Model{
     }
     
     
+    /*
+     *  Funtion to fetch and return the user data
+     */
+    public function getUserData($email){
+        $email = $this->db->escape($email);
+        $sql = "select * from user where email = {$email}";
+         $query = $this->db->query($sql);
+        if ($query->num_rows() > 0){
+            $row = $query->result();
+            $user_data['userid'] = $row[0]->userid;
+            $user_data['handle'] = $row[0]->handle;
+            $user_data['email'] = $row[0]->email;
+            $user_data['name'] = $row[0]->name;
+            $user_data['bio'] = $row[0]->bio;
+            return $user_data;
+        }
+        else
+            return false;
+    }
+    
+    
 }
 
