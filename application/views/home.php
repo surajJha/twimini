@@ -49,8 +49,12 @@ and open the template in the editor.
                                     </div>
                                     <div >
                                         
-                                        <strong><?php echo @$error  ; ?></strong> .
+                                        <strong><?php echo @$error  ; ?></strong>
                                     </div>
+                                    <div >
+                                        
+                                        <strong>Forgot password? Click here</strong> 
+                                    </div><br/>
                                     <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                                 </fieldset>
                             </form>
@@ -75,17 +79,14 @@ and open the template in the editor.
                         </div>
                         <div class="modal-body">
                             <!-- modal form goes here -->
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" id="register-form" method="post">
                                 <fieldset>
-
-                                    <!-- Form Name -->
-                                    <legend>Form Name</legend>
 
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Name</label>  
                                         <div class="col-md-4">
-                                            <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
+                                            <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required>
 
                                         </div>
                                     </div>
@@ -94,16 +95,16 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="handle">Handle</label>  
                                         <div class="col-md-4">
-                                            <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md">
+                                            <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md" required>
 
                                         </div>
                                     </div>
 
                                     <!-- Password input-->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="passwordinput">Password</label>
+                                        <label class="col-md-4 control-label" for="password">Password</label>
                                         <div class="col-md-4">
-                                            <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+                                            <input id="passwordinput" name="password" type="password" placeholder="" class="form-control input-md" required>
 
                                         </div>
                                     </div>
@@ -112,7 +113,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="passwordconfirm">Confirm Password</label>
                                         <div class="col-md-4">
-                                            <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md">
+                                            <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md" required>
 
                                         </div>
                                     </div>
@@ -121,7 +122,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="email">E-mail ID</label>  
                                         <div class="col-md-4">
-                                            <input id="email" name="email" type="text" placeholder="" class="form-control input-md">
+                                            <input id="email" name="email" type="email" placeholder="" class="form-control input-md" required>
 
                                         </div>
                                     </div>
@@ -153,22 +154,17 @@ and open the template in the editor.
                                         </div>
                                     </div>
 
-                                    <!-- File Button --> 
-                                    <div class="form-group">
-                                        <label class="col-md-4 control-label" for="profile_pic">Profile Picture</label>
-                                        <div class="col-md-4">
-                                            <input id="profile_pic" name="profile_pic" class="input-file" type="file">
-                                        </div>
-                                    </div>
+                                    
 
                                     <div class="modal-footer">
                                         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                                        <button class="btn btn-primary" type="submit">Register</button>
+                                        <button id="register-button" class="btn btn-primary" type="submit">Register</button>
                                     </div>
 
                                 </fieldset>
                             </form>
-
+                            <div class="alert alert-success" id="register_success_message"> </div>
+                            <div class="alert alert-warning" id="register_error_message"> </div>
                         </div>
 
                     </div>
@@ -190,6 +186,7 @@ and open the template in the editor.
             <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery.min.js"></script>
 
             <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/home.js"></script>
             
 
     </body>
