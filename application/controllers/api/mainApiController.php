@@ -11,7 +11,7 @@
  * this api controller wil contain most of the api functions and modules
  * 
  */
-define('DEFAULT_COUNT', 50);
+define('DEFAULT_COUNT', 10);
 
  class MainApiController extends CI_Controller{
      
@@ -38,7 +38,7 @@ define('DEFAULT_COUNT', 50);
      * status code Status codes will be included in the API docs.
      */
     public function index(){
-        $this->createTweet('suraj', 'Hello World!');
+        $this->fetchUserFeed('kirit','JSON', 50);
     }
 
     public function createTweet($handle,$tweet){
@@ -141,8 +141,9 @@ define('DEFAULT_COUNT', 50);
      *  Description: Fetches the posts of every user followed by a particular user and the posts of the user sorted by time in the desired result form (JSON or XML).
      */
     
-    public function fetchUserFeed($handle,$type,$count){
+    public function fetchUserFeed($handle,$type,$count,$tid){
         if (!isset($count)|| $count == 0 )$count = DEFAULT_COUNT;
+        if (!isset($tid))$tid=0;
     
         if(!isset($handle)||$handle === false){
                    return $this->status_code['1'];   
@@ -150,7 +151,7 @@ define('DEFAULT_COUNT', 50);
         
         else{
             $this->load->model('basemodel');
-            $result = $this->basemodel->fetchUserFeed($handle,$count);
+            $result = $this->basemodel->fetchUserFeed($handle,$count,$tid);
             $final_result=array(
                 !isset($result)?$this->status_code['1']:$this->status_code['0']
                     ,$result);
