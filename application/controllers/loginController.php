@@ -59,8 +59,8 @@ class LoginController extends CI_Controller {
     
     public function register(){
         $handle =  $_POST['handle'] ;
-        $password = $this->hashPassword($_POST['password']);
-        $email = $_POST['email'];
+        $password = $this->hashPassword($_POST['passwordinput']);
+        $email = $_POST['emailinput'];
         $gender = $_POST['gender'];
         $bio = $_POST['bio'];
         $name = $_POST['name'];        

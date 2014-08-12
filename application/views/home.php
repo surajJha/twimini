@@ -102,9 +102,9 @@ and open the template in the editor.
 
                                     <!-- Password input-->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="password">Password</label>
+                                        <label class="col-md-4 control-label" for="passwordinput">Password</label>
                                         <div class="col-md-4">
-                                            <input id="passwordinput" name="password" type="password" placeholder="" class="form-control input-md" required>
+                                            <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required>
 
                                         </div>
                                     </div>
@@ -120,9 +120,9 @@ and open the template in the editor.
 
                                     <!-- Text input-->
                                     <div class="form-group">
-                                        <label class="col-md-4 control-label" for="email">E-mail ID</label>  
+                                        <label class="col-md-4 control-label" for="emailinput">E-mail ID</label>  
                                         <div class="col-md-4">
-                                            <input id="email" name="email" type="email" placeholder="" class="form-control input-md" required>
+                                            <input id="emailinput" name="email" type="emailinput" placeholder="" class="form-control input-md" required>
 
                                         </div>
                                     </div>

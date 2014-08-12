@@ -17,9 +17,9 @@ $(document).ready(function(){
    
     
      $("#register-button").click(function(e) {
-        e.preventDefault();
+        //e.preventDefault();
         var values = $("#register-form").serialize();
-      
+        if($('#passwordinput').val() === $('#passwordconfirm').val()){
         $.ajax(
                 {
                     type: 'POST',
@@ -45,19 +45,13 @@ $(document).ready(function(){
                         //error message
                     }
                 });
-      //  return false;
+            }
+            else 
+            {
+                $("#register_error_message").html("Passwords don't match");
+            }
+       // return false;
+            
     });
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 
 });
