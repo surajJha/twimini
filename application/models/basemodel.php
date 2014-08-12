@@ -99,10 +99,10 @@ class basemodel extends CI_Model {
                     (select t.tid,userid,'' as retweeter_id,tweet, time_created from tweet t inner join follow f on (f.followed=t.userid and time_created>start_time and (end_time='0000-00-00 00:00:00' or time_created < end_time)) where follower= 2
                     UNION 
                     select t.tid,userid,user_id as retweeter_id,tweet, time_retweeted from tweet t inner join retweet r on r.tid=t.tid inner join follow f on (r.user_id=f.followed and time_retweeted > start_time and (end_time='0000-00-00 00:00:00' or time_retweeted < end_time)) where follower= 2) as P ".
-                    (($tid === 0) ? "" : "where tid < $tid ")
+                    (($tid == 0)?"":"where tid < $tid ")
                     ."order by tid DESC
                     limit $count";
-            echo $sql;
+            //echo $sql;
             $query = $this->db->query($sql);
             $result = $query->result();
             return !empty($result) ? $result : array();
