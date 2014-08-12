@@ -34,9 +34,10 @@ $(document).ready(function(){
                             
                             $("#mcqModalForm").trigger('reset');
                             $("#register_success_message").html("You have successfully registered to Twimini. Please login to continue");
+                            
                         }
                         else{
-                            $("#register_error_message").html("Some database occur occured. Please try again!");
+                            $("#register_error_message").html("Some database error occured. Please try again!");
                         }
                     },
                     error: function()

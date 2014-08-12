@@ -67,32 +67,7 @@
                     <div class="panel panel-default ">
                         <div class="panel-heading tweet-heading">Tweets .........</div>
                         <div class="panel-body">
-                            Using the CSS @import Rule
-                            Published March 19, 2008 by Rob Glazebrook.
-
-                            box of crayons
-
-                            Even the most complex style sheet starts out with a single rule. But when you’re working on a particularly massive and complex website, over time your style sheet will inevitably start to reflect the site’s size and complexity. And even if you employ every trick for organizing your CSS in the book, you might find that the sheer size of the file is simply overwhelming. At that point, you might want to consider splitting your style sheet up into several smaller CSS files. That’s when the @import rule can come in quite handy.
-
-                            The @import rule is another way of loading a CSS file. You can use it in two ways. The simplest is within the header of your document, like so:
-
-
-                            But that isn’t necessarily the best method for keeping your XHTML small and your code clean. To that end, you can import a style sheet from within another stylesheet. And better still, you can import any number of styles this way. So your document’s head could look like this:
-
-
-                            Nice and clean. But then your “styles.css” document can contain calls to any number of additional style sheets:
-
-                            @import url('/css/typography.css');
-                            @import url('/css/layout.css');
-                            @import url('/css/color.css');
-
-                            /* All three CSS files above will be loaded from
-                            this single document. */
-                            This lets you break up your gargantuan stylesheet into two or more logical portions — I chose typography, layout and color for this example, but you might prefer dividing your CSS according to the site sections they style (content versus sidebar, etc) or something similar. Either way, the benefit is immense — you can have the same number of CSS rules overall, but in smaller, easier to manage units.
-
-                            You can even load both your screen and print (or handheld, etc) stylesheets all at the same time using this trick. If you’d like to specify a media, just write your rules like this:
-
-
+                            <>
                         </div>
                     </div>
                 </div>
