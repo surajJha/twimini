@@ -61,16 +61,17 @@ define('DEFAULT_COUNT', 10);
      * time in the desired result form (JSON or XML).
      */
     
-    public function fetchTweets($handle,$type,$count){
+    public function fetchTweets($handle,$type,$count,$tid){
         if (!isset($count)|| $count == 0 )$count = DEFAULT_COUNT;
-    
+        if (!isset($tid))$tid=0;
+        
         if(!isset($handle)||$handle === false){
                    return $this->status_code['1'];   
         }
         
         else{
             $this->load->model('basemodel');
-            $result = $this->basemodel->fetchTweets($handle,$count);
+            $result = $this->basemodel->fetchTweets($handle,$count,$tid);
             $final_result=array(
                 !isset($result)?$this->status_code['1']:$this->status_code['0']
                     ,$result);
@@ -92,7 +93,7 @@ define('DEFAULT_COUNT', 10);
      *  Description: Fetches the followers of a particular user.
      */
     
-    public function fetchFollowers($handle, $type) {
+    public function fetchFollowers($handle, $type){
         if (!isset($handle) || $handle === false) {
             return $this->status_code['1'];
         } else {
@@ -116,7 +117,7 @@ define('DEFAULT_COUNT', 10);
      *  Description: Fetches the list of users a particular user follows.
      */
     
-    public function fetchFollowing($handle, $type) {
+    public function fetchFollowing($handle, $type){
         if (!isset($handle) || $handle === false) {
             return $this->status_code['1'];
         } else {

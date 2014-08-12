@@ -32,7 +32,7 @@ class basemodel extends CI_Model {
         //$this->db->query then ->result() returns array of object. Each object is one row. 
     }
 
-    public function fetchTweets($handle, $count) {
+    public function fetchTweets($handle, $count, $tid) {
         $handle = $this->db->escape($handle);
 
         $sql = "select userid from user where handle={$handle}";
@@ -41,7 +41,7 @@ class basemodel extends CI_Model {
             $row = $query->result();
             $id = $row[0]->userid;
 
-            $sql = "select tid, handle, tweet, t.time_created from tweet t inner join user u on t.userid = u.userid where t.userid={$id} or tid in (select tid from retweet where user_id={$id}) order by tid DESC limit $count";
+            $sql = "select tid, handle, tweet, t.time_created from tweet t inner join user u on t.userid = u.userid where (t.userid={$id} or tid in (select tid from retweet where user_id={$id})) ".(($tid == 0)?"":"and tid < $tid ")." order by tid DESC limit $count";
             $query = $this->db->query($sql);
             $result = $query->result();
             return !empty($result) ? $result : array();
