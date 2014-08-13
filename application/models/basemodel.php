@@ -16,9 +16,7 @@
 class basemodel extends CI_Model {
 
     public function createTweet($handle, $tweet) {
-        $handle = $this->db->escape($handle);
-        $tweet = $this->db->escape($tweet);
-        $sql = "select userid from user where handle={$handle}";
+        $sql = "select userid from user where handle='{$handle}'";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $row = $query->result();
