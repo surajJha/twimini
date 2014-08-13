@@ -12,10 +12,10 @@ class UserFeedController extends CI_Controller {
     }
     
     public function index(){
-        //echo $this->getUserFeed('suraj','JSON',15,0);
+        echo $this->getUserFeed('suraj',15,0);
     }
     
-    public function getUserFeed($handle,$type,$count,$tid) {
+    public function getUserFeed($handle,$count,$tid) {
         if (!isset($count)|| $count == 0 )$count = DEFAULT_COUNT;
         if (!isset($tid))$tid=0;
     
@@ -29,13 +29,9 @@ class UserFeedController extends CI_Controller {
             $final_result=array(
                 !isset($result)?$this->status_code['1']:$this->status_code['0']
                     ,$result);
-            if($type == 'xml'){
-               // xml encode here
-            }
-            else{
+            
                 return json_encode($final_result);
                 //return json_encode($final_result, JSON_PRETTY_PRINT);
-            }           
         }
     }
 }

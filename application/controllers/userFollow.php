@@ -12,10 +12,10 @@ class UserFollow extends CI_Controller {
     }
     
     public function index(){
-        echo $this->getFollowers('kirit','JSON');
+        echo $this->getFollowers('kirit');
     }
     
-    public function getFollowers($handle, $type){
+    public function getFollowers($handle){
         if (!isset($handle) || $handle === false) {
             return $this->status_code['1'];
         } else {
@@ -24,16 +24,13 @@ class UserFollow extends CI_Controller {
             $final_result = array(
                 !isset($result) ? $this->status_code['1'] : $this->status_code['0']
                 , $result);
-            if ($type == 'xml') {
-                // xml encode here
-            } else {
+            
                 return json_encode($final_result);
                 //return json_encode($final_result, JSON_PRETTY_PRINT);
-            }
         }
     }
     
-    public function getFollowing($handle, $type){
+    public function getFollowing($handle){
          if (!isset($handle) || $handle === false) {
             return $this->status_code['1'];
         } else {
@@ -42,12 +39,9 @@ class UserFollow extends CI_Controller {
             $final_result = array(
                 !isset($result) ? $this->status_code['1'] : $this->status_code['0']
                 , $result);
-            if ($type == 'xml') {
-                // xml encode here
-            } else {
+            
                 return json_encode($final_result);
                 //return json_encode($final_result, JSON_PRETTY_PRINT);
-            }
         }
     }
 }
