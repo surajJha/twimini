@@ -140,9 +140,8 @@ class MainApiController extends CI_Controller {
         } else {
             $this->load->model('basemodel');
             $result = $this->basemodel->fetchUserFeed($handle, $count, $tid);
-            $final_result = array("status_code" => 
-                !isset($result) ? $this->status_code['1'] : $this->status_code['0']
-                , "resultset" => $result);
+            $final_result = array("status_code" => !isset($result) ? $this->status_code['1'] : $this->status_code['0']
+                                , "resultset" => $result);
             if ($type == 'XML') {
                return $this->array2xml($final_result);
             } else {
@@ -151,7 +150,8 @@ class MainApiController extends CI_Controller {
             }
         }
     }
-
+    
+    //Converts array into xml string
     function array2xml($array, $xml = false) {
         if ($xml === false) {
             $xml = new SimpleXMLElement('<root/>');
