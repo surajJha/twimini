@@ -33,13 +33,17 @@ class LoginController extends CI_Controller {
             $user_data = $this->basemodel->getUserData($email);
          
             if ($user_data) {
-                $this->session->set_userdata('userid', $user_data['userid']);
+                
+            
+                 $this->session->set_userdata($user_data);
+              /*  $this->session->set_userdata('userid', $user_data['userid']);
                 $this->session->set_userdata('handle', $user_data['handle']);
                 $this->session->set_userdata('email', $user_data['email']);
                 $this->session->set_userdata('name', $user_data['name']);
-                $this->session->set_userdata('bio', $user_data['bio']);
+                $this->session->set_userdata('bio', $user_data['bio']);*/
+               // print_r($this->session->all_userdata());
                 $this->load->helper('url');
-                redirect('index.php/userHomeController');
+               redirect('index.php/userHomeController');
             } else {
                 echo "databse error";
             }

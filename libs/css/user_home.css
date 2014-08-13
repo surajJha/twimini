@@ -1,58 +1,68 @@
 @import url("bootstrap.min.css");
 
-body{
-	background-color: #3F3C3F;
+.mynavbar{
+    height: 60px;
+    //margin-top:10px;
+    margin-bottom:10px;
+    margin-left:10px;
+   // margin-right:10px;
+    // padding-bottom: 10px;
+    background-color: lightblue;
+    box-shadow: 0 0 35px #555;
 
 }
 
-.navbar, .navbar-default{
 
-	top: 0px;
-	left: 0px;
-	margin-left: 0px;
-	background-color: lightgreen;
-	border-color: green;
-	border-radius: 50px;
-	margin: 2%	
+.brand_name{
+    color: black;
+    font-size: xx-large;
+    font-family: inherit;
+    position: absolute;
+        left: 45%;
+        display: block;
+        width: 200px;
+        
 }
 
-.navbar-brand{
-	font-family: cursive;
-	font-size: x-large;
-	font-weight: bold;
-}
-
-.mydrop{
-
-	border-radius: 3px;
-	
-	background-color: lightgreen;
-	color: lightgreen;
-	margin: 3px;
-}
-.dropdown-box,.dropdown-box-inner{
-	display: inline;
-	
-}
-
-.mynav{
-	//padding: 100%;
-}
-
-.bio{
-	padding-top: 40px;
-	margin-left: 56px;
-
-}
-
-.newsfeed{
-	padding-top: 40px;
-	margin-right: 91px;
-}
-.tweet-heading{
-	background-color: lightgreen;
+.user_name{
+    color: black;
+    font-size: x-large;
+    font-family: inherit;
+    
 }
 
 
 
+.bio_panel{
+   margin-top: 50px;
+   margin-left: 40px;
+   border-radius: 10px;
+   box-shadow: 0 0 35px #555;
 
+}
+
+.bio_panel_heading{
+    background-color: lightblue;
+}
+
+.bio-title,.news-feed-title,.follow-panel-heading{
+    color: black;
+    font-size: x-large;
+    font-family: inherit;
+    
+}
+
+.news-feed{
+     margin-top: 50px;
+   margin-left: 30px;
+   border-radius: 10px;
+   box-shadow: 0 0 35px #555;
+}
+
+.follow-panel{
+   margin-top: 50px;
+   margin-left: 30px;
+   margin-right: 10px;
+   border-radius: 10px;
+   box-shadow: 0 0 35px #555; 
+}
