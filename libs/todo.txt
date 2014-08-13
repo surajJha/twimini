@@ -2,3 +2,4 @@ include timestamp query breakpoint in model fetchTweets function
 include timestamp start_date query breakpoint in model Fetch Followers/Following function
 include xml encoding in API controller fetchtweets funciton
 modify retweet query in fetchTweets to mimic UNION in fetchUserFeed
+fetchUserFeed doesn't include User's own tweets
