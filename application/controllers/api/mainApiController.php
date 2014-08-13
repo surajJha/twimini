@@ -14,18 +14,17 @@
 define('DEFAULT_COUNT', 10);
 
  class MainApiController extends CI_Controller{
-     
-   public $status_code = array(
+   
+   public $status_code;
+
+    public function __construct()
+   {
+       parent:: __construct();
        
-       "0" => "success",
-       "1" => "Invalid Handle",
-       "2" => "Invalid Tweet Length",
-       
-       
-       
-       
-       
-   );
+       $this->load->library('status');
+       $this->status_code = $this->status->get();
+   }
+   
     
   
     /*
@@ -38,7 +37,7 @@ define('DEFAULT_COUNT', 10);
      * status code Status codes will be included in the API docs.
      */
     public function index(){
-        $this->fetchUserFeed('kirit','JSON', 50);
+        echo $this->fetchTweets('rishabh', 'JSON', 15, 0);
     }
 
     public function createTweet($handle,$tweet){
@@ -52,7 +51,7 @@ define('DEFAULT_COUNT', 10);
         else{
             $this->load->model('basemodel');
             $res = $this->basemodel->createTweet($handle,$tweet);
-            echo $res?  $this->status_code['1']:  $this->status_code['0'];
+            return $res?  $this->status_code['1']:  $this->status_code['0'];
         }
     }
     
@@ -79,8 +78,8 @@ define('DEFAULT_COUNT', 10);
                // xml encode here
             }
             else{
-                echo json_encode($final_result, JSON_PRETTY_PRINT);
-                //return json_encode($final_result);
+                return json_encode($final_result);
+                //return json_encode($final_result, JSON_PRETTY_PRINT);
             }
             
         }
@@ -105,8 +104,8 @@ define('DEFAULT_COUNT', 10);
             if ($type == 'xml') {
                 // xml encode here
             } else {
-                echo json_encode($final_result, JSON_PRETTY_PRINT);
-                //return json_encode($final_result);
+                return json_encode($final_result);
+                //return json_encode($final_result, JSON_PRETTY_PRINT);
             }
         }
     }
@@ -129,8 +128,8 @@ define('DEFAULT_COUNT', 10);
             if ($type == 'xml') {
                 // xml encode here
             } else {
-                echo json_encode($final_result, JSON_PRETTY_PRINT);
-                //return json_encode($final_result);
+                return json_encode($final_result);
+                //return json_encode($final_result, JSON_PRETTY_PRINT);
             }
         }
     }
@@ -160,8 +159,8 @@ define('DEFAULT_COUNT', 10);
                // xml encode here
             }
             else{
-                echo json_encode($final_result, JSON_PRETTY_PRINT);
-                //return json_encode($final_result);
+                return json_encode($final_result);
+                //return json_encode($final_result, JSON_PRETTY_PRINT);
             }
             
         }
