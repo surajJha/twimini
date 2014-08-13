@@ -16,9 +16,7 @@
 class basemodel extends CI_Model {
 
     public function createTweet($handle, $tweet) {
-        $handle = $this->db->escape($handle);
-        $tweet = $this->db->escape($tweet);
-        $sql = "select userid from user where handle={$handle}";
+        $sql = "select userid from user where handle='{$handle}'";
         $query = $this->db->query($sql);
         if ($query->num_rows() > 0) {
             $row = $query->result();
@@ -43,7 +41,7 @@ class basemodel extends CI_Model {
 
             $sql = "select tid, handle, tweet, t.time_created from tweet t inner join user u on t.userid = u.userid where (t.userid={$id} or tid in (select tid from retweet where user_id={$id})) ".(($tid == 0)?"":"and tid < $tid ")." order by tid DESC limit $count";
             $query = $this->db->query($sql);
-            $result = $query->result();
+            $result = $query->result_array();
             return !empty($result) ? $result : array();
         } else
             return NULL;
@@ -61,7 +59,7 @@ class basemodel extends CI_Model {
 
             $sql = "select userid, handle, name, bio from user where userid in (select follower from follow where followed = $id and end_time = '0000-00-00 00:00:00')";
             $query = $this->db->query($sql);
-            $result = $query->result();
+            $result = $query->result_array();
             return !empty($result) ? $result : array();
         } else
             return NULL;
@@ -79,7 +77,7 @@ class basemodel extends CI_Model {
 
             $sql = "select userid, handle, name, bio from user where userid in (select followed from follow where follower = $id and end_time = '0000-00-00 00:00:00')";
             $query = $this->db->query($sql);
-            $result = $query->result();
+            $result = $query->result_array();
             return !empty($result) ? $result : array();
         } else
             return NULL;
@@ -96,15 +94,19 @@ class basemodel extends CI_Model {
             $id = $row[0]->userid;
 
             $sql = "select * from 
-                    (select t.tid,userid,'' as retweeter_id,tweet, time_created from tweet t inner join follow f on (f.followed=t.userid and time_created>start_time and (end_time='0000-00-00 00:00:00' or time_created < end_time)) where follower= 2
+                    (select t.tid,userid,'' as retweeter_id,tweet, time_created from tweet t inner join follow f on (f.followed=t.userid and time_created>start_time and (end_time='0000-00-00 00:00:00' or time_created < end_time)) where follower= $id
                     UNION 
-                    select t.tid,userid,user_id as retweeter_id,tweet, time_retweeted from tweet t inner join retweet r on r.tid=t.tid inner join follow f on (r.user_id=f.followed and time_retweeted > start_time and (end_time='0000-00-00 00:00:00' or time_retweeted < end_time)) where follower= 2) as P ".
+                    select tid, userid,'' as retweeter_id, tweet, time_created from tweet where userid={$id}
+                    UNION
+                    select t.tid,userid,user_id as retweeter_id,tweet, time_retweeted from tweet t inner join retweet r on r.tid=t.tid where user_id={$id}
+                    UNION
+                    select t.tid,userid,user_id as retweeter_id,tweet, time_retweeted from tweet t inner join retweet r on r.tid=t.tid inner join follow f on (r.user_id=f.followed and time_retweeted > start_time and (end_time='0000-00-00 00:00:00' or time_retweeted < end_time)) where follower= $id) as P ".
                     (($tid == 0)?"":"where tid < $tid ")
                     ."order by tid DESC
                     limit $count";
             //echo $sql;
             $query = $this->db->query($sql);
-            $result = $query->result();
+            $result = $query->result_array();
             return !empty($result) ? $result : array();
         } else
             return NULL;
