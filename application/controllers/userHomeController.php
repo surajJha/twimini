@@ -8,7 +8,8 @@
 
 class UserHomeController extends CI_Controller{
     public function index(){
-        $this->load->view('user_home');
+        $data=$this->session;
+        $this->load->view('user_home',$data);
     }
 }
 

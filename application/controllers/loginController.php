@@ -55,5 +55,28 @@ class LoginController extends CI_Controller {
         $hash = sha1($raw_password);
         return $hash;
     }
+    
+    
+    public function register(){
+        $handle =  $_POST['handle'] ;
+        $password = $this->hashPassword($_POST['passwordinput']);
+        $email = $_POST['emailinput'];
+        $gender = $_POST['gender'];
+        $bio = $_POST['bio'];
+        $name = $_POST['name'];        
+        
+        $data = array(
+            "handle" => $handle,
+            "password"  => $password,
+            "email" => $email,
+            "name"  => $gender,
+            "gender" => $bio,
+            "bio"  => $name
+        );
+        $this->load->model('login');
+        $res = $this->login->register($data);
+        echo $res;       
+        
+    }
 
 }

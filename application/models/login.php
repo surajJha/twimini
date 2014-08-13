@@ -18,10 +18,16 @@ class Login extends CI_Model{
         $query = $this->db->query($sql);
         
             return $query->result();
-        
-       
-    
+  
     }  
+    
+    public function register($data){
+        
+        $this->db->insert('user',$data);
+        return "success";
+       // return "";
+           
+    }
 }
 
 
