@@ -128,6 +128,7 @@ class basemodel extends CI_Model {
             $user_data['email'] = $row[0]->email;
             $user_data['name'] = $row[0]->name;
             $user_data['bio'] = $row[0]->bio;
+            $user_data['gender'] = $row[0]->gender;
             return $user_data;
         } else
             return false;
