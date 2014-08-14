@@ -156,8 +156,12 @@
                                         <textarea class="form-control" id="bio" name="bio"></textarea>
                                     </div>
                                 </div>
-
-
+                                <label class="col-md-4 control-label" for="profile_pic">Profile Pic</label>
+                                <div class="pic_input" style="margin-left: 198px;margin-top: 21px;">
+                                    
+                                    <input type="file" name="profile_pic"> 
+                                </div>
+                                
                                 <!-- ========================FILE INPUT===================== -->
                                
 

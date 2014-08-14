@@ -121,3 +121,7 @@ transition: all 150ms ease-in-out;
 
 //********************FILE INPUT****************************8
 
+.pic_input{
+    margin-left: 198px;
+margin-top: 21px;
+}
