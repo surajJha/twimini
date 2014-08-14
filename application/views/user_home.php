@@ -94,8 +94,8 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-lg edit-profile-button">Edit Profile
-                    <i class="glyphicon glyphicon-edit"></i></button>
+                <a class="btn btn-primary btn-lg edit-profile-button" href="<?php echo base_url(); ?>index.php/userProfileController">Edit Profile&nbsp;&nbsp;<i class="glyphicon glyphicon-edit"></i></a>
+                    
 
 
 
