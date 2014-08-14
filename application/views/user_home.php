@@ -211,6 +211,7 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery.min.js"></script>
 
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
+        <script type="text/javascript">var handle = '<?php echo $user_data['handle'] ?>'; </script>
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/user_home.js"></script>
 
     </body>
