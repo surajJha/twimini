@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var requestURL = 'http://localhost/twimini/index.php/userFeedController/getUserFeed';
+    var requestURL = 'http://localhost/twimini/index.php/userTweetController/getUserTweets';
     // console.log(requestURL);
     var data = {'handle': handle,
         'count': 50,
@@ -26,14 +26,14 @@ $(document).ready(function() {
                         '<img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<h4 class="media-heading">' + x.name + ' @' + x.handle + ' '+t+'</h4>' +
+                        '<h4 class="media-heading">' + /*x.name + */' @' + x.handle + ' '+t+'</h4>' +
                         x.tweet +
-                        //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by @' + x.retweeter_handle + '</div>' : '') +
+                        //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by you</div>' : '') +
                         '</div>' +
                         '</div>');
             }
         }
-    });
+    }).fail(function (jqXHR, textStatus, errorThrown) { console.log(jqXHR);console.log(textStatus);console.log(errorThrown); });
 
 
 });
@@ -41,17 +41,8 @@ $(document).ready(function() {
 function timeconvert(x)
 {
     var ds = x.time_created;
-    var day = new Date((new Date(ds.replace(' ', 'T') + 'Z')).toUTCString());
-    var t = Math.floor(((new Date()).getTime() - day.getTime())/1000);
-    var s=t%60;
-    t= Math.floor(t/60);
-    var m=t%60;
-    t= Math.floor(t/60);
-    var h=t%24;
-    var d= Math.floor(t/24);
-    
-    //(d>0?d+' d '+h+' h ago':(h>0?h+' h '+m+' m ago':(m>0?m+' m '+s+' s ago':s+' s ago')))
-    return (d>0?d+'d '+h+'h ago':(h>0?h+'h '+m+'m ago':(m>0?m+'m '+s+'s ago':s+'s ago')));
+    var day = new Date(ds.replace(' ', 'T') + 'Z').toDateString().split(" ");
+    return day[2]+' '+day[1]+' '+day[3];    
 }
 
 

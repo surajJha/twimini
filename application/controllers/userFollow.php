@@ -25,7 +25,7 @@ class UserFollow extends CI_Controller {
                 !isset($result) ? $this->status_code['1'] : $this->status_code['0']
                 , $result);
             
-                return json_encode($final_result);
+                echo json_encode($final_result);
                 //return json_encode($final_result, JSON_PRETTY_PRINT);
         }
     }
@@ -40,7 +40,7 @@ class UserFollow extends CI_Controller {
                 !isset($result) ? $this->status_code['1'] : $this->status_code['0']
                 , $result);
             
-                return json_encode($final_result);
+                echo json_encode($final_result);
                 //return json_encode($final_result, JSON_PRETTY_PRINT);
         }
     }

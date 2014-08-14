@@ -156,14 +156,17 @@
                                         <textarea class="form-control" id="bio" name="bio"></textarea>
                                     </div>
                                 </div>
-                                <label class="col-md-4 control-label" for="profile_pic">Profile Pic</label>
-                                <div class="pic_input" style="margin-left: 198px;margin-top: 21px;">
-                                    
-                                    <input type="file" name="profile_pic"> 
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="profile_pic">Profile Pic</label>
+                                    <div class="pic_input" style="margin-left: 198px;margin-top: 21px;">
+
+                                        <input type="file" name="profile_pic"> 
+                                    </div>
                                 </div>
-                                
+
+
                                 <!-- ========================FILE INPUT===================== -->
-                               
+
 
                                 <hr>
 
@@ -192,7 +195,11 @@
                 <div class="panel panel-default user_tweets">
                     <div class=" panel-heading " style="background-color: lightblue;"><span class="news-feed-title">User Tweets&nbsp;&nbsp;<i class="glyphicon glyphicon-list-alt"></i></span></div>
                     <div class="panel-body">
+                        <div class="tab-pane active" id="tab1">
+                            <div class="tweets">
 
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -206,11 +213,11 @@
 
 
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery.min.js"></script>
-
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/user_home.js"></script>
+        <script type="text/javascript">var handle = '<?php echo $user_data['handle'] ?>';</script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/user_profile.js"></script>
 
-        
+
 
     </body>
 </html>

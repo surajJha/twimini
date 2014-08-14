@@ -174,9 +174,9 @@
                             <!-- ========== BIO DETAILS GOES HERE =========== -->
                             <pre>
                               <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipi
-                                            Lorem ipsum dolor sit amet, consectetur adipic
-                                             Lorem ipsum dolor sit amet, consectetur adipi
+Lorem ipsum dolor sit amet, consectetur adipi
+Lorem ipsum dolor sit amet, consectetur adipic
+Lorem ipsum dolor sit amet, consectetur adipi
                                 </p>
 
                             </pre>

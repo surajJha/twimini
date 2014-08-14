@@ -12,10 +12,13 @@ class UserTweetController extends CI_Controller {
     }
     
     public function index(){
-        echo $this->getUserTweets('kirit',15,0);
+        //echo $this->getUserTweets('kirit',15,0);
     }
     
-    public function getUserTweets($handle,$count,$tid){
+    public function getUserTweets(){
+        $handle = $_POST['handle'];
+        $count = $_POST['count'];
+        $tid = $_POST['tid'];
         if (!isset($count)|| $count == 0 )$count = DEFAULT_COUNT;
         if (!isset($tid))$tid=0;
         
@@ -30,7 +33,7 @@ class UserTweetController extends CI_Controller {
                 !isset($result)?$this->status_code['1']:$this->status_code['0']
                     ,$result);
             
-                return json_encode($final_result);
+                echo json_encode($final_result);
                 //return json_encode($final_result, JSON_PRETTY_PRINT);
         }        
     }
