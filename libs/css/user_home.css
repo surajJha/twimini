@@ -98,3 +98,26 @@ transition: all 150ms ease-in-out;
     outline: 200px;
     box-shadow: 0 0 20px #555;
 }
+.edit_profile_panel{
+     margin-top: 50px;
+    margin-left: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 35px #555;
+
+}
+
+.user_tweets{
+       margin-top: 50px;
+    margin-left: 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 35px #555;
+}
+
+.edit_profile_button{
+    margin-left: 170px;
+    width:200px;
+}
+
+
+//********************FILE INPUT****************************8
+
