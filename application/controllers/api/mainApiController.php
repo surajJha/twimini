@@ -11,15 +11,13 @@
  * this api controller wil contain most of the api functions and modules
  * 
  */
-define('DEFAULT_COUNT', 10);
-
 class MainApiController extends CI_Controller {
 
     public $status_code;
 
     public function __construct() {
         parent:: __construct();
-
+        define('DEFAULT_COUNT', 10);
         $this->load->library('status');
         $this->status_code = $this->status->get();
     }
