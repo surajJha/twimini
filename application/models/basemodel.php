@@ -57,7 +57,7 @@ class basemodel extends CI_Model {
             $row = $query->result();
             $id = $row[0]->userid;
 
-            $sql = "select userid, handle, name, bio from user where userid in (select follower from follow where followed = $id and end_time = '0000-00-00 00:00:00')";
+            $sql = "select userid, handle, name, bio from user u inner join follow f on f.follower=u.userid where followed = $id and end_time = '0000-00-00 00:00:00' order by start_time DESC";
             $query = $this->db->query($sql);
             $result = $query->result_array();
             return !empty($result) ? $result : array();
@@ -75,7 +75,7 @@ class basemodel extends CI_Model {
             $row = $query->result();
             $id = $row[0]->userid;
 
-            $sql = "select userid, handle, name, bio from user where userid in (select followed from follow where follower = $id and end_time = '0000-00-00 00:00:00')";
+            $sql = "select userid, handle, name, bio from user u inner join follow f on f.followed=u.userid where follower = $id and end_time = '0000-00-00 00:00:00' order by start_time DESC";
             $query = $this->db->query($sql);
             $result = $query->result_array();
             return !empty($result) ? $result : array();

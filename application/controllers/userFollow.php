@@ -15,7 +15,8 @@ class UserFollow extends CI_Controller {
         echo $this->getFollowers('kirit');
     }
     
-    public function getFollowers($handle){
+    public function getFollowers(){
+        $handle=$_POST['handle'];
         if (!isset($handle) || $handle === false) {
             return $this->status_code['1'];
         } else {
@@ -30,7 +31,8 @@ class UserFollow extends CI_Controller {
         }
     }
     
-    public function getFollowing($handle){
+    public function getFollowing(){
+        $handle=$_POST['handle'];
          if (!isset($handle) || $handle === false) {
             return $this->status_code['1'];
         } else {
