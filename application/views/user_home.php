@@ -47,7 +47,7 @@
                                    
                                         <input type="text" class="form-control" placeholder="Search users" name="search_users" id="search_users">
                                         <!--<datalist id="users"></datalist>-->
-                                        <ul id="user-list" style="list-style-type: none;margin-top: 33px;"></ul>
+                                        <ul id="user-list" style="list-style-type: none;margin-top: 35px;position: absolute;width: 100%;padding-left: 1px;padding-right: 0px;"></ul>
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                     </div>

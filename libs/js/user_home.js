@@ -64,7 +64,7 @@ $(document).ready(function() {
                     console.log(msg);
                     if(length){
                     for(var i = 0;i<length;i++){
-                        var opt = '<li style="background-color:white;" >'+msg[i].name+'</li>';
+                        var opt = '<li style="background-color:white;"><a >'+msg[i].name+'</a></li>';
                         $("#user-list").append(opt);
                         
                     }}
