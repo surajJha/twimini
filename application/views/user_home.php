@@ -128,15 +128,23 @@
                                 <div class="tab-pane" id="tab2">
                                     <div class="following">
                                         <div class="media follow-object">
-                                            <a class="pull-left" href="#">
+                                          <!--  <a class="pull-left" href="#">
                                                 <img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">
-                                            </a>
+                                            </a>  -->
+                                          
                                             <div class="media-body">
-                                                <h4 class="media-heading">Media heading</h4>
-                                                This is some sample text. This is some sample text. 
-                                                This is some sample text. This is some sample text.
-                                                This is some sample text. This is some sample text. 
-                                                This is some sample text. This is some sample text.
+                                                <h4 class="media-heading">user name</h4>
+                                                <div class="row">
+                                               
+                                                         <img src="http://localhost/twimini/libs/images/dp.jpg" style="height: 80px;width: 120px;float: left;">
+                                                 
+                                               
+                                                         
+                                                    
+                                                    
+                                                </div>
+                                               
+                                                
                                             </div>
                                         </div>
 
