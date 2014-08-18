@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="name">Name</label>  
                                     <div class="col-md-6">
-                                        <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required>
+                                        <input id="name" name="name" type="text" placeholder="<?php echo $user_data['name'];?>" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="handle">Handle</label>  
                                     <div class="col-md-6">
-                                        <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md" required>
+                                        <input id="handle" name="handle" type="text" placeholder="@<?php echo $user_data['handle'];?>" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="emailinput">E-mail ID</label>  
                                     <div class="col-md-6">
-                                        <input id="emailinput" name="email" type="emailinput" placeholder="" class="form-control input-md" required>
+                                        <input id="emailinput" name="email" type="emailinput" placeholder="<?php echo $user_data['email'];?>" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -136,13 +136,13 @@
                                     <div class="col-md-6">
                                         <div class="radio">
                                             <label for="gender-0">
-                                                <input type="radio" name="gender" id="gender-0" value="M" checked="checked">
+                                                <input type="radio" name="gender" id="gender-0" value="m" <?php echo ($user_data['gender']=='m')?'checked="checked"':''; ?> >
                                                 Male
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label for="gender-1">
-                                                <input type="radio" name="gender" id="gender-1" value="F">
+                                                <input type="radio" name="gender" id="gender-1" value="f" <?php echo ($user_data['gender']=='f')?'checked="checked"':''; ?> >
                                                 Female
                                             </label>
                                         </div>
@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="bio">Bio</label>
                                     <div class="col-md-6">                     
-                                        <textarea class="form-control" id="bio" name="bio"></textarea>
+                                        <textarea class="form-control" id="bio" name="bio"><?php echo $user_data['bio'];?></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
