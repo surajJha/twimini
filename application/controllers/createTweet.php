@@ -15,18 +15,20 @@ class CreateTweet extends CI_Controller {
         echo $this->createTweet('uMANG','Umang Tweet 2');
     }
 
-    public function createTweet($handle,$tweet){
+    public function createTweet(){
+        $handle=$_POST['handle'];
+        $tweet=$_POST['tweet'];
         if(!isset($handle)||$handle === false){
-                   return $this->status_code['1'];   
+            echo $this->status_code['1'];   
         }
         else if(!isset($tweet)|| strlen($tweet)<=0 || strlen($tweet)>140){
-            return $this->status_code['2'];
+            echo $this->status_code['2'];
             
         }
         else{
             $this->load->model('basemodel');
             $res = $this->basemodel->createTweet($handle,$tweet);
-            return $res?  $this->status_code['1']:  $this->status_code['0'];
+            echo $res?  $this->status_code['1']:  $this->status_code['0'];
         }
     }
 }

@@ -60,7 +60,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="user_name"><?php echo $user_data['name']; ?></span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Privacy Settings</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/LogoutController">Logout</a></li>
 
                             </ul>
                         </li>

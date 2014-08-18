@@ -1,40 +1,5 @@
 $(document).ready(function() {
-    var requestURL = 'http://localhost/twimini/index.php/userFeedController/getUserFeed';
-    // console.log(requestURL);
-    var data = {'handle': handle,
-        'count': 50,
-        'tid': 0};
-    // Get User feed
-    $.ajax(
-            {
-                type: 'POST',
-                url: requestURL,
-                data: data,
-                dataType: 'json',
-                cache: false
-            }).done(function(msg, status, XHR) {
-        if (msg[0] === "success")
-        {
-            // console.log(msg[1][0].retweeter_id);
-            for (var i = 0; i < msg[1].length; i++)
-            {
-                var x = msg[1][i];
-                var t = timeconvert(x);
-
-                $('.tweets').append('<div class="media tweet-object">' +
-                        '<a class="pull-left" href="#">' +
-                        '<img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">' +
-                        '</a>' +
-                        '<div class="media-body">' +
-                        '<h4 class="media-heading">' + x.name + ' @' + x.handle + ' ' + t + '</h4>' +
-                        x.tweet +
-                        //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by @' + x.retweeter_handle + '</div>' : '') +
-                        '</div>' +
-                        '</div>');
-            }
-        }
-    });
-
+    getUserFeed();
 
     // Get Following
     requestURL = 'http://localhost/twimini/index.php/userFollow/getFollowing';
@@ -112,9 +77,6 @@ $(document).ready(function() {
     });
 
 
-
-
-
 // function for autocomplete search users ===================================
 
     $("#search_users").on("keyup", function() {
@@ -153,6 +115,11 @@ $(document).ready(function() {
         }
     });
 
+
+
+
+
+
     $("#tweet-box").on("click", function() {
         if ($("#tweet-box").attr("class") == 'tweet-small') {
             $("#tweet-box").toggleClass('tweet-large', true);
@@ -160,18 +127,15 @@ $(document).ready(function() {
             $("#tweet-counter").append('<span id="text-counter" style="margin-left: 230px;color: gray;font-weight: 600;">140</span><span><button id="tweet-button" class="tweet-button" style="height: 42px;width: 101px;border-radius: 10px;background-color: gray;margin-left: 10px;" disabled="disabled">Tweet</button></span>').css("margin-bottom", "20px");
         }
     });
-    
+
     $("#tweet-box").on("keyup", function() {
-        var count=$("#text-counter");
-        count.text(140-$("#tweet-box").val().length);
-        if(parseInt(count.text())<0 || parseInt(count.text())==140)$("#tweet-button").attr('disabled','disabled').css("background-color","gray");
-        else $("#tweet-button").removeAttr('disabled').css("background-color","lightblue");
+        var count = $("#text-counter");
+        count.text(140 - $("#tweet-box").val().length);
+        if (parseInt(count.text()) < 0 || parseInt(count.text()) == 140)
+            $("#tweet-button").attr('disabled', 'disabled').css("background-color", "gray");
+        else
+            $("#tweet-button").removeAttr('disabled').css("background-color", "lightblue");
     });
-    
-    
-    
-    
-    
 
     $(document).on("click", function(e) {
         var box = $("#tweet-box");
@@ -182,7 +146,30 @@ $(document).ready(function() {
             $("#tweet-counter").css("margin-bottom", "");
         }
     });
+//create Tweet
+    $('#tweet-counter').on("click", $('#tweet-button'), function(e) {
+        var requestURL = 'http://localhost/twimini/index.php/createTweet/createTweet';
+        var data = {'handle': handle,
+            'tweet': $("#tweet-box").val()};
 
+        // Get User feed
+        $.ajax(
+                {
+                    type: 'POST',
+                    url: requestURL,
+                    data: data,
+                    cache: false
+                }).done(function(msg, status, XHR) {
+            console.log(msg);
+            if (msg === "success")
+            {
+
+                $('.tweets').empty();
+                getUserFeed();
+                $("#tweet-box").val('');
+            }
+        });
+    });
 
 
 });
@@ -203,7 +190,45 @@ function timeconvert(x)
     return (d > 0 ? d + 'd ' + h + 'h ago' : (h > 0 ? h + 'h ' + m + 'm ago' : (m > 0 ? m + 'm ' + s + 's ago' : s + 's ago')));
 }
 
+function getUserFeed()
+{
+    var requestURL = 'http://localhost/twimini/index.php/userFeedController/getUserFeed';
+    // console.log(requestURL);
+    var data = {'handle': handle,
+        'count': 50,
+        'tid': 0};
 
+    // Get User feed
+    $.ajax(
+            {
+                type: 'POST',
+                url: requestURL,
+                data: data,
+                dataType: 'json',
+                cache: false
+            }).done(function(msg, status, XHR) {
+        if (msg[0] === "success")
+        {
+            // console.log(msg[1][0].retweeter_id);
+            for (var i = 0; i < msg[1].length; i++)
+            {
+                var x = msg[1][i];
+                var t = timeconvert(x);
+
+                $('.tweets').append('<div class="media tweet-object">' +
+                        '<a class="pull-left" href="#">' +
+                        '<img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">' +
+                        '</a>' +
+                        '<div class="media-body">' +
+                        '<h4 class="media-heading">' + x.name + ' @' + x.handle + ' ' + t + '</h4>' +
+                        x.tweet +
+                        //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by @' + x.retweeter_handle + '</div>' : '') +
+                        '</div>' +
+                        '</div>');
+            }
+        }
+    });
+}
 
 
 

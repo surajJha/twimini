@@ -6,11 +6,9 @@
  * and open the template in the editor.
  */
 
-class UserHomeController extends CI_Controller{
+class LogoutController extends CI_Controller{
     public function index(){
-       if($this->session->userdata('userid'))
-        $this->load->view('user_home');
-       
+        $this->session->sess_destroy();
+        redirect('index.php/homeController');
     }
 }
-
