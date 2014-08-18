@@ -36,6 +36,46 @@ $(document).ready(function() {
     });
 
 
+
+
+// function for autocomplete search users ===================================
+
+    $("#search_users").on("keyup",function(){
+            var value = $("#search_users").val();
+            //search_users
+            var data = {'search_users': value};
+            if(value != '')
+            {
+            $.ajax(
+                {   
+                    
+                    type: 'POST',
+                    url: 'http://localhost/twimini/index.php/userSearchController/searchUsers',
+                    cache: false,
+                    data: data,
+                    dataType: 'json'
+                    
+                }).done(function(msg){
+                  //  var x =$.parseJSON(response);
+                     //console.log(response);
+                    var length = msg.length;
+                    //$("#users").empty();
+                    $('#user-list li').empty();
+                    console.log(msg);
+                    if(length){
+                    for(var i = 0;i<length;i++){
+                        var opt = '<li style="background-color:white;" >'+msg[i].name+'</li>';
+                        $("#user-list").append(opt);
+                        
+                    }}
+                });
+            }
+            else
+            {
+                $('#user-list li').empty();
+            }
+    });
+
 });
 
 function timeconvert(x)
