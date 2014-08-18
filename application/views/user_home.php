@@ -83,18 +83,11 @@
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <!-- ==============================USER BIO GOES HERE========================= -->
                 <div class="panel panel-default bio_panel">
-                    <div class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">Your Profile&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
+                    <div id="tweet-panel" class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">Compose Tweet&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
                     <div class="panel-body">
-
-                        <!-- ===========DISPLAY PIC GOES HERE========= -->
-                        <div class="row"> <img src="//placehold.it/200x200" class="img-responsive "style="width: 100%; height: 300px;" ></div>
-                        <div class="row">
-                            <!-- ========== BIO DETAILS GOES HERE =========== -->
-
-
-
-                        </div>
+                        <div class="row" ><textarea id="tweet-box" class="tweet-small"></textarea></div>                        
                     </div>
+                    <div id="tweet-counter"></div>
                 </div>
 
                 <a class="btn btn-primary btn-lg edit-profile-button" href="<?php echo base_url(); ?>index.php/userProfileController">Edit Profile&nbsp;&nbsp;<i class="glyphicon glyphicon-edit"></i></a>
@@ -127,39 +120,16 @@
 
                                 <div class="tab-pane" id="tab2">
                                     <div class="following">
-                                        <div class="media follow-object">
-                                          <!--  <a class="pull-left" href="#">
-                                                <img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">
-                                            </a>  -->
-                                          
-                                            <div class="media-body">
-                                                <h4 class="media-heading">user name</h4>
-                                                <div class="row">
-                                               
-                                                         <img src="http://localhost/twimini/libs/images/dp.jpg" style="height: 80px;width: 120px;float: left;">
-                                                 
-                                               
-                                                         
-                                                    
-                                                    
-                                                </div>
-                                               
-                                                
-                                            </div>
-                                        </div>
-
+                                        <table><tbody id="following-table"></tbody></table>
                                     </div>
                                 </div>
 
 
                                 <div class="tab-pane" id="tab3">
                                     <div class="follower">
-
+                                        <table><tbody id="follower-table"></tbody></table>
                                     </div>
-
                                 </div>
-
-
                             </div>
                         </div>
                     </div>

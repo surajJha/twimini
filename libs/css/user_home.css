@@ -101,6 +101,24 @@
     box-shadow: 0 0 20px #555;
 }
 
+.tweet-small{
+    margin-left: 12px;
+    width: 371px;
+    height: 30px;
+    border-radius: 7px;
+    border-color: lightblue;
+    resize:none;
+}
+
+.tweet-large{
+    margin-left: 12px;
+    width: 371px;
+    height: 157px;
+    border-radius: 7px;
+    border-color: lightblue;
+    resize:none;
+}
+
 .follow-object{
     background-color: wheat;
     height: 250px;
