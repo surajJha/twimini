@@ -130,6 +130,23 @@
     resize:none;
 }
 
+.media-heading .name{
+    font-weight: bold;
+    color: #292f33;
+    font-size: 16px;
+} 
+
+.media-heading .handle-time{
+    color: #71A9D3;
+    padding-left: 8px;
+    font-size: 14px;
+}
+
+.media-heading .retweet{
+    float: right;
+    padding-right: 10px;
+    color: #8899a6;
+}
 .follow-object{
     background-color: wheat;
     height: 250px;

@@ -158,7 +158,7 @@ $(document).ready(function() {
             {
 
                 $('.tweets').empty();
-                getUserFeed();
+                getUserFeed(0);
                 $("#tweet-box").val('');
             }
         });
@@ -190,7 +190,7 @@ function timeconvert(x)
     var d = Math.floor(t / 24);
 
     //(d>0?d+' d '+h+' h ago':(h>0?h+' h '+m+' m ago':(m>0?m+' m '+s+' s ago':s+' s ago')))
-    return (d > 0 ? d + 'd ' + h + 'h ago' : (h > 0 ? h + 'h ' + m + 'm ago' : (m > 0 ? m + 'm ' + s + 's ago' : s + 's ago')));
+    return (d > 0 ? d + 'd ' + h + 'h' : (h > 0 ? h + 'h ' + m + 'm' : (m > 0 ? m + 'm ' + s + 's' : s + 's')));
 }
 
 function getUserFeed(lasttid)
@@ -222,7 +222,7 @@ function getUserFeed(lasttid)
                         '<img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<h4 class="media-heading">' + x.name + ' @' + x.handle + ' ' + t + ((x.retweeter_id) ? '<span style="float: right;padding-right: 10px;color: lightslategray;">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></h4>' : '</h4>') +
+                        '<span class="media-heading"><span class="name">' + x.name + '</span> <span class="handle-time">@' + x.handle + ' - ' + t + '</span>'+((x.retweeter_id) ? '<span class="retweet">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></span>' : '</span>') +'<br>'+
                         x.tweet +
                         //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by @' + x.retweeter_handle + '</div>' : '') +
                         '</div>' +
