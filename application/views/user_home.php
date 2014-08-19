@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>/index.php/userHomeController/"><b><span class="brand_name">TwiMini<i class="glyphicon glyphicon-home"></i></span></b></a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/userHomeController/"><b><span class="brand_name">TwiMini<i class="glyphicon glyphicon-home"></i></span></b></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -112,17 +112,8 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab1">
-                                    <div class="tweets">
-                                        <div id="65"class="media tweet-object">
-                                            <a class="pull-left" href="#">
-                                                <img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">
-                                            </a>
-                                            <div class="media-body">
-                                                <h4 class="media-heading">Suraj Jha @suraj 13h 41m ago<span style="float: right;padding-right: 10px;">Retweeted by me</span></h4>Suraj Tweet 9</div>
-                                            <br>
-                                            <div style="padding-bottom:15px">Retweet</div>                                                
-                                        </div> 
-                                    </div>
+                                    <div class="tweets"></div>
+                                    <div class="preloader"><center><img src="<?php echo base_url(); ?>libs/712.gif"></center></div>
                                 </div>
 
 

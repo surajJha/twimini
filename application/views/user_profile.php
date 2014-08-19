@@ -28,7 +28,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>/index.php/userHomeController/"><b><span class="brand_name">TwiMini<i class="glyphicon glyphicon-home"></i></span></b></a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/userHomeController/"><b><span class="brand_name">TwiMini<i class="glyphicon glyphicon-home"></i></span></b></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,7 +57,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="user_name"><?php echo $user_data['name']; ?></span><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Privacy Settings</a></li>
-                                <li><a href="#">Logout</a></li>
+                                <li><a href="<?php echo base_url(); ?>index.php/LogoutController">Logout</a></li>
 
                             </ul>
                         </li>
@@ -89,7 +89,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="name">Name</label>  
                                     <div class="col-md-6">
-                                        <input id="name" name="name" type="text" placeholder="<?php echo $user_data['name'];?>" class="form-control input-md" required>
+                                        <input id="name" name="name" type="text" value="<?php echo $user_data['name'];?>" class="form-control input-md">
 
                                     </div>
                                 </div>
@@ -98,8 +98,8 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="handle">Handle</label>  
                                     <div class="col-md-6">
-                                        <input id="handle" name="handle" type="text" placeholder="@<?php echo $user_data['handle'];?>" class="form-control input-md" required>
-
+                                        <input disabled="disabled" id="handle" name="handlemain" type="text" value="@<?php echo $user_data['handle'];?>" class="form-control input-md">
+                                        <input type="hidden" name="handle" value="<?php echo $user_data['handle'];?>">
                                     </div>
                                 </div>
 
@@ -107,7 +107,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="passwordinput">Password</label>
                                     <div class="col-md-6">
-                                        <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required>
+                                        <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
 
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="passwordconfirm">Confirm Password</label>
                                     <div class="col-md-6">
-                                        <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md" required>
+                                        <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md">
 
                                     </div>
                                 </div>
@@ -125,7 +125,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="emailinput">E-mail ID</label>  
                                     <div class="col-md-6">
-                                        <input id="emailinput" name="email" type="emailinput" placeholder="<?php echo $user_data['email'];?>" class="form-control input-md" required>
+                                        <input id="emailinput" name="email" type="emailinput" placeholder="<?php echo $user_data['email'];?>" class="form-control input-md" disabled="disabled">
 
                                     </div>
                                 </div>
@@ -169,10 +169,11 @@
 
 
                                 <hr>
+                                <div id="response-message"></div>
 
                                 <div class="edit_profile_footer">
 
-                                    <button id="edit_profile_button" class="btn btn-primary btn-lg edit_profile_button" type="submit" style="margin-left: 186px;">Register</button>
+                                    <button id="edit_profile_button" class="btn btn-primary btn-lg edit_profile_button" type="submit" style="margin-left: 186px;">Save Changes</button>
                                 </div>
 
                             </fieldset>
@@ -196,9 +197,8 @@
                     <div class=" panel-heading " style="background-color: lightblue;"><span class="news-feed-title">User Tweets&nbsp;&nbsp;<i class="glyphicon glyphicon-list-alt"></i></span></div>
                     <div class="panel-body">
                         <div class="tab-pane active" id="tab1">
-                            <div class="tweets">
-
-                            </div>
+                            <div class="tweets"></div>
+                            <div class="preloader"><center><img src="<?php echo base_url(); ?>libs/712.gif"></center></div>
                         </div>
 
                     </div>

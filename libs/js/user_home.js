@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    getUserFeed();
-
+    getUserFeed(0);
     // Get Following
     requestURL = 'http://localhost/twimini/index.php/userFollow/getFollowing';
     data = {'handle': handle};
@@ -99,7 +98,6 @@ $(document).ready(function() {
                 var length = msg.length;
                 //$("#users").empty();
                 $('#user-list li').empty();
-                console.log(msg);
                 if (length) {
                     for (var i = 0; i < length; i++) {
                         var opt = '<li style="background-color:white;"><a >' + msg[i].name + '</a></li>';
@@ -156,7 +154,6 @@ $(document).ready(function() {
                     data: data,
                     cache: false
                 }).done(function(msg, status, XHR) {
-            console.log(msg);
             if (msg === "success")
             {
 
@@ -166,8 +163,16 @@ $(document).ready(function() {
             }
         });
     });
+    var lasttid = 0;
 
+    $(window).scroll(function() {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height() && parseInt($('.tweet-object').last().attr('id')) != lasttid) {
+            $('body').addClass('loading');
+            lasttid = $('.tweet-object').last().attr('id');
+            getUserFeed(lasttid);
 
+        }
+    });
 
 
 });
@@ -188,13 +193,13 @@ function timeconvert(x)
     return (d > 0 ? d + 'd ' + h + 'h ago' : (h > 0 ? h + 'h ' + m + 'm ago' : (m > 0 ? m + 'm ' + s + 's ago' : s + 's ago')));
 }
 
-function getUserFeed()
+function getUserFeed(lasttid)
 {
     var requestURL = 'http://localhost/twimini/index.php/userFeedController/getUserFeed';
     // console.log(requestURL);
     var data = {'handle': handle,
-        'count': 50,
-        'tid': 0};
+        'count': 10,
+        'tid': lasttid};
     // Get User feed
     $.ajax(
             {
@@ -206,7 +211,9 @@ function getUserFeed()
             }).done(function(msg, status, XHR) {
         if (msg[0] === "success")
         {
-            for (var i = 0; i < msg[1].length; i++)
+            $('body').removeClass('loading');
+            var len = msg[1].length;
+            for (var i = 0; i < len; i++)
             {
                 var x = msg[1][i];
                 var t = timeconvert(x);
@@ -225,9 +232,9 @@ function getUserFeed()
         }
 
         //Retweet
-        $('.tweet-bottom-panel').on("click", $('.retweet-link'), function(e) {
+        $('.retweet-link').on("click", function(e) {
             var requestURL = 'http://localhost/twimini/index.php/userFeedController/retweet';
-            var tweetobj=e.target.parentElement.parentElement;
+            var tweetobj = e.target.parentElement.parentElement;
             var data = {'handle': handle,
                 'tid': tweetobj.id};
             $.ajax(
@@ -239,10 +246,14 @@ function getUserFeed()
                     }).done(function(msg, status, XHR) {
                 if (msg === "success")
                 {
-                    var head=$('#'+tweetobj.id).find('.media-heading');
+                    var head = $('#' + tweetobj.id).find('.media-heading');
                     var span = head.find('span');
-                    if(span.length){span.empty();span.text('Retweeted by You');}
-                    else head.append('<span style="float: right;padding-right: 10px;color: lightslategray;">Retweeted by You</span>');
+                    if (span.length) {
+                        span.empty();
+                        span.text('Retweeted by You');
+                    }
+                    else
+                        head.append('<span style="float: right;padding-right: 10px;color: lightslategray;">Retweeted by You</span>');
                 }
             });
         });

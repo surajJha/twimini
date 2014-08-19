@@ -150,6 +150,29 @@
     transition: all 150ms ease-in-out;
 
 }
+
+.preloader {
+    display:    none;
+    //position:   fixed;
+    //z-index:    0;
+    //top:        0;
+    //left:       0;
+    //height:     100%;
+    //width:      100%;
+    background-color: lightblue;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    outline: 200px;
+}
+
+body.loading .preloader {
+    display: block;
+}
+
+
 .edit_profile_panel{
     margin-top: 50px;
     margin-left: 40px;
@@ -177,4 +200,3 @@
     margin-left: 198px;
     margin-top: 21px;
 }
-
