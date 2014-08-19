@@ -34,7 +34,20 @@ class UserFeedController extends CI_Controller {
                 , $result);
 
             echo json_encode($final_result);
-            //return json_encode($final_result, JSON_PRETTY_PRINT);
+//return json_encode($final_result, JSON_PRETTY_PRINT);
+        }
+    }
+
+    public function retweet() {
+        $handle = $_POST['handle'];
+        $tid = $_POST['tid'];
+
+        if (!isset($handle) || $handle === false) {
+            echo $this->status_code['1'];
+        } else {
+            $this->load->model('basemodel');
+            $res = $this->basemodel->retweet($handle, $tid);
+            echo $res ? $this->status_code['1'] : $this->status_code['0'];
         }
     }
 

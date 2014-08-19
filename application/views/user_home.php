@@ -44,10 +44,10 @@
                         <li>
                             <form class="navbar-form " role="search">
                                 <div class="input-group">
-                                   
-                                        <input type="text" class="form-control" placeholder="Search users" name="search_users" id="search_users">
-                                        <!--<datalist id="users"></datalist>-->
-                                        <ul id="user-list" style="list-style-type: none;margin-top: 35px;position: absolute;width: 100%;padding-left: 1px;padding-right: 0px;"></ul>
+
+                                    <input type="text" class="form-control" placeholder="Search users" name="search_users" id="search_users">
+                                    <!--<datalist id="users"></datalist>-->
+                                    <ul id="user-list" style="list-style-type: none;margin-top: 35px;position: absolute;width: 100%;padding-left: 1px;padding-right: 0px;"></ul>
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                     </div>
@@ -113,7 +113,15 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab1">
                                     <div class="tweets">
-
+                                        <div id="65"class="media tweet-object">
+                                            <a class="pull-left" href="#">
+                                                <img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">Suraj Jha @suraj 13h 41m ago<span style="float: right;padding-right: 10px;">Retweeted by me</span></h4>Suraj Tweet 9</div>
+                                            <br>
+                                            <div style="padding-bottom:15px">Retweet</div>                                                
+                                        </div> 
                                     </div>
                                 </div>
 

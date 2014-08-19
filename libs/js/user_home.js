@@ -21,7 +21,7 @@ $(document).ready(function() {
                 var x = msg[1][i];
 
 
-                table = table + (((i % 3) ? '' : '<tr>') + '<td><div class="media follow-object">' +
+                table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div class="media follow-object">' +
                         '<div class="media-body">' +
                         '<h4 class="media-heading" style="text-align: center;">' + x.name + ' @' + x.handle + ' </h4>' +
                         '<div class="row">' +
@@ -60,7 +60,7 @@ $(document).ready(function() {
                     var x = msg[1][i];
 
 
-                    table = table + (((i % 3) ? '' : '<tr>') + '<td><div class="media follow-object">' +
+                    table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div class="media follow-object">' +
                             '<div class="media-body">' +
                             '<h4 class="media-heading" style="text-align: center;">' + x.name + ' @' + x.handle + ' </h4>' +
                             '<div class="row">' +
@@ -116,10 +116,6 @@ $(document).ready(function() {
     });
 
 
-
-
-
-
     $("#tweet-box").on("click", function() {
         if ($("#tweet-box").attr("class") == 'tweet-small') {
             $("#tweet-box").toggleClass('tweet-large', true);
@@ -172,6 +168,8 @@ $(document).ready(function() {
     });
 
 
+
+
 });
 
 function timeconvert(x)
@@ -197,7 +195,6 @@ function getUserFeed()
     var data = {'handle': handle,
         'count': 50,
         'tid': 0};
-
     // Get User feed
     $.ajax(
             {
@@ -209,24 +206,46 @@ function getUserFeed()
             }).done(function(msg, status, XHR) {
         if (msg[0] === "success")
         {
-            // console.log(msg[1][0].retweeter_id);
             for (var i = 0; i < msg[1].length; i++)
             {
                 var x = msg[1][i];
                 var t = timeconvert(x);
-
-                $('.tweets').append('<div class="media tweet-object">' +
+                $('.tweets').append('<div id="' + x.tid + '"class="media tweet-object">' +
                         '<a class="pull-left" href="#">' +
                         '<img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<h4 class="media-heading">' + x.name + ' @' + x.handle + ' ' + t + '</h4>' +
+                        '<h4 class="media-heading">' + x.name + ' @' + x.handle + ' ' + t + ((x.retweeter_id) ? '<span style="float: right;padding-right: 10px;color: lightslategray;">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></h4>' : '</h4>') +
                         x.tweet +
                         //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by @' + x.retweeter_handle + '</div>' : '') +
                         '</div>' +
+                        ((x.handle != handle) ? '<br><div class="tweet-bottom-panel"><a class="retweet-link" style="cursor: pointer">Retweet</a></div>' : '<br><div style="padding-bottom:15px"></div>') +
                         '</div>');
             }
         }
+
+        //Retweet
+        $('.tweet-bottom-panel').on("click", $('.retweet-link'), function(e) {
+            var requestURL = 'http://localhost/twimini/index.php/userFeedController/retweet';
+            var tweetobj=e.target.parentElement.parentElement;
+            var data = {'handle': handle,
+                'tid': tweetobj.id};
+            $.ajax(
+                    {
+                        type: 'POST',
+                        url: requestURL,
+                        data: data,
+                        cache: false
+                    }).done(function(msg, status, XHR) {
+                if (msg === "success")
+                {
+                    var head=$('#'+tweetobj.id).find('.media-heading');
+                    var span = head.find('span');
+                    if(span.length){span.empty();span.text('Retweeted by You');}
+                    else head.append('<span style="float: right;padding-right: 10px;color: lightslategray;">Retweeted by You</span>');
+                }
+            });
+        });
     });
 }
 

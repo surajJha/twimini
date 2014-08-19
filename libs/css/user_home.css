@@ -13,6 +13,17 @@
 
 }
 
+.follow-table{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.tweet-bottom-panel{
+    margin-left: 70px;
+    color: lightslategrey;
+    font-weight: 600;
+}
 
 .brand_name{
     color: black;
@@ -80,7 +91,7 @@
 .tweet-object{
     background-color: #e0e0e0;
     padding-top: 11px;
-    padding-bottom: 11px;
+    padding-bottom: 2px;        //previously 11px
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -129,7 +140,8 @@
     margin-bottom: 20px;
     border-radius: 10px;
     border-style: solid;
-    border-width: 1px;
+    border-width: 0px;
+    box-shadow: 0px 0px 10px #555;
 
     -webkit-transition: all 150ms ease-in-out;
     -moz-transition: all 150ms ease-in-out;
@@ -165,3 +177,4 @@
     margin-left: 198px;
     margin-top: 21px;
 }
+

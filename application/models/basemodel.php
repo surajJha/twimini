@@ -29,6 +29,22 @@ class basemodel extends CI_Model {
 
         //$this->db->query then ->result() returns array of object. Each object is one row. 
     }
+    
+    public function retweet($handle, $tid) {
+        $sql = "select userid from user where handle='{$handle}'";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $row = $query->result();
+            $id = $row[0]->userid;
+            $this->db->insert('retweet', array("user_id" => $id, "tid" => $tid));
+            return '0';
+        } else {
+            return '1';
+        }
+
+        //$this->db->query then ->result() returns array of object. Each object is one row. 
+    }
+    
 
     public function fetchTweets($handle, $count, $tid) {
         $handle = $this->db->escape($handle);
