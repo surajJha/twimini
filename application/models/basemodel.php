@@ -1,18 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-
-/*
- *  This file contains most CRUD functions
- * 
- */
-
 class basemodel extends CI_Model {
 
     public function createTweet($handle, $tweet) {
@@ -109,7 +96,7 @@ class basemodel extends CI_Model {
             $row = $query->result();
             $id = $row[0]->userid;
 
-            $sql = "select * from 
+            $sql = "select tid,userid,handle,name,retweeter_id,retweeter_handle,tweet,min(time_created) as time_created from 
                     (select t.tid,t.userid,handle,name,'' as retweeter_id,'' as retweeter_handle,tweet, t.time_created from tweet t inner join follow f on (f.followed=t.userid and time_created>start_time and (end_time='0000-00-00 00:00:00' or time_created < end_time)) inner join user u on u.userid=t.userid where follower= $id
                     UNION 
                     select tid, t.userid,handle,name,'' as retweeter_id,'' as retweeter_handle, tweet, t.time_created from tweet t inner join user u on u.userid=t.userid where t.userid={$id}
@@ -118,7 +105,7 @@ class basemodel extends CI_Model {
                     UNION
                     select t.tid,t.userid,u.handle,u.name,user_id as retweeter_id,u1.handle as retweeter_handle,tweet, time_retweeted from tweet t inner join retweet r on r.tid=t.tid inner join follow f on (r.user_id=f.followed and time_retweeted > start_time and (end_time='0000-00-00 00:00:00' or time_retweeted < end_time)) inner join user u on u.userid=t.userid inner join user u1 on u1.userid=r.user_id where follower= $id) as P " .
                     (($tid == 0) ? "" : "where tid < $tid ")
-                    . "order by tid DESC
+                    . "group by tid order by tid DESC
                     limit $count";
             //echo $sql;
             $query = $this->db->query($sql);
