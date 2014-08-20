@@ -23,7 +23,7 @@ class UserProfileController extends CI_Controller {
 
         $gender = $_POST['gender'];
         $bio = $_POST['bio'];
-
+        
         $user_data = array('name' => $name, 'gender' => $gender, 'bio' => $bio);
         if (!empty($password))
             $user_data['password'] = sha1($password);
