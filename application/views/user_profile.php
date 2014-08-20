@@ -82,7 +82,7 @@
                 <div class="panel panel-default edit_profile_panel">
                     <div class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">Edit Profile&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
                     <div class="panel-body">
-                        <form class="form-horizontal" id="edit_profile" method="post">
+                        <form class="form-horizontal" id="edit_profile" method="post" enctype="multipart/form-data">
                             <fieldset>
 
                                 <!-- Text input-->
@@ -160,7 +160,7 @@
                                     <label class="col-md-4 control-label" for="profile_pic">Profile Pic</label>
                                     <div class="pic_input" style="margin-left: 198px;margin-top: 21px;">
 
-                                        <input type="file" name="profile_pic"> 
+                                        <input type="file" name="userfile"> 
                                     </div>
                                 </div>
 
