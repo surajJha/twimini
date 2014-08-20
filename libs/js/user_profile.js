@@ -65,7 +65,7 @@ function getUserFeed(lasttid)
     var requestURL = 'http://localhost/twimini/index.php/userTweetController/getUserTweets';
     // console.log(requestURL);
     var data = {'handle': handle,
-        'count': 5,
+        'count': 10,
         'tid': lasttid};
     // Get User feed
     $.ajax(

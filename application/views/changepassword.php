@@ -46,31 +46,22 @@ and open the template in the editor.
             </div>
             <div class="row">
                  <center>
-                <div class="password-form">
+                <div class="password-form" style="opacity:0.95;">
                      <div class="myform">
-                            <form role="form">
+                            <form id="password-form" role="form">
+                                <input type="hidden" name="handle" value="<?php echo $handle;?>">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control myip" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Password</label>
+                                    <input type="password" class="form-control myip" name="password" id="passwordinput">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control myip" id="exampleInputEmail1" placeholder="Enter email">
+                                    <label for="exampleInputEmail1">Confirm Password</label>
+                                    <input type="password" class="form-control myip" id="passwordconfirm">
                                 </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email address</label>
-                                    <input type="email" class="form-control myip" id="exampleInputEmail1" placeholder="Enter email">
-                                </div>
-
-                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button id="passwd-btn" type="submit" class="btn btn-default">Submit</button>
                             </form>
                         </div>
                     <br><br>
-                    <div class="message">
-                        
-                    </div>
-
-
                 </div></center>
             </div>
 
@@ -79,7 +70,7 @@ and open the template in the editor.
 
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/home.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/changepassword.js"></script>
 
 
     </body>

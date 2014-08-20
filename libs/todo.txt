@@ -1,5 +1,10 @@
-include timestamp query breakpoint in model fetchTweets function
-include timestamp start_date query breakpoint in model Fetch Followers/Following function
-include xml encoding in API controller fetchtweets funciton
 modify retweet query in fetchTweets to mimic UNION in fetchUserFeed
-fetchUserFeed doesn't include User's own tweets
+Api Key functionality
+File Upload
+Follow these people
+Autocomplete search -> Custom profile page
+validate email-id and handle during registration
+validation of all forms
+modify query to remove duplication of retweets
+
+Follow/Unfollow

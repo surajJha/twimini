@@ -217,3 +217,9 @@ body.loading .preloader {
     margin-left: 198px;
     margin-top: 21px;
 }
+
+.user-search-list:hover{
+    background-color: lightblue;
+    opacity: .8;
+    
+}

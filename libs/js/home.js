@@ -71,8 +71,9 @@ $(document).ready(function(){
                 }).done(function(msg, status, XHR) {
             if (msg === "success")
             {
-                
-               $("#passwd-email").parent().remove();
+                $("#passwd-email").parent().parent().append('<div style="color: darkseagreen;font-weight: 800;text-align: center;padding-top: 8px;padding-bottom: 8px;">A change password link has been sent to you by e-mail.</div>');
+                $("#passwd-email").parent().remove();
+                    
             }
         });
     });

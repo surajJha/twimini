@@ -11,8 +11,9 @@ class ChangePasswordController extends CI_Controller {
     public function index($handle,$password) {
         $result=$this->db->query("select * from user where handle='$handle' and password='$password'");
         $result = $result->result_array();
+        $data['handle']=$handle;
         if($result){
-            $this->load->view('changepassword');
+            $this->load->view('changepassword',$data);
         }
         else{
             // redirect to the home page if user tries to change someone
@@ -28,7 +29,7 @@ class ChangePasswordController extends CI_Controller {
         $new_password = $_POST['password'];
         $hashed_password = sha1($new_password);
         $this->db->where('handle', $handle);
-        $this->db->update('password', $hashed_password);
+        $this->db->update('user', array('password' =>  $hashed_password));
         echo "success";
     }
 

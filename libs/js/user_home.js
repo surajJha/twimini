@@ -100,7 +100,7 @@ $(document).ready(function() {
                 $('#user-list li').empty();
                 if (length) {
                     for (var i = 0; i < length; i++) {
-                        var opt = '<li style="background-color:white;"><a >' + msg[i].name + '</a></li>';
+                        var opt = '<li class = "user-search-list" style="background-color:white;"><a >' + msg[i].name + '</a></li>';
                         $("#user-list").append(opt);
 
                     }
