@@ -51,10 +51,9 @@ and open the template in the editor.
                                         
                                         <strong><?php echo @$error  ; ?></strong>
                                     </div>
-                                    <div >
-                                        
-                                        <strong>Forgot password? Click here</strong> 
-                                    </div><br/>
+                                    <div >                                        
+                                        <strong><a id='forgot-passwd' style="color: blanchedalmond;">Forgot password? Click here</a></strong>                                        
+                                    </div>
                                     <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
                                 </fieldset>
                             </form>

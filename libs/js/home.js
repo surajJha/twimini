@@ -54,5 +54,30 @@ $(document).ready(function(){
        // return false;
             
     });
- 
+    
+    $("#forgot-passwd").one("click",function() {
+        $(this).parent().parent().append('<div><input id="passwd-email" class="form-control" placeholder="yourmail@example.com" type="email" style="margin-top: 9px;"><br><center><button id="passwd-btn" type="button" style="opacity: .5;float: none;" class="close" data-dismiss="modal" aria-hidden="true">Submit</button></center><hr></div>');
+        
+        
+        
+        $("#passwd-btn").on("click",function(){
+        var email = {'email': $('#passwd-email').val()};
+        $.ajax(
+                {
+                    type: 'POST',
+                    url: 'http://localhost/twimini/index.php/sendEmailController/sendEmail',
+                    data: email,
+                    cache: false
+                }).done(function(msg, status, XHR) {
+            if (msg === "success")
+            {
+                
+               $("#passwd-email").parent().remove();
+            }
+        });
+    });
+    
+    });
+    
+    
 });
