@@ -54,6 +54,7 @@
         Longitude: <span id="longitude"></span>
 
 
+
         <form action="<?php echo base_url();?>index.php/userProfileController/uploadPic" method="POST" enctype="multipart/form-data" >
             Select File To Upload:<br />
             <input type="file" name="userfile"  />
