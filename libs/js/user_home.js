@@ -22,14 +22,12 @@ $(document).ready(function() {
 
                 table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div class="media follow-object">' +
                         '<div class="media-body">' +
-                        '<h4 class="media-heading" style="text-align: center;">' + x.name + ' @' + x.handle + ' </h4>' +
-                        '<div class="row">' +
-                        '<img src="http://localhost/twimini/profilepics/'+((x.profile_pic != '')?x.profile_pic:'default.png')+'" style="height: 128px;width: 128px;float: left;margin-left: 75px;">' +
+                        '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
+                        '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
+                        '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                         '</div>' +
-                        '<div style="text-align: center;">' + x.bio + '</div>' +
-                        '</div>' +
+                        '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary" value = "Following"></div>' +
                         '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
-
             }
             $('#following-table').append(table);
         }
@@ -61,12 +59,11 @@ $(document).ready(function() {
 
                     table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div class="media follow-object">' +
                             '<div class="media-body">' +
-                            '<h4 class="media-heading" style="text-align: center;">' + x.name + ' @' + x.handle + ' </h4>' +
-                            '<div class="row">' +
-                            '<img src="http://localhost/twimini/profilepics/'+((x.profile_pic != '')?x.profile_pic:'default.png')+'" style="height: 128px;width: 128px;float: left;margin-left: 75px;">' +
+                            '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
+                            '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
+                            '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
-                            '<div style="text-align: center;">' + x.bio + '</div>' +
-                            '</div>' +
+                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary" value = "Following"></div>' +
                             '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
 
                 }
@@ -120,6 +117,33 @@ $(document).ready(function() {
             $("#tweet-box").toggleClass('tweet-small', false);
             $("#tweet-counter").append('<span id="text-counter" style="margin-left: 230px;color: gray;font-weight: 600;">140</span><span><button id="tweet-button" class="tweet-button" style="height: 42px;width: 101px;border-radius: 10px;background-color: gray;margin-left: 10px;" disabled="disabled">Tweet</button></span>').css("margin-bottom", "20px");
         }
+
+
+        //create Tweet 
+        $('#tweet-button').on("click", function(e) {           //$('#tweet-counter').on("click", $('#tweet-button'), function(e) {
+            var requestURL = 'http://localhost/twimini/index.php/createTweet/createTweet';
+            var data = {'handle': handle,
+                'tweet': $("#tweet-box").val()};
+
+            // Get User feed
+            $.ajax(
+                    {
+                        type: 'POST',
+                        url: requestURL,
+                        data: data,
+                        cache: false
+                    }).done(function(msg, status, XHR) {
+                if (msg === "success")
+                {
+
+                    $('.tweets').empty();
+                    getUserFeed(0);
+                    $("#tweet-box").val('');
+                }
+            });
+        });
+
+
     });
 
     $("#tweet-box").on("keyup", function() {
@@ -140,29 +164,7 @@ $(document).ready(function() {
             $("#tweet-counter").css("margin-bottom", "");
         }
     });
-//create Tweet
-    $('#tweet-counter').on("click", $('#tweet-button'), function(e) {
-        var requestURL = 'http://localhost/twimini/index.php/createTweet/createTweet';
-        var data = {'handle': handle,
-            'tweet': $("#tweet-box").val()};
 
-        // Get User feed
-        $.ajax(
-                {
-                    type: 'POST',
-                    url: requestURL,
-                    data: data,
-                    cache: false
-                }).done(function(msg, status, XHR) {
-            if (msg === "success")
-            {
-
-                $('.tweets').empty();
-                getUserFeed(0);
-                $("#tweet-box").val('');
-            }
-        });
-    });
     var lasttid = 0;
 
     $(window).scroll(function() {
@@ -220,10 +222,10 @@ function getUserFeed(lasttid)
                 console.log(x.profile_pic);
                 $('.tweets').append('<div id="' + x.tid + '"class="media tweet-object">' +
                         '<a class="pull-left" href="#">' +
-                        '<img class="media-object" src="http://localhost/twimini/profilepics/'+((x.profile_pic != '')?x.profile_pic:'default.png')+'" style="height: 60px;width: 60px;margin-left: 10px;">' +
+                        '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '" style="height: 60px;width: 60px;margin-left: 10px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<span class="media-heading"><span class="name">' + x.name + '</span> <span class="handle-time">@' + x.handle + ' - ' + t + '</span>'+((x.retweeter_id) ? '<span class="retweet">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></span>' : '</span>') +'<br>'+
+                        '<span class="media-heading"><span class="name">' + x.name + '</span> <span class="handle-time">@' + x.handle + ' - ' + t + '</span>' + ((x.retweeter_id) ? '<span class="retweet">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></span>' : '</span>') + '<br>' +
                         x.tweet +
                         //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by @' + x.retweeter_handle + '</div>' : '') +
                         '</div>' +

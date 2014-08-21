@@ -55,13 +55,18 @@
 
 
 
-        <form action="<?php echo base_url();?>index.php/userProfileController/uploadPic" method="POST" enctype="multipart/form-data" >
-            Select File To Upload:<br />
-            <input type="file" name="userfile"  />
-            <br /><br />
-            <input type="submit" name="submit" value="Upload" class="btn btn-success" />
-        </form>
+        <div class="media follow-object">
+             <div class="media-body">
+             <h4 class="media-heading" style="text-align:center;"><span class="name">Suraj Jha</span></h4> 
+            <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@suraj</span></h5>
+            <div class="row"><img src="http://localhost/twimini/profilepics/suraj.jpg"></div>
+            <div class="follow-bio">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...</div>
 
+            <div style="position:absolute; bottom: 7px;">
+                <input type ="button" class="btn btn-sm btn-primary" value = "follow" style="width:110px;">
+            </div>
+        </div>
+    </div>
 
 
     </body>
