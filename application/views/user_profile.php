@@ -160,7 +160,7 @@
                                     <label class="col-md-4 control-label" for="profile_pic">Profile Pic</label>
                                     <div class="pic_input" style="margin-left: 198px;margin-top: 21px;">
 
-                                        <input type="file" name="userfile"> 
+                                        <input type="file" id="profile_pic" name="userfile"> 
                                     </div>
                                 </div>
 

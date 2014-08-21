@@ -24,7 +24,7 @@ $(document).ready(function() {
                         '<div class="media-body">' +
                         '<h4 class="media-heading" style="text-align: center;">' + x.name + ' @' + x.handle + ' </h4>' +
                         '<div class="row">' +
-                        '<img src="http://localhost/twimini/libs/images/dp.jpg" style="height: 80px;width: 120px;float: left;margin-left: 75px;">' +
+                        '<img src="http://localhost/twimini/profilepics/'+((x.profile_pic != '')?x.profile_pic:'default.png')+'" style="height: 128px;width: 128px;float: left;margin-left: 75px;">' +
                         '</div>' +
                         '<div style="text-align: center;">' + x.bio + '</div>' +
                         '</div>' +
@@ -63,7 +63,7 @@ $(document).ready(function() {
                             '<div class="media-body">' +
                             '<h4 class="media-heading" style="text-align: center;">' + x.name + ' @' + x.handle + ' </h4>' +
                             '<div class="row">' +
-                            '<img src="http://localhost/twimini/libs/images/dp.jpg" style="height: 80px;width: 120px;float: left;margin-left: 75px;">' +
+                            '<img src="http://localhost/twimini/profilepics/'+((x.profile_pic != '')?x.profile_pic:'default.png')+'" style="height: 128px;width: 128px;float: left;margin-left: 75px;">' +
                             '</div>' +
                             '<div style="text-align: center;">' + x.bio + '</div>' +
                             '</div>' +
@@ -217,9 +217,10 @@ function getUserFeed(lasttid)
             {
                 var x = msg[1][i];
                 var t = timeconvert(x);
+                console.log(x.profile_pic);
                 $('.tweets').append('<div id="' + x.tid + '"class="media tweet-object">' +
                         '<a class="pull-left" href="#">' +
-                        '<img class="media-object" src="http://localhost/twimini/libs/images/dp.jpg" alt="..." style="height: 60px;width: 60px;">' +
+                        '<img class="media-object" src="http://localhost/twimini/profilepics/'+((x.profile_pic != '')?x.profile_pic:'default.png')+'" style="height: 60px;width: 60px;margin-left: 10px;">' +
                         '</a>' +
                         '<div class="media-body">' +
                         '<span class="media-heading"><span class="name">' + x.name + '</span> <span class="handle-time">@' + x.handle + ' - ' + t + '</span>'+((x.retweeter_id) ? '<span class="retweet">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></span>' : '</span>') +'<br>'+
@@ -259,22 +260,3 @@ function getUserFeed(lasttid)
         });
     });
 }
-
-
-
-
-
-
-/*< div class = "media tweet-object" >
- < a class = "pull-left" href = "#" >
- < img class = "media-object" src = "<?php echo base_url(); ?>libs/images/dp.jpg" alt = "..." style = "height: 60px;width: 60px;" >
- < /a>
- < div class = "media-body" >
- < h4 class = "media-heading" > Media heading < /h4>
- This is some sample text.This is some sample text.
- This is some sample text.This is some sample text.
- This is some sample text.This is some sample text.
- This is some sample text.This is some sample text.
- ...
- < /div>
- < /div>*/
