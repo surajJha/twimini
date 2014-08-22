@@ -190,6 +190,8 @@
     width:110px;
     border-radius: 11px; 
     font-weight:bold;
+    background-color: #428bca;
+    border-color: #357ebd;
     font-family: sans-serif;
 }
 

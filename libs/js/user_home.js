@@ -20,23 +20,42 @@ $(document).ready(function() {
                 var x = msg[1][i];
 
                 //"this.innerHTML = 'TheWorldwide Leader In Sports'" onmouseout="this.innerHTML = this.alt" alt="ESPN.com"
-                table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div class="media follow-object">' +
+                table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="'+x.userid+'" class="media follow-object">' +
                         '<div class="media-body">' +
                         '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
                         '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                         '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                         '</div>' +
-                        '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary following" value = "Following"></div>' +
+                        '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' +
                         '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
             }
             $('#following-table').append(table);
         }
         //on hovering followed person
-        $("input.following").hover(function() {
-            $(this).val('Unfollow');
-        }, function() {
-            $(this).val('Following');
+        //$("input.following").hover(function() {
+        //    $(this).val('Unfollow');
+        //}, function() {
+        //  $(this).val('Following');
+        //});
+
+        $(".follow-button input").on("click", function() {
+            var x;
+            if ($(this).hasClass('following')) {
+                $(this).removeClass('following').addClass('notfollowing');
+                $(this).val('Follow');
+                $(this).attr('onmouseover', "this.value=\'Follow\'");
+                $(this).attr('onmouseout', "this.value=\'Follow\'");
+
+            }
+            else {//if ($(this).hasClass('notfollowing')) {
+                $(this).removeClass('notfollowing').addClass('following');
+                $(this).val('Following');
+                $(this).attr('onmouseover', "this.value=\'Unfollow\'");
+                $(this).attr('onmouseout', "this.value=\'Following\'");
+            }
+
         });
+
     });
 
 
@@ -64,13 +83,13 @@ $(document).ready(function() {
                     var x = msg[1][i];
 
 
-                    table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div class="media follow-object">' +
+                    table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="'+x.userid+'" class="media follow-object">' +
                             '<div class="media-body">' +
                             '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
                             '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                             '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
-                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary notfollowing" value = "Follow"></div>' +
+                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary '+((x.status == 'true')?'following" value = "Following"></div>':'notfollowing" value = "Follow"></div>') +
                             '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
 
                 }
@@ -78,11 +97,11 @@ $(document).ready(function() {
             }
         }
         //on hovering followed person
-        $("input.following").hover(function() {
-            $(this).val('Unfollow');
-        }, function() {
-            $(this).val('Following');
-        });
+        // $("input.following").hover(function() {
+        //$(this).val('Unfollow');
+        ///}, function() {
+        //$(this).val('Following');
+        // });
     });
 
 

@@ -60,7 +60,10 @@ class basemodel extends CI_Model {
             $row = $query->result();
             $id = $row[0]->userid;
 
-            $sql = "select userid, handle, name, bio, profile_pic from user u inner join follow f on f.follower=u.userid where followed = $id and end_time = '0000-00-00 00:00:00' order by start_time DESC";
+            $sql = "select * from (select userid, handle, name, bio, profile_pic from user u inner join follow f on f.follower=u.userid where followed = $id and end_time = '0000-00-00 00:00:00' order by start_time DESC) as main
+                    left join (select followed, 'true' as status
+                    from follow where follower=$id) as userf
+                    on main.userid=userf.followed;";
             $query = $this->db->query($sql);
             $result = $query->result_array();
             return !empty($result) ? $result : array();

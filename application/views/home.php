@@ -85,7 +85,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Name</label>  
                                         <div class="col-md-6">
-                                            <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required>
+                                            <input id="name" name="name" type="text" placeholder="" class="form-control input-md">
                                             <span class ="input-warning alert alert-danger" id="name-warning"> field length should be greater than 0</span>
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="handle">Handle</label>  
                                         <div class="col-md-6">
-                                            <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md" required>
+                                            <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md">
                                             <span class ="input-warning alert alert-danger" id="handle-warning"></span>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="passwordinput">Password</label>
                                         <div class="col-md-6">
-                                            <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required>
+                                            <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
                                             <span class ="input-warning alert alert-danger" id="password-warning">password length must be atlest 3 characters long</span>
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="passwordconfirm">Confirm Password</label>
                                         <div class="col-md-6">
-                                            <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md" required>
+                                            <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md">
                                             <span class ="input-warning alert alert-danger" id="password-confirm-warning">passwords don't match</span>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="emailinput">E-mail ID</label>  
                                         <div class="col-md-6">
-                                            <input id="emailinput" name="emailinput" type="emailinput" placeholder="" class="form-control input-md" required>
+                                            <input id="emailinput" name="emailinput" type="text" placeholder="" class="form-control input-md">
                                             <span class ="input-warning alert alert-danger" id ="email-warning"></span>
                                         </div>
                                     </div>
