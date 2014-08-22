@@ -33,34 +33,37 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
 
-    .btn-facebook:hover,
-    .btn-facebook:focus,
-    .btn-facebook:active,
-    .btn-facebook.active,
-    .btn-facebook.disabled,
-    .btn-facebook[disabled] {
-        color: #ffffff;
-        background-color: #133783 !important;
-        *background-color: #102e6d !important;
-    }
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.btn-facebook.disabled,
+.btn-facebook[disabled] {
+    color: #ffffff;
+    background-color: #133783 !important;
+    *background-color: #102e6d !important;
+}
 
-    .btn-facebook:active,
-    .btn-facebook.active {
-        background-color: #0d2456 \9 !important;
-    }
-    
-    .twitter-heading{
-      
-    }
-    
-    
-    .login-form{
-        opacity: 0.9;
-        background-color: darkcyan;
-    }
-    
-    .login-form-heading{
-        font-family: monospace;
-        font-weight: 800;
-    }
-    
+.btn-facebook:active,
+.btn-facebook.active {
+    background-color: #0d2456 \9 !important;
+}
+
+.twitter-heading{
+
+}
+
+
+.login-form{
+    opacity: 0.9;
+    background-color: darkcyan;
+}
+
+.login-form-heading{
+    font-family: monospace;
+    font-weight: 800;
+}
+.input-warning{
+    display: flex;
+    margin-bottom: 0; 
+} 

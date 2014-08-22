@@ -84,52 +84,52 @@ and open the template in the editor.
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="name">Name</label>  
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required>
-
+                                            <span class ="input-warning alert alert-danger" id="name-warning"> field length should be greater than 0</span>
                                         </div>
                                     </div>
 
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="handle">Handle</label>  
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md" required>
-
+                                            <span class ="input-warning alert alert-danger" id="handle-warning">field length should be greater than 0</span>
                                         </div>
                                     </div>
 
                                     <!-- Password input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="passwordinput">Password</label>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required>
-
+                                            <span class ="input-warning alert alert-danger" id="password-warning">password length must be atlest 3 characters long</span>
                                         </div>
                                     </div>
 
                                     <!-- Password input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="passwordconfirm">Confirm Password</label>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md" required>
-
+                                            <span class ="input-warning alert alert-danger" id="password-confirm-warning">passwords don't match</span>
                                         </div>
                                     </div>
 
                                     <!-- Text input-->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="emailinput">E-mail ID</label>  
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <input id="emailinput" name="email" type="emailinput" placeholder="" class="form-control input-md" required>
-
+                                            <span class ="input-warning alert alert-danger" id ="email-warning">please enter a valid email address</span>
                                         </div>
                                     </div>
 
                                     <!-- Multiple Radios -->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="gender">Gender</label>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="radio">
                                                 <label for="gender-0">
                                                     <input type="radio" name="gender" id="gender-0" value="M" checked="checked">
@@ -148,7 +148,7 @@ and open the template in the editor.
                                     <!-- Textarea -->
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="bio">Bio</label>
-                                        <div class="col-md-4">                     
+                                        <div class="col-md-6">                     
                                             <textarea class="form-control" id="bio" name="bio"></textarea>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@ and open the template in the editor.
                                     
 
                                     <div class="modal-footer">
-                                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                        <button class="btn close-modal" data-dismiss="modal" aria-hidden="true">Close</button>
                                         <button id="register-button" class="btn btn-primary" type="submit">Register</button>
                                     </div>
 
