@@ -26,12 +26,19 @@ $(document).ready(function() {
                         '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                         '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                         '</div>' +
-                        '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary" value = "Following" onmouseover="this.value = this.alt" alt="Unfollow" alt="Following" name="Following" onmouseout="this.value = this.name"></div>' +
+                        '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary following" value = "Following"></div>' +
                         '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
             }
             $('#following-table').append(table);
         }
+        //on hovering followed person
+        $("input.following").hover(function() {
+            $(this).val('Unfollow');
+        }, function() {
+            $(this).val('Following');
+        });
     });
+
 
 
     // Get Followers
@@ -63,13 +70,19 @@ $(document).ready(function() {
                             '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                             '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
-                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary" value = "Following"></div>' +
+                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary notfollowing" value = "Follow"></div>' +
                             '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
 
                 }
                 $('#follower-table').append(table);
             }
         }
+        //on hovering followed person
+        $("input.following").hover(function() {
+            $(this).val('Unfollow');
+        }, function() {
+            $(this).val('Following');
+        });
     });
 
 

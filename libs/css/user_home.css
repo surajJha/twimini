@@ -186,16 +186,30 @@
     margin-left: 100px;
 }
 
-.follow-button input{
+.follow-button input.following{
     width:110px;
     border-radius: 11px; 
     font-weight:bold;
     font-family: sans-serif;
 }
 
-.follow-button input:hover{
+.follow-button input.following:hover{
     background-color: red;
     border-color: red;
+}
+
+.follow-button input.notfollowing{
+    width:110px;
+    border-radius: 11px; 
+    color:#428bca;
+    background-color: white;
+    font-weight:bold;
+    font-family: sans-serif;
+}
+
+.follow-button input.notfollowing:hover{
+    background-color: #BBBBBB;
+    border-color: #BBBBBB;
 }
 
 .preloader {
