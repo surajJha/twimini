@@ -121,8 +121,8 @@ and open the template in the editor.
                                     <div class="form-group">
                                         <label class="col-md-4 control-label" for="emailinput">E-mail ID</label>  
                                         <div class="col-md-6">
-                                            <input id="emailinput" name="email" type="emailinput" placeholder="" class="form-control input-md" required>
-                                            <span class ="input-warning alert alert-danger" id ="email-warning">please enter a valid email address</span>
+                                            <input id="emailinput" name="emailinput" type="emailinput" placeholder="" class="form-control input-md" required>
+                                            <span class ="input-warning alert alert-danger" id ="email-warning"></span>
                                         </div>
                                     </div>
 

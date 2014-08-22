@@ -253,8 +253,3 @@ body.loading .preloader {
     opacity: .8;
 
 }
-.body{
-    height: 625px;
-    width:1855px;
-    overflow: scroll;
-}
