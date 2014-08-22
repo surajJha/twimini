@@ -95,7 +95,7 @@ and open the template in the editor.
                                         <label class="col-md-4 control-label" for="handle">Handle</label>  
                                         <div class="col-md-6">
                                             <input id="handle" name="handle" type="text" placeholder="@" class="form-control input-md" required>
-                                            <span class ="input-warning alert alert-danger" id="handle-warning">field length should be greater than 0</span>
+                                            <span class ="input-warning alert alert-danger" id="handle-warning"></span>
                                         </div>
                                     </div>
 
