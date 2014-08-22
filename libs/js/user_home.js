@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     getUserFeed(0);
     // Get Following
     requestURL = 'http://localhost/twimini/index.php/userFollow/getFollowing';
@@ -20,7 +21,7 @@ $(document).ready(function() {
                 var x = msg[1][i];
 
                 //"this.innerHTML = 'TheWorldwide Leader In Sports'" onmouseout="this.innerHTML = this.alt" alt="ESPN.com"
-                table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="'+x.userid+'" class="media follow-object">' +
+                table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="' + x.userid + '" class="media follow-object">' +
                         '<div class="media-body">' +
                         '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
                         '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
@@ -31,30 +32,37 @@ $(document).ready(function() {
             }
             $('#following-table').append(table);
         }
-        //on hovering followed person
-        //$("input.following").hover(function() {
-        //    $(this).val('Unfollow');
-        //}, function() {
-        //  $(this).val('Following');
-        //});
 
-        $(".follow-button input").on("click", function() {
-            var x;
-            if ($(this).hasClass('following')) {
-                $(this).removeClass('following').addClass('notfollowing');
-                $(this).val('Follow');
-                $(this).attr('onmouseover', "this.value=\'Follow\'");
-                $(this).attr('onmouseout', "this.value=\'Follow\'");
-
-            }
-            else {//if ($(this).hasClass('notfollowing')) {
-                $(this).removeClass('notfollowing').addClass('following');
-                $(this).val('Following');
-                $(this).attr('onmouseover', "this.value=\'Unfollow\'");
-                $(this).attr('onmouseout', "this.value=\'Following\'");
-            }
-
+        $("#tab2 .follow-button input").on("click", function() {
+            bakchod($(this));
         });
+        /*$(".follow-button input").on("click", function() {
+         if ($(this).hasClass('following')) {
+         //requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
+         //console.log($(this).parent().parent().id);
+         //data = {'handle': handle,'follow': $(this).parent().parent().id};
+         /*$.ajax(
+         {
+         type: 'POST',
+         url: requestURL,
+         data: data,
+         dataType: 'json',
+         cache: false
+         }).done(function(msg, status, XHR) {
+         $(this).removeClass('following').addClass('notfollowing');
+         $(this).val('Follow');
+         $(this).attr('onmouseover', "this.value=\'Follow\'");
+         $(this).attr('onmouseout', "this.value=\'Follow\'");
+         //});
+         }
+         else {//if ($(this).hasClass('notfollowing')) {
+         $(this).removeClass('notfollowing').addClass('following');
+         $(this).val('Following');
+         $(this).attr('onmouseover', "this.value=\'Unfollow\'");
+         $(this).attr('onmouseout', "this.value=\'Following\'");
+         }
+         
+         });*/
 
     });
 
@@ -83,25 +91,52 @@ $(document).ready(function() {
                     var x = msg[1][i];
 
 
-                    table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="'+x.userid+'" class="media follow-object">' +
+                    table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="' + x.userid + '" class="media follow-object">' +
                             '<div class="media-body">' +
                             '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
                             '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                             '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
-                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary '+((x.status == 'true')?'following" value = "Following"></div>':'notfollowing" value = "Follow"></div>') +
+                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary ' + ((x.status == 'true') ? 'following" value = "Following"></div>' : 'notfollowing" value = "Follow"></div>') +
                             '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
 
                 }
                 $('#follower-table').append(table);
             }
         }
-        //on hovering followed person
-        // $("input.following").hover(function() {
-        //$(this).val('Unfollow');
-        ///}, function() {
-        //$(this).val('Following');
-        // });
+
+        $("#tab3 input.btn-primary").on("click", function() {
+            bakchod($(this));
+        });
+        /*$("input.btn-primary").on("click", function() {
+         if ($(this).hasClass('following')) {
+         //requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
+         //console.log($(this).parent().parent().id);
+         //data = {'handle': handle,'follow': $(this).parent().parent().id};
+         /*$.ajax(
+         {
+         type: 'POST',
+         url: requestURL,
+         data: data,
+         dataType: 'json',
+         cache: false
+         }).done(function(msg, status, XHR) {
+         $(this).removeClass('following').addClass('notfollowing');
+         $(this).val('Follow');
+         $(this).attr('onmouseover', "this.value=\'Follow\'");
+         $(this).attr('onmouseout', "this.value=\'Follow\'");
+         //});
+         }
+         else {//if ($(this).hasClass('notfollowing')) {
+         $(this).removeClass('notfollowing').addClass('following');
+         $(this).val('Following');
+         $(this).attr('onmouseover', "this.value=\'Unfollow\'");
+         $(this).attr('onmouseout', "this.value=\'Following\'");
+         }
+         
+         }); */
+
+
     });
 
 
@@ -210,6 +245,47 @@ $(document).ready(function() {
 
 
 });
+
+function bakchod(e) {
+    if (e.hasClass('following')) {
+        requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
+        console.log(e.parent().parent().attr('id'));
+        data = {'handle': handle, 'follow': e.parent().parent().attr('id')};
+        $.ajax(
+                {
+                    type: 'POST',
+                    url: requestURL,
+                    data: data,
+                    //dataType: 'json',
+                    cache: false
+                }).done(function(msg, status, XHR) {
+            e.removeClass('following').addClass('notfollowing');
+            e.val('Follow');
+            e.attr('onmouseover', "this.value=\'Follow\'");
+            e.attr('onmouseout', "this.value=\'Follow\'");
+        });
+    }
+    else {
+        requestURL = 'http://localhost/twimini/index.php/userFollow/Follow';
+        console.log(e.parent().parent().attr('id'));
+        data = {'handle': handle, 'follow': e.parent().parent().attr('id')};
+        $.ajax(
+                {
+                    type: 'POST',
+                    url: requestURL,
+                    data: data,
+                    //dataType: 'json',
+                    cache: false
+                }).done(function(msg, status, XHR) {
+            e.removeClass('notfollowing').addClass('following');
+            e.val('Following');
+            e.attr('onmouseover', "this.value=\'Unfollow\'");
+            e.attr('onmouseout', "this.value=\'Following\'");
+        });
+    }
+
+}
+
 
 function timeconvert(x)
 {
