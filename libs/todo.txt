@@ -4,4 +4,4 @@ Follow these people
 Autocomplete search -> Custom profile page
 
 validation of all forms
-Follow/Unfollow
+Follow/Unfollow on retweets

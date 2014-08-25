@@ -289,9 +289,8 @@ function bakchod(e) {
 
 function timeconvert(x)
 {
-    var ds = x.time_created;
-    var day = new Date((new Date(ds.replace(' ', 'T') + 'Z')).toUTCString());
-    var t = Math.floor(((new Date()).getTime() - day.getTime()) / 1000);
+    var tt = x.time_created.split(":");
+    var t = tt[0] * 3600 + tt[1] * 60 + tt[2] * 1;
     var s = t % 60;
     t = Math.floor(t / 60);
     var m = t % 60;

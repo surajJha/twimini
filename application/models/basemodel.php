@@ -98,7 +98,7 @@ class basemodel extends CI_Model {
             $row = $query->result();
             $id = $row[0]->userid;
 
-            $sql = "select tid,userid,handle,name,retweeter_id,retweeter_handle,tweet,min(time_created) as time_created, profile_pic from 
+            $sql = "select tid,userid,handle,name,retweeter_id,retweeter_handle,tweet,max(TIMEDIFF(NOW(),time_created)) as time_created, profile_pic from 
                     (select t.tid,t.userid,handle,name,'' as retweeter_id,'' as retweeter_handle,tweet, t.time_created, profile_pic from tweet t inner join follow f on (f.followed=t.userid and time_created>start_time and (end_time='0000-00-00 00:00:00' or time_created < end_time)) inner join user u on u.userid=t.userid where follower= $id
                     UNION 
                     select tid, t.userid,handle,name,'' as retweeter_id,'' as retweeter_handle, tweet, t.time_created, profile_pic from tweet t inner join user u on u.userid=t.userid where t.userid={$id}
