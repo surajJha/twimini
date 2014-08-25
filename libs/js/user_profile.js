@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    var name_status = false;
+    var pwd_confirm_status = false;
 
 
 // =============================================================================================
@@ -17,12 +19,16 @@ $(document).ready(function() {
 
 // function to update the profile changes made by the user
 // through the form
+
     $("#edit_profile").submit(function(e) {
+        
         e.preventDefault();
+         //event.preventDefault();
+  //e.stopPropagation();
         var formData = new FormData($(this)[0]);
         console.log(formData);
 
-        if ($('#passwordinput').val() === $('#passwordconfirm').val())
+        if (name_status && pwd_confirm_status)
         {
             $.ajax(
                     {
@@ -39,6 +45,7 @@ $(document).ready(function() {
                     $('.tweets').empty();
                     getUserFeed(0);
                     $("#tweet-box").val('');
+                    
                 }
                 else {
                     $("#response-message").html("<div class='edit-message'><span style='color: red;font-weight: bold;'><center>There was some problem in updating your profile. Please try again.</center></span></div><br>");
@@ -51,14 +58,21 @@ $(document).ready(function() {
             });
         }
         else {
-            $("#response-message").html("<div class='edit-message'><span style='color: red;font-weight: bold;'><center>Passwords entered don't match.</center></span></div><br>");
+           
+            $("#response-message").html("<div class='edit-message'><span style='color: red;font-weight: bold;'><center>Please fill the form properly and try again.</center></span></div><br>");
+            setTimeout(function(){$("#response-message").fadeOut(1000);},2000,function (){$("#response-message").html("");});
+            
+            
         }
+      // $("#edit_profile").unbind('submit',function(){$("#edit_profile").bind('submit')});
+       
+     
     });
-    
+
     //=================UPDAE PROFILE VALIDATION
-    
-        // name validation
-         $("#name-warning").hide();
+
+    // name validation
+    $("#name-warning").hide();
     $("#name").on("blur", function() {
         // alert($("#name").text().length);
         if ($("#name").val().length <= 0) {
@@ -69,7 +83,7 @@ $(document).ready(function() {
             name_status = true;
         }
     });
-    
+
     //  CONFIRM PASSWORD CHECK=========================
     $("#password-confirm-warning").hide();
     $("#passwordconfirm").on("blur", function() {
@@ -82,12 +96,12 @@ $(document).ready(function() {
             pwd_confirm_status = true;
         }
     });
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 }); // END OF DOCUMENT READY FUNCTION
 
 function timeconvert(x)
