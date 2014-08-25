@@ -54,6 +54,40 @@ $(document).ready(function() {
             $("#response-message").html("<div class='edit-message'><span style='color: red;font-weight: bold;'><center>Passwords entered don't match.</center></span></div><br>");
         }
     });
+    
+    //=================UPDAE PROFILE VALIDATION
+    
+        // name validation
+         $("#name-warning").hide();
+    $("#name").on("blur", function() {
+        // alert($("#name").text().length);
+        if ($("#name").val().length <= 0) {
+            $("#name-warning").show(300);
+        }
+        else {
+            $("#name-warning").hide(300);
+            name_status = true;
+        }
+    });
+    
+    //  CONFIRM PASSWORD CHECK=========================
+    $("#password-confirm-warning").hide();
+    $("#passwordconfirm").on("blur", function() {
+        // alert($("#name").text().length);
+        if ($("#passwordinput").val() != $("#passwordconfirm").val()) {
+            $("#password-confirm-warning").show(300);
+        }
+        else {
+            $("#password-confirm-warning").hide(300);
+            pwd_confirm_status = true;
+        }
+    });
+    
+    
+    
+    
+    
+    
 }); // END OF DOCUMENT READY FUNCTION
 
 function timeconvert(x)

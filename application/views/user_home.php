@@ -148,15 +148,19 @@
                         <!-- ===========DISPLAY PIC GOES HERE========= -->
 
                         <div class="row">
-                            <!-- ========== BIO DETAILS GOES HERE =========== -->
-                            <pre>
-                              <p>
-Lorem ipsum dolor sit amet, consectetur adipi
-Lorem ipsum dolor sit amet, consectetur adipic
-Lorem ipsum dolor sit amet, consectetur adipi
-                                </p>
-
-                            </pre>
+                            <!-- ========== PEOPLE YOU MAY FOLLOW =========== -->
+                            <div class="col-md-12">
+                                
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="http://localhost/twimini/profilepics/suraj.jpg" height="70px" width="50px">
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Suraj Jha</h4>
+                                        
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
