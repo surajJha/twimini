@@ -77,9 +77,8 @@
 }
 
 .edit-profile-button{
-   // margin-left: 80px;
-    
-   /* width: 304px; */
+    // margin-left: 80px;
+    width: 304px;
     box-shadow: 0 0 25px #555; 
 }
 .tweets,.follower,.following{
@@ -179,19 +178,29 @@
 
 }
 
+.follow-button{
+    width:100%;
+}
+.follow-button input{
+    display: block;
+    margin: 0 auto;
+}
+
+
+.follow-object img{
+    height: 90px;
+    width: 90px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .follow-bio{
     text-align: center;
     word-wrap:break-word;
     padding-top: 5px;
     padding-left:7px; 
     padding-right:7px;
-}
-
-.follow-object img{
-    height: 90px;
-    width: 90px;
-    float: left;
-    margin-left: 100px;
 }
 
 .follow-button input.following{

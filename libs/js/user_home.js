@@ -15,24 +15,23 @@ $(document).ready(function() {
         if (msg[0] === "success")
         {
             var table = '';
-            // console.log(msg[1][0].retweeter_id);
             for (var i = 0; i < msg[1].length; i++)
             {
                 var x = msg[1][i];
 
                 //"this.innerHTML = 'TheWorldwide Leader In Sports'" onmouseout="this.innerHTML = this.alt" alt="ESPN.com"
-                table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="' + x.userid + '" class="media follow-object">' +
+                table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                         '<div class="media-body">' +
                         '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
                         '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                         '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                         '</div>' +
-                        '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' +
+                        '<div class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" class="btn btn-sm btn-primary following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' +
                         '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
-            }
+               }
             $('#following-table').append(table);
+            
         }
-
         $("#tab2 .follow-button input").on("click", function() {
             follow($(this));
         });
@@ -53,23 +52,21 @@ $(document).ready(function() {
             }).done(function(msg, status, XHR) {
         if (msg[0] === "success")
         {
-            // console.log(msg[1][0].retweeter_id);
             for (var i = 0; i < msg[1].length; i++)
             {
                 var table = '';
-                // console.log(msg[1][0].retweeter_id);
                 for (var i = 0; i < msg[1].length; i++)
                 {
                     var x = msg[1][i];
 
 
-                    table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table"><div id="' + x.userid + '" class="media follow-object">' +
+                    table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                             '<div class="media-body">' +
                             '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
                             '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                             '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
-                            '<div class="follow-button" style="position:absolute; bottom: 8px; margin-left: 75px;"><input type ="button" class="btn btn-sm btn-primary ' + ((x.status == 'true') ? 'following" value = "Following"></div>' : 'notfollowing" value = "Follow"></div>') +
+                            '<div class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" class="btn btn-sm btn-primary ' + ((x.status == 'true') ? 'following" value = "Following"></div>' : 'notfollowing" value = "Follow"></div>') +
                             '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
 
                 }
@@ -100,10 +97,7 @@ $(document).ready(function() {
                         dataType: 'json'
 
                     }).done(function(msg) {
-                //  var x =$.parseJSON(response);
-                //console.log(response);
                 var length = msg.length;
-                //$("#users").empty();
                 $('#user-list li').empty();
                 if (length) {
                     for (var i = 0; i < length; i++) {
@@ -192,7 +186,6 @@ $(document).ready(function() {
 function follow(e) {
     if (e.hasClass('following')) {
         requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
-        console.log(e.parent().parent().attr('id'));
         data = {'handle': handle, 'follow': e.parent().parent().attr('id')};
         $.ajax(
                 {
@@ -210,7 +203,6 @@ function follow(e) {
     }
     else {
         requestURL = 'http://localhost/twimini/index.php/userFollow/Follow';
-        console.log(e.parent().parent().attr('id'));
         data = {'handle': handle, 'follow': e.parent().parent().attr('id')};
         $.ajax(
                 {
@@ -248,7 +240,6 @@ function timeconvert(x)
 function getUserFeed(lasttid)
 {
     var requestURL = 'http://localhost/twimini/index.php/userFeedController/getUserFeed';
-    // console.log(requestURL);
     var data = {'handle': handle,
         'count': 10,
         'tid': lasttid};
@@ -269,7 +260,6 @@ function getUserFeed(lasttid)
             {
                 var x = msg[1][i];
                 var t = timeconvert(x);
-                console.log(x.profile_pic);
                 $('.tweets').append('<div id="' + x.tid + '"class="media tweet-object">' +
                         '<a class="pull-left" href="#">' +
                         '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '" style="height: 60px;width: 60px;margin-left: 10px;">' +
