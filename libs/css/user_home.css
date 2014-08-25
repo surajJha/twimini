@@ -1,5 +1,10 @@
 @import url("bootstrap.min.css");
 
+body{
+    height: 625px;
+    width:1855px;
+    overflow: scroll;
+}
 .mynavbar{
     height: 60px;
     //margin-top:10px;
