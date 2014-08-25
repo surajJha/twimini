@@ -15,45 +15,45 @@
 
 $(document).ready(function() {
 
+    var name_status = false;
+    var handle_status = false;
+    var email_status = false;
+    var pwd_status = false;
+    var pwd_confirm_status = false;
+
     // Registration scenario============================================================================
     $("#register-button").click(function(e) {
-        //e.preventDefault();
-        var values = $("#register-form").serialize();
-        // if ($('#passwordinput').val() === $('#passwordconfirm').val()) {
-        $.ajax(
-                {
-                    type: 'POST',
-                    url: 'http://localhost/twimini/index.php/loginController/register',
-                    cache: false,
-                    data: values,
-                    success: function(response)
+        e.preventDefault();
+        if (name_status && handle_status && email_status && pwd_status && pwd_confirm_status) {
+
+            var values = $("#register-form").serialize();
+            // if ($('#passwordinput').val() === $('#passwordconfirm').val()) {
+            $.ajax(
                     {
-                        console.log(response);
-                        if (response === "success")
+                        type: 'POST',
+                        url: 'http://localhost/twimini/index.php/loginController/register',
+                        cache: false,
+                        data: values,
+                        success: function(response)
                         {
+                            console.log(response);
+                            if (response === "success")
+                            {
 
-                            $("#mcqModalForm").trigger('reset');
-                            $("#register_success_message").html("You have successfully registered to Twimini. Please login to continue");
+                                $("#mcqModalForm").trigger('reset');
+                                $("#register_success_message").html("You have successfully registered to Twimini. Please login to continue");
 
+                            }
+                            else {
+                                $("#register_error_message").html("Some database error occured. Please try again!");
+                            }
+                        },
+                        error: function()
+                        {
+                            $("#register_error_message").html("Registration failed. Please try again!");
                         }
-                        else {
-                            $("#register_error_message").html("Some database error occured. Please try again!");
-                        }
-                    },
-                    error: function()
-                    {
-                        $("#register_error_message").html("Registration failed. Please try again!");
-                        //error message
-                    }
-                });
-        //}
-        // else
-        // {
-        //     $("#register_error_message").html("Passwords don't match");
-
-        //  }
-        //return false;
-
+                    });
+        }
     });
 
     // function for resetting the registration form and clearing out all error or success 
@@ -67,11 +67,7 @@ $(document).ready(function() {
 
     //=====================================VALIDATIONS============================================== 
     // functions for registration form validation==========================
-    var name_status = false;
-    var handle_status = false;
-    var email_status = false;
-    var pwd_status = false;
-    var pwd_confirm_status = false;
+
     $("#name-warning").hide();
     $("#name").on("blur", function() {
         // alert($("#name").text().length);
@@ -94,39 +90,29 @@ $(document).ready(function() {
         }
         else {
             var handle = $("#handle").val();
-            console.log(handle);
-            var valid = checkHandle(handle);
-            console.log(valid);
-            if (valid === "failure") {
-                // show cannot use handle message
-                $("#handle-warning").text("This handle already exist. Please choose another handle");
-            }
-            else {
-                // allowed to use the handle
-                $("#handle-warning").hide(300);
-                handle_status = true;
-            }
+            $.ajax(
+                    {
+                        type: 'POST',
+                        url: 'http://localhost/twimini/index.php/formValidationController/checkHandle',
+                        data: {'handle': handle},
+                        async: false,
+                        cache: false
+                    }).done(function(msg, status, XHR) {
 
+                if (msg === "success") {
+                    // show cannot use handle message
+                    $("#handle-warning").text("This handle already exist. Please choose another handle");
+                    $("#handle-warning").show(300);
+                }
+                else {
+                    // allowed to use the handle
+                    $("#handle-warning").hide(300);
+                    handle_status = true;
+                }
+            });
         }
     });
 
-    function checkHandle(handle) {
-        $.ajax(
-                {
-                    type: 'POST',
-                    url: 'http://localhost/twimini/index.php/formValidationController/checkHandle',
-                    data: handle,
-                    cache: false
-                }).done(function(msg, status, XHR) {
-            if (msg === "falure")
-            {
-                $("#passwd-email").parent().parent().append('<div style="color: darkseagreen;font-weight: 800;text-align: center;padding-top: 8px;padding-bottom: 8px;">A change password link has been sent to you by e-mail.</div>');
-                $("#passwd-email").parent().remove();
-
-            }
-        });
-
-    }
     // password validation========================================
     $("#password-warning").hide();
     $("#passwordinput").on("blur", function() {
@@ -139,7 +125,7 @@ $(document).ready(function() {
             pwd_status = true;
         }
     });
-    //  CONFIRM PASSWORD CHECK
+    //  CONFIRM PASSWORD CHECK=========================
     $("#password-confirm-warning").hide();
     $("#passwordconfirm").on("blur", function() {
         // alert($("#name").text().length);
@@ -154,22 +140,44 @@ $(document).ready(function() {
 
     // VALIDATE EMAIL=========================================
 
-    function validateEmail(email) {
-        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
+    $("#email-warning").hide();
+    $("#emailinput").on("blur", function() {
+        var email = $("#emailinput").val();
+        if (email.length <= 0) {
 
-        $("#email-warning").hide();
-        $("#emailinput").on("blur", function() {
-            // alert($("#name").text().length);
-            if ($("#passwordinput").val().length <= 3) {
-                $("#password-warning").show(300);
+            $("#email-warning").text("field length should be greater than 0");
+            $("#email-warning").show(300);
+        }
+        else {
+            // some ip is present
+            if (!(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email))) {
+                $("#email-warning").text("please enter a valid email address");
+                $("#email-warning").show(300);
             }
             else {
-                $("#password-warning").hide(300);
-                pwd_status = true;
+                $.ajax(
+                        {
+                            type: 'POST',
+                            url: 'http://localhost/twimini/index.php/formValidationController/checkEmail',
+                            data: {'email': email},
+                            async: false,
+                            cache: false
+                        }).done(function(msg, status, XHR) {
+
+                    if (msg === "success") {
+                        // show cannot use handle message
+                        $("#email-warning").text("This email address already exist. Please choose another email address");
+                        $("#email-warning").show(300);
+                    }
+                    else {
+                        // allowed to use the handle
+                        $("#email-warning").hide(300);
+                        email_status = true;
+                    }
+                });
             }
-        });
-    }
+        }
+    });
     //================================================================================================= 
     // function for handling forgot password scenario===============================================================================
 

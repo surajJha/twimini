@@ -48,7 +48,7 @@ class UserProfileController extends CI_Controller {
         $config = array(
             'upload_path' => (PHP_OS == 'Linux') ? "/home/suraj/NetBeansProjects/twimini/profilepics/" : "C:/wamp/www/twimini/profilepics/",
             'upload_url' => base_url() . "files/",
-            'allowed_types' => "gif|jpg|png|jpeg|pdf|doc|xml",
+            'allowed_types' => "gif|jpg|png|jpeg",
             'overwrite' => TRUE,
             'max_size' => "1000KB",
             'max_height' => "768",

@@ -1,7 +1,7 @@
-modify retweet query in fetchTweets to mimic UNION in fetchUserFeed
+*******************modify retweet query in fetchTweets to mimic UNION in fetchUserFeed
 Api Key functionality
 Follow these people
 Autocomplete search -> Custom profile page
-validate email-id and handle during registration
+
 validation of all forms
-Follow/Unfollow
+Follow/Unfollow on retweets
