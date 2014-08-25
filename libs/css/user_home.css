@@ -152,13 +152,14 @@
     //padding-left: 15px;
     //padding-right: 15px;
     //padding-bottom: 15px;
+    width:33%;
 }
 
 .follow-object{
     background-color: wheat;
     height: 250px;
     width: 90%;
-    /* max-width: 40%; */
+    max-width: 250px;
     padding-top: 11px;
     padding-bottom: 11px;
     margin-top: 20px;
