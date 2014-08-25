@@ -28,9 +28,9 @@ $(document).ready(function() {
                         '</div>' +
                         '<div class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" class="btn btn-sm btn-primary following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' +
                         '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
-               }
+            }
             $('#following-table').append(table);
-            
+
         }
         $("#tab2 .follow-button input").on("click", function() {
             follow($(this));
@@ -80,6 +80,36 @@ $(document).ready(function() {
     });
 
 
+    //Who to Follow
+    requestURL = 'http://localhost/twimini/index.php/userFollow/whoToFollow';
+    data = {'handle': handle};
+    $.ajax(
+            {
+                type: 'POST',
+                url: requestURL,
+                data: data,
+                dataType: 'json',
+                cache: false
+            }).done(function(msg, status, XHR) {
+        if (msg[0] === "success")
+        {
+            var table = '';
+            for (var i = 0; i < msg[1].length; i++)
+            {
+                var x = msg[1][i];
+                table = table + '<div class="media" id="'+x.user+'">'+
+                                    '<a class="pull-left">'+
+                                       '<img class="media-object" src="http://localhost/twimini/profilepics/'+x.profile_pic+'" height="70px" width="70px">'+
+                                    '</a>'+
+                                   '<div class="media-body">'+
+                                       '<h4 class="media-heading">'+x.name+'</h4>'+
+                                   '</div>'+
+                              '</div>';
+
+            }
+            $('#whoToFollow').append(table);
+        }
+    });
 // function for autocomplete search users ===================================
 
     $("#search_users").on("keyup", function() {

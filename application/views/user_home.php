@@ -158,17 +158,8 @@
 
                         <div class="row">
                             <!-- ========== PEOPLE YOU MAY FOLLOW =========== -->
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="whoToFollow">
 
-                                <div class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="media-object" src="http://localhost/twimini/profilepics/suraj.jpg" height="70px" width="50px">
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">Suraj Jha</h4>
-
-                                    </div>
-                                </div>
                             </div>
 
 
