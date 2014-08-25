@@ -82,15 +82,24 @@
             <!-- MAIN CONTENT GOES HERE======================================================-->
             <div class="col-sm-3 col-md-3 col-lg-3">
                 <!-- ==============================USER BIO GOES HERE========================= -->
-                <div class="panel panel-default bio_panel">
-                    <div id="tweet-panel" class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">Compose Tweet&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
-                    <div class="panel-body">
-                        <div class="row" ><textarea id="tweet-box" class="tweet-small"></textarea></div>                        
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="panel panel-default bio_panel">
+                            <div id="tweet-panel" class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">Compose Tweet&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
+                            <div class="panel-body">
+                                <div class="row" ><textarea id="tweet-box" class="tweet-small"></textarea></div>                        
+                            </div>
+                            <div id="tweet-counter"></div>
+                        </div>
                     </div>
-                    <div id="tweet-counter"></div>
                 </div>
 
-                <a class="btn btn-primary btn-lg edit-profile-button" href="<?php echo base_url(); ?>index.php/userProfileController">Edit Profile&nbsp;&nbsp;<i class="glyphicon glyphicon-edit"></i></a>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12" style="margin-left: 40px;right: 18px;">
+                        <a class="btn btn-primary btn-lg edit-profile-button" style="width: 100%;" href="<?php echo base_url(); ?>index.php/userProfileController">Edit Profile&nbsp;&nbsp;<i class="glyphicon glyphicon-edit"></i></a>
+                    </div>
+                </div>
 
 
 
@@ -150,14 +159,14 @@
                         <div class="row">
                             <!-- ========== PEOPLE YOU MAY FOLLOW =========== -->
                             <div class="col-md-12">
-                                
+
                                 <div class="media">
                                     <a class="pull-left" href="#">
                                         <img class="media-object" src="http://localhost/twimini/profilepics/suraj.jpg" height="70px" width="50px">
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading">Suraj Jha</h4>
-                                        
+
                                     </div>
                                 </div>
                             </div>

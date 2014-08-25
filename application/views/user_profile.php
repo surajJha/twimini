@@ -159,13 +159,13 @@
                                         <textarea class="form-control" id="bio" name="bio"><?php echo $user_data['bio']; ?></textarea>
                                     </div>
                                 </div>
-                                <center> <div class="form-group">
+                                <div class="form-group">
                                     <label class="col-md-4 control-label" for="profile_pic">Profile Pic</label>
-                                    <div class="pic_input" >
+                                    <div class="pic_input col-md-6" >
 
-                                         <input type="file" id="profile_pic" name="userfile"> 
+                                         <input type="file" class="btn" id="profile_pic" name="userfile"> 
                                     </div>
-                                    </div></center>
+                                    </div>
 
 
                                 <!-- ========================FILE INPUT===================== -->

@@ -78,7 +78,8 @@
 
 .edit-profile-button{
    // margin-left: 80px;
-    width: 304px;
+    
+   /* width: 304px; */
     box-shadow: 0 0 25px #555; 
 }
 .tweets,.follower,.following{
