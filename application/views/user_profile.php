@@ -82,15 +82,15 @@
                 <div class="panel panel-default edit_profile_panel">
                     <div class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">Edit Profile&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
                     <div class="panel-body">
-                            <form class="form-horizontal" id="edit_profile" method="post" enctype="multipart/form-data">
+                        <form class="form-horizontal" id="edit_profile" method="post" enctype="multipart/form-data">
                             <fieldset>
 
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="name">Name</label>  
                                     <div class="col-md-6">
-                                        <input id="name" name="name" type="text" value="<?php echo $user_data['name'];?>" class="form-control input-md">
-
+                                        <input id="name" name="name" type="text" value="<?php echo $user_data['name']; ?>" class="form-control input-md">
+                                        <div class ="input-warning alert alert-danger" id="name-warning"> field length should be greater than 0</div>
                                     </div>
                                 </div>
 
@@ -98,8 +98,9 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="handle">Handle</label>  
                                     <div class="col-md-6">
-                                        <input disabled="disabled" id="handle" name="handlemain" type="text" value="@<?php echo $user_data['handle'];?>" class="form-control input-md">
-                                        <input type="hidden" name="handle" value="<?php echo $user_data['handle'];?>">
+                                        <input disabled="disabled" id="handle" name="handlemain" type="text" value="@<?php echo $user_data['handle']; ?>" class="form-control input-md">
+
+                                        <input type="hidden" name="handle" value="<?php echo $user_data['handle']; ?>">
                                     </div>
                                 </div>
 
@@ -108,6 +109,7 @@
                                     <label class="col-md-4 control-label" for="passwordinput">Password</label>
                                     <div class="col-md-6">
                                         <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+                                      
 
                                     </div>
                                 </div>
@@ -117,7 +119,8 @@
                                     <label class="col-md-4 control-label" for="passwordconfirm">Confirm Password</label>
                                     <div class="col-md-6">
                                         <input id="passwordconfirm" name="passwordconfirm" type="password" placeholder="" class="form-control input-md">
-
+                                        
+                                        <div class ="input-warning alert alert-danger" id="password-confirm-warning">passwords don't match</div>
                                     </div>
                                 </div>
 
@@ -125,7 +128,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="emailinput">E-mail ID</label>  
                                     <div class="col-md-6">
-                                        <input id="emailinput" name="email" type="emailinput" placeholder="<?php echo $user_data['email'];?>" class="form-control input-md" disabled="disabled">
+                                        <input id="emailinput" name="email" type="emailinput" placeholder="<?php echo $user_data['email']; ?>" class="form-control input-md" disabled="disabled">
 
                                     </div>
                                 </div>
@@ -136,13 +139,13 @@
                                     <div class="col-md-6">
                                         <div class="radio">
                                             <label for="gender-0">
-                                                <input type="radio" name="gender" id="gender-0" value="m" <?php echo ($user_data['gender']=='m')?'checked="checked"':''; ?> >
+                                                <input type="radio" name="gender" id="gender-0" value="m" <?php echo ($user_data['gender'] == 'm') ? 'checked="checked"' : ''; ?> >
                                                 Male
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label for="gender-1">
-                                                <input type="radio" name="gender" id="gender-1" value="f" <?php echo ($user_data['gender']=='f')?'checked="checked"':''; ?> >
+                                                <input type="radio" name="gender" id="gender-1" value="f" <?php echo ($user_data['gender'] == 'f') ? 'checked="checked"' : ''; ?> >
                                                 Female
                                             </label>
                                         </div>
@@ -153,16 +156,16 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="bio">Bio</label>
                                     <div class="col-md-6">                     
-                                        <textarea class="form-control" id="bio" name="bio"><?php echo $user_data['bio'];?></textarea>
+                                        <textarea class="form-control" id="bio" name="bio"><?php echo $user_data['bio']; ?></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <center> <div class="form-group">
                                     <label class="col-md-4 control-label" for="profile_pic">Profile Pic</label>
-                                    <div class="pic_input" style="margin-left: 198px;margin-top: 21px;">
+                                    <div class="pic_input" >
 
-                                        <input type="file" id="profile_pic" name="userfile"> 
+                                         <input type="file" id="profile_pic" name="userfile"> 
                                     </div>
-                                </div>
+                                    </div></center>
 
 
                                 <!-- ========================FILE INPUT===================== -->
@@ -173,7 +176,7 @@
 
                                 <div class="edit_profile_footer">
 
-                                    <button id="edit_profile_button" class="btn btn-primary btn-lg edit_profile_button" type="submit" style="margin-left: 186px;">Save Changes</button>
+                                    <center>   <button id="edit_profile_button" class="btn btn-primary btn-lg edit_profile_button" type="submit">Save Changes</button></center>
                                 </div>
 
                             </fieldset>
