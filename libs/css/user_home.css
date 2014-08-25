@@ -1,10 +1,10 @@
 @import url("bootstrap.min.css");
 
-body{
+/*body{
     height: 625px;
     width:1855px;
     overflow: scroll;
-}
+}*/
 .mynavbar{
     height: 60px;
     //margin-top:10px;
@@ -16,12 +16,6 @@ body{
     box-shadow: 0 0 35px #555;
 
 
-}
-
-.follow-table{
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 15px;
 }
 
 .tweet-bottom-panel{
@@ -47,8 +41,6 @@ body{
     font-family: inherit;
 
 }
-
-
 
 .bio_panel{
     margin-top: 50px;
@@ -120,8 +112,8 @@ body{
 }
 
 .tweet-small{
-    margin-left: 12px;
-    width: 371px;
+    margin-left: 4%;
+    width: 92%;
     height: 30px;
     border-radius: 7px;
     border-color: lightblue;
@@ -129,8 +121,8 @@ body{
 }
 
 .tweet-large{
-    margin-left: 12px;
-    width: 371px;
+    margin-left: 4%;
+    width: 92%;
     height: 157px;
     border-radius: 7px;
     border-color: lightblue;
@@ -154,10 +146,18 @@ body{
     padding-right: 10px;
     color: #8899a6;
 }
+
+.follow-table{
+    //padding-left: 15px;
+    //padding-right: 15px;
+    //padding-bottom: 15px;
+}
+
 .follow-object{
     background-color: wheat;
     height: 250px;
-    width: 250px;
+    width: 90%;
+    max-width: 40%;
     padding-top: 11px;
     padding-bottom: 11px;
     margin-top: 20px;

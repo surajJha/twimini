@@ -10,7 +10,7 @@ class UserHomeController extends CI_Controller{
     public function index(){
        if($this->session->userdata('userid'))
         $this->load->view('user_home');
-       
+       else $this->load->view('home');
     }
 }
 

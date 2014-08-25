@@ -119,14 +119,14 @@
 
                                 <div class="tab-pane" id="tab2">
                                     <div class="following">
-                                        <table><tbody id="following-table"></tbody></table>
+                                        <table style="width:100%"><tbody id="following-table"></tbody></table>
                                     </div>
                                 </div>
 
 
                                 <div class="tab-pane" id="tab3">
                                     <div class="follower">
-                                        <table><tbody id="follower-table"></tbody></table>
+                                        <table style="width:100%"><tbody id="follower-table"></tbody></table>
                                     </div>
                                 </div>
                             </div>

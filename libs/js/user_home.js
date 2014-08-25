@@ -34,36 +34,8 @@ $(document).ready(function() {
         }
 
         $("#tab2 .follow-button input").on("click", function() {
-            bakchod($(this));
+            follow($(this));
         });
-        /*$(".follow-button input").on("click", function() {
-         if ($(this).hasClass('following')) {
-         //requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
-         //console.log($(this).parent().parent().id);
-         //data = {'handle': handle,'follow': $(this).parent().parent().id};
-         /*$.ajax(
-         {
-         type: 'POST',
-         url: requestURL,
-         data: data,
-         dataType: 'json',
-         cache: false
-         }).done(function(msg, status, XHR) {
-         $(this).removeClass('following').addClass('notfollowing');
-         $(this).val('Follow');
-         $(this).attr('onmouseover', "this.value=\'Follow\'");
-         $(this).attr('onmouseout', "this.value=\'Follow\'");
-         //});
-         }
-         else {//if ($(this).hasClass('notfollowing')) {
-         $(this).removeClass('notfollowing').addClass('following');
-         $(this).val('Following');
-         $(this).attr('onmouseover', "this.value=\'Unfollow\'");
-         $(this).attr('onmouseout', "this.value=\'Following\'");
-         }
-         
-         });*/
-
     });
 
 
@@ -106,37 +78,8 @@ $(document).ready(function() {
         }
 
         $("#tab3 input.btn-primary").on("click", function() {
-            bakchod($(this));
+            follow($(this));
         });
-        /*$("input.btn-primary").on("click", function() {
-         if ($(this).hasClass('following')) {
-         //requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
-         //console.log($(this).parent().parent().id);
-         //data = {'handle': handle,'follow': $(this).parent().parent().id};
-         /*$.ajax(
-         {
-         type: 'POST',
-         url: requestURL,
-         data: data,
-         dataType: 'json',
-         cache: false
-         }).done(function(msg, status, XHR) {
-         $(this).removeClass('following').addClass('notfollowing');
-         $(this).val('Follow');
-         $(this).attr('onmouseover', "this.value=\'Follow\'");
-         $(this).attr('onmouseout', "this.value=\'Follow\'");
-         //});
-         }
-         else {//if ($(this).hasClass('notfollowing')) {
-         $(this).removeClass('notfollowing').addClass('following');
-         $(this).val('Following');
-         $(this).attr('onmouseover', "this.value=\'Unfollow\'");
-         $(this).attr('onmouseout', "this.value=\'Following\'");
-         }
-         
-         }); */
-
-
     });
 
 
@@ -182,7 +125,7 @@ $(document).ready(function() {
         if ($("#tweet-box").attr("class") == 'tweet-small') {
             $("#tweet-box").toggleClass('tweet-large', true);
             $("#tweet-box").toggleClass('tweet-small', false);
-            $("#tweet-counter").append('<span id="text-counter" style="margin-left: 230px;color: gray;font-weight: 600;">140</span><span><button id="tweet-button" class="tweet-button" style="height: 42px;width: 101px;border-radius: 10px;background-color: gray;margin-left: 10px;" disabled="disabled">Tweet</button></span>').css("margin-bottom", "20px");
+            $("#tweet-counter").append('<span id="text-counter" style="margin-left: 45%;color: gray;font-weight: 600;">140</span><span><button id="tweet-button" class="tweet-button" style="height: 42px;width: 101px;border-radius: 10px;background-color: gray;margin-left: 10px;" disabled="disabled">Tweet</button></span>').css("margin-bottom", "20px");
         }
 
 
@@ -246,7 +189,7 @@ $(document).ready(function() {
 
 });
 
-function bakchod(e) {
+function follow(e) {
     if (e.hasClass('following')) {
         requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
         console.log(e.parent().parent().attr('id'));
