@@ -145,12 +145,33 @@ class basemodel extends CI_Model {
             $this->db->query("update follow set end_time=NOW() where follower=$id and followed=$followee");
 //$this->db->set("end_time', 'NOW()', FALSE);  
             //$this->db->where(array('follower' => $id,'followed' => $followee));
-            
             //$this->db->update('follow',array('end_time' => NOW()));
             return '0';
         } else {
             return '1';
         }
+    }
+
+    public function whoToFollow($handle) {
+        $handle = $this->db->escape($handle);
+
+        $sql = "select userid from user where handle={$handle}";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $row = $query->result();
+            $id = $row[0]->userid;
+
+            $sql = "SELECT f2.followed as user,count(*) as count, name, handle, profile_pic
+from follow f1 inner join follow f2 on f1.followed=f2.follower
+inner join user u on f2.followed=u.userid
+                    where f1.end_time='0000-00-00 00:00:00' and f2.end_time='0000-00-00 00:00:00' and f1.follower=$id and f2.followed not in (select followed from follow where follower=$id and end_time='0000-00-00 00:00:00')
+                    group by f2.followed order by count DESC";
+            $query = $this->db->query($sql);
+            $result = $query->result_array();
+            return !empty($result) ? $result : array();
+        } else
+            return NULL;
+        //$this->db->query then ->result() returns array of object. Each object is one row. 
     }
 
     /*
