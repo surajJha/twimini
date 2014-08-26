@@ -3,5 +3,5 @@ Api Key functionality
 Follow these people
 Autocomplete search -> Custom profile page
 
-validation of all forms
+refresh user news feeds after specified time
 Follow/Unfollow on retweets
