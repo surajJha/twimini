@@ -101,7 +101,7 @@ $(document).ready(function() {
                 $('#user-list li').empty();
                 if (length) {
                     for (var i = 0; i < length; i++) {
-                        var opt = '<li class = "user-search-list" style="background-color:white;"><a >' + msg[i].name + '</a></li>';
+                        var opt = '<li class="user-list"  style="background-color:white;"><a ><span class="user-search-list" style="background-color: white; height: 30px;color: blue;font-size: larger;font-weight: bold">' + msg[i].name + '</span></a></li>';
                         $("#user-list").append(opt);
 
                     }
@@ -113,6 +113,15 @@ $(document).ready(function() {
             $('#user-list li').empty();
         }
     });
+    
+    // adding hover css styles to autosearch list
+    $("#user-list").hover(function(e){
+      //  alert("suraj");
+        $(e.target).css("background-color","gray");
+    },function(e){
+       $(e.target).css("background-color","white"); 
+    });
+    
 
 
     $("#tweet-box").on("click", function() {
