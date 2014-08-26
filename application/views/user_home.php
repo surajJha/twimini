@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>TwiMini..</title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/jquery-ui.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/user_home.css">
         
 
@@ -191,6 +192,7 @@
 
 
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery-ui.min.js"></script>
 
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
         <script type="text/javascript">var handle = '<?php echo $user_data['handle'] ?>';</script>
