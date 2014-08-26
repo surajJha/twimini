@@ -112,7 +112,8 @@ $(document).ready(function() {
     });
 // function for autocomplete search users ===================================
 
-    $("#search_users").on("keyup", function() {
+var a = [];
+     $("#search_users").on("keyup", function() {
         var value = $("#search_users").val();
         //search_users
         var data = {'search_users': value};
@@ -124,34 +125,31 @@ $(document).ready(function() {
                         url: 'http://localhost/twimini/index.php/userSearchController/searchUsers',
                         cache: false,
                         data: data,
-                        dataType: 'json'
+                        //dataType: 'json'
 
-                    }).done(function(msg) {
-                var length = msg.length;
-                $('#user-list li').empty();
-                if (length) {
-                    for (var i = 0; i < length; i++) {
-                        var opt = '<li class="user-list"  style="background-color:white;"><a ><span class="user-search-list" style="background-color: white; height: 30px;color: blue;font-size: larger;font-weight: bold">' + msg[i].name + '</span></a></li>';
-                        $("#user-list").append(opt);
-
-                    }
+                    }).done(function(msg){
+                        var k = JSON.parse(msg);
+                        for(var t = 0;t<k.length;t++){
+                            a[t] = k[t].name;
+                        }
+                    });
                 }
             });
-        }
-        else
-        {
-            $('#user-list li').empty();
-        }
-    });
+                        
+                    
     
-    // adding hover css styles to autosearch list
-    $("#user-list").hover(function(e){
-      //  alert("suraj");
-        $(e.target).css("background-color","gray");
-    },function(e){
-       $(e.target).css("background-color","white"); 
+     
+     
+        $("#search_users").autocomplete({
+      /*Source refers to the list of fruits that are available in the auto complete list. */
+      minLength: 1,
+      source:a,
+      /* auto focus true means, the first item in the auto complete list is selected by default. therefore when the user hits enter,
+      it will be loaded in the textbox */
+      autoFocus: true
     });
-    
+ 
+
 
 
     $("#tweet-box").on("click", function() {
@@ -341,3 +339,44 @@ function getUserFeed(lasttid)
         });
     });
 }
+//AUTOCOMPLETE AJAX DELETE AFTERWARDS
+//var source = new Array();
+//    $("#search_users").on("keyup", function() {
+//        var value = $("#search_users").val();
+//        //search_users
+//        var data = {'search_users': value};
+//        if (value != '')
+//        {
+//            $.ajax(
+//                    {
+//                        type: 'POST',
+//                        url: 'http://localhost/twimini/index.php/userSearchController/searchUsers',
+//                        cache: false,
+//                        data: data,
+//                        //dataType: 'json'
+//
+//                    }).done(function(msg) {
+//                       // console.log(msg);
+//                        var m = JSON.parse(msg);
+//                       console.log(m[0].name);
+//                         for (var i = 0; i < m.length; i++) {
+//                              source = m[i].name;
+//                             console.log(source[0]);
+//                         }
+//                var length = msg.length;
+////                $('#user-list li').empty();
+////                if (length) {
+////                    for (var i = 0; i < length; i++) {
+////                        var opt = '<li class="user-list"  style="background-color:white;"><a ><span class="user-search-list" style="background-color: white; height: 30px;color: blue;font-size: larger;font-weight: bold">' + msg[i].name + '</span></a></li>';
+////                        $("#user-list").append(opt);
+////
+////                    }
+////                }
+//            });
+//        }
+////        else
+////        {
+////            $('#user-list li').empty();
+////        }
+//       
+//    });

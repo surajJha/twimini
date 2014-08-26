@@ -70,7 +70,7 @@ body{
     margin-top: 50px;
     margin-left: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 35px #555;
+    box-shadow: 0 0 35px;
 }
 
 .follow-panel{
@@ -284,17 +284,4 @@ body.loading .preloader {
 .pic_input{
     margin-left: 198px;
     margin-top: 21px;
-}
-#user-search-list{
-    background-color: white;
-    height: 30px;
-    color: blue;
-    font-size: larger;
-    font-weight: bold;
-}
-
-#user-search-list:hover{
-    background-color: lightblue;
-    opacity: .8;
-
 }
