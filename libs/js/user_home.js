@@ -97,18 +97,23 @@ $(document).ready(function() {
             for (var i = 0; i < msg[1].length; i++)
             {
                 var x = msg[1][i];
-                table = table + '<div class="media" id="'+x.user+'">'+
-                                    '<a class="pull-left">'+
-                                       '<img class="media-object" src="http://localhost/twimini/profilepics/'+x.profile_pic+'" height="70px" width="70px">'+
-                                    '</a>'+
-                                   '<div class="media-body">'+
-                                       '<h4 class="media-heading">'+x.name+'</h4>'+
-                                   '</div>'+
-                              '</div>';
+                table = table + '<div class="media" id="' + x.user + '" style="padding-bottom: 2%;">' +
+                                    '<a class="pull-left">' +
+                                        '<img class="media-object" src="http://localhost/twimini/profilepics/' + x.profile_pic + '" height="70px" width="70px">' +
+                                    '</a>' +
+                                    '<div class="media-body">' +
+                                        '<h4 class="media-heading" style="font-weight: bold;color: #292f33;">' + x.name + '</h4>' +
+                                        '<h5 class="media-heading" style="color: #71A9D3;">@' + x.handle + '</h5>' +
+                                    '</div>' +
+                                    '<div class="follow-button"><input type ="button" class="btn btn-sm btn-primary notfollowing" style="display: initial;margin: initial;" value = "Follow"></div>' +
+                                '</div>';
 
             }
             $('#whoToFollow').append(table);
         }
+        $("#whoToFollow input.btn-primary").on("click", function() {
+            follow($(this));
+        });
     });
 // function for autocomplete search users ===================================
 
@@ -143,15 +148,15 @@ $(document).ready(function() {
             $('#user-list li').empty();
         }
     });
-    
+
     // adding hover css styles to autosearch list
-    $("#user-list").hover(function(e){
-      //  alert("suraj");
-        $(e.target).css("background-color","gray");
-    },function(e){
-       $(e.target).css("background-color","white"); 
+    $("#user-list").hover(function(e) {
+        //  alert("suraj");
+        $(e.target).css("background-color", "gray");
+    }, function(e) {
+        $(e.target).css("background-color", "white");
     });
-    
+
 
 
     $("#tweet-box").on("click", function() {
