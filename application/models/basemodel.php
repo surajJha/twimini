@@ -162,9 +162,9 @@ class basemodel extends CI_Model {
             $id = $row[0]->userid;
 
             $sql = "SELECT f2.followed as user,count(*) as count, name, handle, profile_pic
-from follow f1 inner join follow f2 on f1.followed=f2.follower
-inner join user u on f2.followed=u.userid
-                    where f1.end_time='0000-00-00 00:00:00' and f2.end_time='0000-00-00 00:00:00' and f1.follower=$id and f2.followed not in (select followed from follow where follower=$id and end_time='0000-00-00 00:00:00')
+                    from follow f1 inner join follow f2 on f1.followed=f2.follower
+                    inner join user u on f2.followed=u.userid
+                    where f1.end_time='0000-00-00 00:00:00' and f2.end_time='0000-00-00 00:00:00' and f1.follower=$id and f2.followed not in (select followed from follow where follower=$id and end_time='0000-00-00 00:00:00' UNION select $id)
                     group by f2.followed order by count DESC";
             $query = $this->db->query($sql);
             $result = $query->result_array();
