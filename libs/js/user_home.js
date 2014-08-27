@@ -1,6 +1,50 @@
 $(document).ready(function() {
 
     getUserFeed(0);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Get Following
     requestURL = 'http://localhost/twimini/index.php/userFollow/getFollowing';
     data = {'handle': handle};
