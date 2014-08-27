@@ -202,7 +202,7 @@ var k;
        
        {
            console.log(k[0].handle);
-         //  console.log();
+        //  console.log();
          window.location.assign("http://localhost/twimini/index.php/userHomeController/user/"+k[0].handle);
        }
        
