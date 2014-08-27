@@ -22,7 +22,7 @@ $(document).ready(function() {
                 //"this.innerHTML = 'TheWorldwide Leader In Sports'" onmouseout="this.innerHTML = this.alt" alt="ESPN.com"
                 table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                         '<div class="media-body">' +
-                        '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
+                        '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a></span></h5>' +
                         '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                         '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                         '</div>' +
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
                     table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                             '<div class="media-body">' +
-                            '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
+                            '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a></span></h5>' +
                             '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                             '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
@@ -122,7 +122,7 @@ var k;
        {
            console.log(k[0].handle);
          //  console.log();
-         window.location.assign("http://localhost/twimini/index.php/userHomeController/userSearch/"+k[0].handle);
+         window.location.assign("http://localhost/twimini/index.php/userHomeController/user/"+k[0].handle);
        }
        
       }
@@ -138,7 +138,10 @@ var k;
 
         }
     });
-
+    
+    $(".follow-button input").on("click", function() {
+            follow($(this));
+        });
 
 });
 
@@ -180,6 +183,43 @@ function follow(e) {
 
 }
 
+function follow(e) {
+    if (e.hasClass('following')) {
+        requestURL = 'http://localhost/twimini/index.php/userFollow/Unfollow';
+        data = {'handle': sesshandle, 'follow': e.parent().attr('id')};
+        $.ajax(
+                {
+                    type: 'POST',
+                    url: requestURL,
+                    data: data,
+                    //dataType: 'json',
+                    cache: false
+                }).done(function(msg, status, XHR) {
+            e.removeClass('following').addClass('notfollowing');
+            e.val('Follow');
+            e.attr('onmouseover', "this.value=\'Follow\'");
+            e.attr('onmouseout', "this.value=\'Follow\'");
+        });
+    }
+    else {
+        requestURL = 'http://localhost/twimini/index.php/userFollow/Follow';
+         data = {'handle': sesshandle, 'follow': e.parent().attr('id')};
+        $.ajax(
+                {
+                    type: 'POST',
+                    url: requestURL,
+                    data: data,
+                    //dataType: 'json',
+                    cache: false
+                }).done(function(msg, status, XHR) {
+            e.removeClass('notfollowing').addClass('following');
+            e.val('Following');
+            e.attr('onmouseover', "this.value=\'Unfollow\'");
+            e.attr('onmouseout', "this.value=\'Following\'");
+        });
+    }
+
+}
 
 function timeconvert(x)
 {
@@ -217,7 +257,7 @@ function getUserFeed(lasttid)
                         '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '"    style="height: 60px;width: 60px;margin-left: 10px;margin-bottom: 10px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time">@' + x.handle + ' - ' + t + '</span>' +
+                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a> - ' + t + '</span>' +
                         ((x.retweeter_handle) ? '<span class="retweet">Retweeted by '+(x.retweeter_handle)+'</span><br>' : '</span><br>') +
                         x.tweet +
                         '</div>' +

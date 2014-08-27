@@ -91,7 +91,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                         <img class=' img-responsive visitor_user_pic' src="http://localhost/twimini/profilepics/<?php echo $user_info[0]['profile_pic'];?>">
+                                         <img class=' img-responsive visitor_user_pic' src="http://localhost/twimini/profilepics/<?php echo empty($user_info[0]['profile_pic'])?'default.png':$user_info[0]['profile_pic'];?>">
                                     </div>
                                    
                                 </div> 
@@ -170,7 +170,7 @@
 
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12" style="margin-left: 40px;right: 18px;">
-                        <a class="btn btn-primary btn-lg edit-profile-button" style="width: 100%;" >Edit Profile&nbsp;&nbsp;<i class="glyphicon glyphicon-edit"></i></a>
+                        <div id="<?php echo $user_info[0]['userid'];?>" class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" style="width:50%;" class="btn btn-sm btn-primary <?php echo ($follows)?'following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' : 'notfollowing" value = "Follow"></div>'?>
                     </div>
                 </div>
 
@@ -231,8 +231,8 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
         <script type="text/javascript">
-            var sesshandle = '<?php echo $user_data['handle'] ?>';
-            var vishandle = '<?php echo $user_info[0]['handle'] ?>';
+            var sesshandle = '<?php echo $user_data['handle']; ?>';
+            var vishandle = '<?php echo $user_info[0]['handle']; ?>';
         </script>
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/visit_home.js"></script>
 

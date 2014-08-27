@@ -150,7 +150,7 @@ class basemodel extends CI_Model {
         if ($query->num_rows() > 0) {
             $row = $query->result();
             $id = $row[0]->userid;
-            $this->db->query("update follow set end_time=NOW() where follower=$id and followed=$followee");
+            $this->db->query("update follow set end_time=NOW() where follower=$id and followed=$followee and end_time='0000-00-00 00:00:00'");
 //$this->db->set("end_time', 'NOW()', FALSE);  
             //$this->db->where(array('follower' => $id,'followed' => $followee));
             //$this->db->update('follow',array('end_time' => NOW()));

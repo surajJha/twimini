@@ -22,7 +22,7 @@ $(document).ready(function() {
                 //"this.innerHTML = 'TheWorldwide Leader In Sports'" onmouseout="this.innerHTML = this.alt" alt="ESPN.com"
                 table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                         '<div class="media-body">' +
-                        '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
+                        '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a></span></h5>' +
                         '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                         '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                         '</div>' +
@@ -62,11 +62,11 @@ $(document).ready(function() {
 
                     table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                             '<div class="media-body">' +
-                            '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time">@' + x.handle + '</span></h5>' +
+                            '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a></span></h5>' +
                             '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                             '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
-                            '<div class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" class="btn btn-sm btn-primary ' + ((x.status == 'true') ? 'following" value = "Following"></div>' : 'notfollowing" value = "Follow"></div>') +
+                            '<div class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" class="btn btn-sm btn-primary ' + ((x.status == 'true') ? 'following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' : 'notfollowing" value = "Follow"></div>') +
                             '</div></td>' + ((i % 3) == 2 ? '</tr>' : ''));
 
                 }
@@ -158,7 +158,7 @@ var k;
        {
            console.log(k[0].handle);
          //  console.log();
-         window.location.assign("http://localhost/twimini/index.php/userHomeController/userSearch/"+k[0].handle);
+         window.location.assign("http://localhost/twimini/index.php/userHomeController/user/"+k[0].handle);
        }
        
       }
@@ -317,7 +317,7 @@ function getUserFeed(lasttid)
                         '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '" style="height: 60px;width: 60px;margin-left: 10px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<span class="media-heading"><span class="name">' + x.name + '</span> <span class="handle-time">@' + x.handle + ' - ' + t + '</span>' + ((x.retweeter_id) ? '<span class="retweet">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></span>' : '</span>') + '<br>' +
+                        '<span class="media-heading"><span class="name">' + x.name + '</span> <span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a> - ' + t + '</span>' + ((x.retweeter_id) ? '<span class="retweet">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></span>' : '</span>') + '<br>' +
                         x.tweet +
                         //(x.retweeter_handle ? '<div style="color:#707070 font-size: 12pt">Retweeted by @' + x.retweeter_handle + '</div>' : '') +
                         '</div>' +

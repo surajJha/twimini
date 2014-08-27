@@ -140,7 +140,7 @@ function getUserFeed(lasttid)
                         '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '"    style="height: 60px;width: 60px;margin-left: 10px;margin-bottom: 10px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time">@' + x.handle + ' - ' + t + '</span>' +
+                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a> - ' + t + '</span>' +
                         ((x.retweeter_handle) ? '<span class="retweet">Retweeted by You</span><br>' : '</span><br>') +
                         x.tweet +
                         '</div>' +

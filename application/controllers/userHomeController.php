@@ -15,9 +15,10 @@ class UserHomeController extends CI_Controller {
             $this->load->view('home');
     }
 
-    public function userSearch($handle) {
+    public function user($handle) {
         // $current_handle = $this->session->userdata('handle');
         // $data = array($handle);
+        $user=$this->session->userdata('userid');
         $sql = "select * from user where handle = '{$handle}'";
         $query = $this->db->query($sql);
         $user_info['user_info'] = $query->result_array();
@@ -37,6 +38,9 @@ class UserHomeController extends CI_Controller {
         $sql = "select count(followed) as following_count from follow where follower = '{$userid}' and end_time = '0000-00-00 00:00:00';";
         $query = $this->db->query($sql);
         $user_info['following_count'] = $query->result_array();
+        $sql = "select * from follow where follower = '{$user}' and followed='{$userid}' and end_time = '0000-00-00 00:00:00';";
+        $query = $this->db->query($sql);
+        $user_info['follows'] = ($query->num_rows() > 0)?true:false;
         
         if ($handle === $this->session->userdata('handle'))
             $this->load->view('user_home');
