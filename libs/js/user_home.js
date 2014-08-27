@@ -488,52 +488,7 @@ var seconds = 6;
         }
     }, seconds * 1000);
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
->>>>>>> origin/master
     // Get Following
-=======
- // Get Following
->>>>>>> origin/master
     requestURL = 'http://localhost/twimini/index.php/userFollow/getFollowing';
     data = {'handle': handle};
     $.ajax(
