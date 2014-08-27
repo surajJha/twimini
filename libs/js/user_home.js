@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     getUserFeed(0);
+<<<<<<< HEAD
     var seconds = 6;
     setInterval(function() {
         var tid = $('.tweet-object:first-of-type').attr('id');
@@ -443,6 +444,52 @@ function getUserFeed(lasttid)
 $(document).ready(function() {
 
     getUserFeed(0);
+=======
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+>>>>>>> origin/master
     // Get Following
     requestURL = 'http://localhost/twimini/index.php/userFollow/getFollowing';
     data = {'handle': handle};
