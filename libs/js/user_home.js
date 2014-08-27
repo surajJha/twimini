@@ -1,6 +1,50 @@
 $(document).ready(function() {
 
     getUserFeed(0);
+    var seconds = 6;
+    setInterval(function() {
+        var tid = $('.tweet-object:first-of-type').attr('id');
+        if (tid) {
+            $.ajax(
+                    {
+                        type: 'POST',
+                        url: 'http://localhost/twimini/index.php/userFeedController/getNewFeed',
+                        data: {'handle': handle, 'tid': tid},
+                        dataType: 'json',
+                        async: false,
+                        cache: false
+                    }).done(function(msg, status, XHR) {
+                if (msg[0] === "success" && msg[1].length>0)
+                {
+                    var table = '';
+                    var len = msg[1].length;
+                    for (var i = 0; i < len; i++)
+                    {
+                        var x = msg[1][i];
+                        var t = timeconvert(x);
+                        table = table + '<div id="' + x.tid + '"class="media tweet-object" style="display:none;">' +
+                                '<a class="pull-left" href="#">' +
+                                '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '" style="height: 60px;width: 60px;margin-left: 10px;">' +
+                                '</a>' +
+                                '<div class="media-body">' +
+                                '<span class="media-heading"><span class="name">' + x.name + '</span> <span class="handle-time">@' + x.handle + ' - ' + t + '</span>' + ((x.retweeter_id) ? '<span class="retweet">Retweeted by ' + ((x.retweeter_handle == handle) ? 'You' : x.retweeter_handle) + '</span></span>' : '</span>') + '<br>' +
+                                x.tweet +
+                                '</div>' +
+                                ((x.handle != handle) ? '<br><div class="tweet-bottom-panel"><a class="retweet-link" style="cursor: pointer">Retweet</a></div>' : '<br><div style="padding-bottom:15px"></div>') +
+                                '</div>';
+                        $('.tweets').prepend(table);
+                        $(".tweet-object:first-of-type").fadeIn(600);
+                    }
+                    console.log(table);
+                    
+                    
+                    
+                }
+            });
+        }
+    }, seconds * 1000);
+
+
     // Get Following
     requestURL = 'http://localhost/twimini/index.php/userFollow/getFollowing';
     data = {'handle': handle};
@@ -98,15 +142,15 @@ $(document).ready(function() {
             {
                 var x = msg[1][i];
                 table = table + '<div class="media" id="' + x.user + '" style="padding-bottom: 2%;">' +
-                                    '<a class="pull-left">' +
-                                        '<img class="media-object" src="http://localhost/twimini/profilepics/' + x.profile_pic + '" height="70px" width="70px">' +
-                                    '</a>' +
-                                    '<div class="media-body">' +
-                                        '<h4 class="media-heading" style="font-weight: bold;color: #292f33;">' + x.name + '</h4>' +
-                                        '<h5 class="media-heading" style="color: #71A9D3;">@' + x.handle + '</h5>' +
-                                    '</div>' +
-                                    '<div class="follow-button"><input type ="button" class="btn btn-sm btn-primary notfollowing" style="display: initial;margin: initial;" value = "Follow"></div>' +
-                                '</div>';
+                        '<a class="pull-left">' +
+                        '<img class="media-object" src="http://localhost/twimini/profilepics/' + x.profile_pic + '" height="70px" width="70px">' +
+                        '</a>' +
+                        '<div class="media-body">' +
+                        '<h4 class="media-heading" style="font-weight: bold;color: #292f33;">' + x.name + '</h4>' +
+                        '<h5 class="media-heading" style="color: #71A9D3;">@' + x.handle + '</h5>' +
+                        '</div>' +
+                        '<div class="follow-button"><input type ="button" class="btn btn-sm btn-primary notfollowing" style="display: initial;margin: initial;" value = "Follow"></div>' +
+                        '</div>';
 
             }
             $('#whoToFollow').append(table);

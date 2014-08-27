@@ -86,10 +86,14 @@ body{
     width: 304px;
     box-shadow: 0 0 25px #555; 
 }
-.tweets,.follower,.following{
+.follower,.following{
     margin-top: 40px;
-
 }
+
+.tweets{
+     margin-top: 20px;
+}
+
 .tweet-object{
     background-color: #e0e0e0;
     padding-top: 11px;
@@ -133,6 +137,18 @@ body{
     border-color: lightblue;
     resize:none;
 }
+
+.pending-tweets-bar{
+    background-color: #CBE6E6;  
+    width: 100%;
+    padding-top: 11px;  
+    padding-bottom: 11px;  
+    border-radius: 8px;  
+    border-width: 1px;  
+    height: 40px;
+    text-align: center;
+}
+
 
 .media-heading .name{
     font-weight: bold;

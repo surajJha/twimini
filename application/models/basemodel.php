@@ -117,6 +117,34 @@ class basemodel extends CI_Model {
             return NULL;
         //$this->db->query then ->result() returns array of object. Each object is one row. 
     }
+    
+     public function fetchNewFeed($handle, $tid) {
+        $handle = $this->db->escape($handle);
+
+        $sql = "select userid from user where handle={$handle}";
+        $query = $this->db->query($sql);
+        if ($query->num_rows() > 0) {
+            $row = $query->result();
+            $id = $row[0]->userid;
+
+            $sql = "select tid,userid,handle,name,retweeter_id,retweeter_handle,tweet,max(TIMEDIFF(NOW(),time_created)) as time_created, profile_pic from 
+                    (select t.tid,t.userid,handle,name,'' as retweeter_id,'' as retweeter_handle,tweet, t.time_created, profile_pic from tweet t inner join follow f on (f.followed=t.userid and time_created>start_time and (end_time='0000-00-00 00:00:00' or time_created < end_time)) inner join user u on u.userid=t.userid where follower= $id
+                    UNION 
+                    select tid, t.userid,handle,name,'' as retweeter_id,'' as retweeter_handle, tweet, t.time_created, profile_pic from tweet t inner join user u on u.userid=t.userid where t.userid={$id}
+                    UNION
+                    select t.tid,t.userid,u.handle,u.name,user_id as retweeter_id,u1.handle as retweeter_handle,tweet, time_retweeted, u.profile_pic from tweet t inner join retweet r on r.tid=t.tid inner join user u on u.userid=t.userid inner join user u1 on u1.userid=r.user_id where user_id={$id}
+                    UNION
+                    select t.tid,t.userid,u.handle,u.name,user_id as retweeter_id,u1.handle as retweeter_handle,tweet, time_retweeted, u.profile_pic from tweet t inner join retweet r on r.tid=t.tid inner join follow f on (r.user_id=f.followed and time_retweeted > start_time and (end_time='0000-00-00 00:00:00' or time_retweeted < end_time)) inner join user u on u.userid=t.userid inner join user u1 on u1.userid=r.user_id where follower= $id) as P " .
+                    (($tid == 0) ? "" : "where tid > $tid ")
+                    . "group by tid order by tid DESC";
+            //echo $sql;
+            $query = $this->db->query($sql);
+            $result = $query->result_array();
+            return !empty($result) ? $result : array();
+        } else
+            return NULL;
+        //$this->db->query then ->result() returns array of object. Each object is one row. 
+    }
 
     public function follow($user, $followee) {
         $handle = $this->db->escape($user);
