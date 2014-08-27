@@ -62,7 +62,12 @@ $(document).ready(function() {
         $('#register-form')[0].reset();
         $("#register_success_message").html("");
         $("#register_error_message").html("");
-
+        // hide all open warning messages on modal close
+        $("#name-warning").hide();
+        $("#handle-warning").hide();
+        $("#password-warning").hide();
+         $("#password-confirm-warning").hide();
+         $("#email-warning").hide();
     })
 
     //=====================================VALIDATIONS============================================== 

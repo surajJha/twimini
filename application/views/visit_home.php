@@ -87,50 +87,56 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="panel panel-default bio_panel">
-                            <div id="tweet-panel" class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">@<?php echo $user_info[0]['handle'];?>&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
+                            <div id="tweet-panel" class="bio_panel_heading panel-heading " style="background-color: lightblue;"><span class="bio-title">@<?php echo $user_info[0]['handle']; ?>&nbsp;<i class="glyphicon glyphicon-user"></i></span></div>
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                         <img class=' img-responsive visitor_user_pic' src="http://localhost/twimini/profilepics/<?php echo empty($user_info[0]['profile_pic'])?'default.png':$user_info[0]['profile_pic'];?>">
+                                        <img class=' img-responsive visitor_user_pic' src="http://localhost/twimini/profilepics/<?php echo empty($user_info[0]['profile_pic']) ? 'default.png' : $user_info[0]['profile_pic']; ?>">
                                     </div>
-                                   
+
                                 </div> 
-                                
+
                                 <div class="row">
                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                     <div class="col-sm-8 col-md-8 col-lg-8 vis-bio">
-                                  
-                                        <span class='visitor-bio'><b>Name :</b></span> <span class="visitor-bio-text"><?php echo $user_info[0]['name'];?></span>
-                                           
-                                       
+
+                                        <span class='visitor-bio'><b>Name :</b></span> <span class="visitor-bio-text"><?php echo $user_info[0]['name']; ?></span>
+
+
                                         <span> </span>
                                     </div>
-                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
+                                    <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                     <div class="col-sm-8 col-md-8 col-lg-8 vis-bio">
-                                  
-                                        <span class='visitor-bio'><b>BIO :</b></span > <span class="visitor-bio-text"><?php echo $user_info[0]['bio'];?></span>
-                                           
-                                       
+
+                                        <span class='visitor-bio'><b>BIO :</b></span > <span class="visitor-bio-text"><?php echo $user_info[0]['bio']; ?></span>
+
+
                                         <span> </span>
                                     </div>
-                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
+                                    <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                 </div>
-                                
-                                 <div class="row">
+
+                                <div class="row">
                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                     <div class="col-sm-8 col-md-8 col-lg-8 vis-bio">
-                                  
-                                        <span class='visitor-bio'><b>Gender :</b></span> <span class="visitor-bio-text"><?php  if($user_info[0]['gender']=='m')  echo 'Male';else echo 'Female';?></span>
-                                           
-                                       
-                                        <span> </span>
+
+                                        <span class='visitor-bio'><b>Gender :</b></span> <span class="visitor-bio-text"><?php
+                                            if ($user_info[0]['gender'] == 'm')
+                                                echo 'Male';
+                                            else
+                                                echo 'Female';
+                                            ?></span>
+
                                     </div>
-                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
+                                    <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                 </div>
+
+
+
                                 <div class="row">
                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                     <div class="col-sm-9 col-md-9 col-lg-9 tweet-info" style="padding-top: 3px;">
@@ -148,41 +154,35 @@
                                                 <div><?php echo $following_count[0]['following_count']; ?></div>
                                             </div>
                                         </div>
-                                  
-                                        
-                                        
-                                        
                                     </div>
-                                     <div class="col-sm-2 col-md-2 col-lg-2 "></div>
+                                    <div class="col-sm-2 col-md-2 col-lg-2 "></div>
                                 </div>
-                                
-                                
-                                
-                                
-                                
-                                
                             </div>
 
                         </div>
                     </div>
                 </div>
 
-
                 <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12" style="margin-left: 40px;right: 18px;">
-                        <div id="<?php echo $user_info[0]['userid'];?>" class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" style="width:50%;" class="btn btn-sm btn-primary <?php echo ($follows)?'following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' : 'notfollowing" value = "Follow"></div>'?>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                      <div id="<?php echo $user_info[0]['userid']; ?>" class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" style="width:50%;" class="btn btn-sm btn-primary <?php echo ($follows) ? 'following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' : 'notfollowing" value = "Follow">' ?>  
                     </div>
                 </div>
-
-
-
-
             </div>
+            
 
+
+
+
+
+
+            
+            
+                                                         
 
             <div class="col-sm-7 col-md-7 col-lg-7">
-                <!-- ==============================USER BIO GOES HERE========================= -->
-                <div class="panel panel-default news-feed">
+        <!-- ==============================USER BIO GOES HERE========================= -->
+       <div class="panel panel-default news-feed">
                     <div class=" panel-heading " style="background-color: lightblue;"><span class="news-feed-title">News Feeds&nbsp;&nbsp;<i class="glyphicon glyphicon-list-alt"></i></span></div>
                     <div class="panel-body">
 
@@ -215,14 +215,16 @@
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
-
-
-
         </div>
+
+
+
+           
+
+
+
+      
 
 
 

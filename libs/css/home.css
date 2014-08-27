@@ -8,7 +8,10 @@ and open the template in the editor.
     Author     : suraj
 */
 body{
-    background: url(../images/roles.jpg);
+   // background: url(../images/home4.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
 }
 .white{
     color:#000;
@@ -50,13 +53,16 @@ body{
 }
 
 .twitter-heading{
-
+    font-size: 78px;
+    color: gainsboro;
 }
 
 
 .login-form{
-    opacity: 0.9;
-    background-color: darkcyan;
+    margin-top: 75px;
+    border-radius: 25px;
+    opacity: .85;
+    background-color: lightslategrey
 }
 
 .login-form-heading{

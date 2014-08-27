@@ -13,7 +13,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
     </head>
-    <body style="background-image: url('<?php echo base_url(); ?>libs/images/people1.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 80% 80%">
+    <body style="background-image: url('<?php echo base_url(); ?>libs/images/home4.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:bottom;background-size: 100% 100%">
 
 
         <div class="container">
@@ -28,11 +28,12 @@ and open the template in the editor.
             <!-- =========================================== FORM FOR LOGIN AND SIGNUP========================================-->
 
             <div class="row">
-                <div class="col-md-4 col-md-offset-4 ">
+                <div class="col-md-6 col-md-offset-3 ">
                     <div class="panel panel-default login-form" >
-                        <div class="panel-heading">
+                     <!--   <div class="panel-heading">
                             <h3 class="panel-title login-form-heading">TwiMini Login</h3>
                         </div>
+                     -->
                         <div class="panel-body">
                             <form accept-charset="UTF-8" role="form" method="post" action="<?php echo base_url();?>index.php/loginController/login/">
                                 <fieldset>
