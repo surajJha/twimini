@@ -41,7 +41,15 @@ class basemodel extends CI_Model {
             $row = $query->result();
             $id = $row[0]->userid;
 
-            $sql = "select tid, name, handle, tweet, t.time_created, profile_pic from tweet t inner join user u on t.userid = u.userid where (t.userid={$id} or tid in (select tid from retweet where user_id={$id})) " . (($tid == 0) ? "" : "and tid < $tid ") . " order by tid DESC limit $count";
+            //$sql = "select tid, name, handle, tweet, t.time_created, profile_pic from tweet t inner join user u on t.userid = u.userid where (t.userid={$id} or tid in (select tid from retweet where user_id={$id})) " . (($tid == 0) ? "" : "and tid < $tid ") . " order by tid DESC limit $count";
+            $sql = "select tid,userid,handle,name,retweeter_id,retweeter_handle,tweet,time_created, profile_pic from 
+                    (select tid, t.userid,handle,name,'' as retweeter_id,'' as retweeter_handle, tweet, t.time_created, profile_pic from tweet t inner join user u on u.userid=t.userid where t.userid={$id}
+                    UNION
+                    select t.tid,t.userid,u.handle,u.name,user_id as retweeter_id,u1.handle as retweeter_handle,tweet, time_retweeted, u.profile_pic from tweet t inner join retweet r on r.tid=t.tid inner join user u on u.userid=t.userid inner join user u1 on u1.userid=r.user_id where user_id={$id}) as P" .
+                    (($tid == 0) ? "" : " where tid < $tid ")
+                    . " order by tid DESC
+                    limit $count";
+
             $query = $this->db->query($sql);
             $result = $query->result_array();
             return !empty($result) ? $result : array();
@@ -170,7 +178,7 @@ class basemodel extends CI_Model {
         if ($query->num_rows() > 0) {
             $row = $query->result();
             $id = $row[0]->userid;
-            $this->db->query("update follow set end_time=NOW() where follower=$id and followed=$followee");
+            $this->db->query("update follow set end_time=NOW() where follower=$id and followed=$followee and end_time='0000-00-00 00:00:00'");
 //$this->db->set("end_time', 'NOW()', FALSE);  
             //$this->db->where(array('follower' => $id,'followed' => $followee));
             //$this->db->update('follow',array('end_time' => NOW()));

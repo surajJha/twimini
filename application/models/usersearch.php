@@ -11,7 +11,7 @@ class UserSearch extends CI_Model{
     
     public function searchUsers($input){
         
-        $sql = " select name from user where name like '{$input}%' ";
+        $sql = " select name,handle,userid from user where name like '{$input}%' ";
         $query = $this->db->query($sql);
         $x = array();
         //if ($query->num_rows() > 0) {

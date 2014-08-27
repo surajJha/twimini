@@ -70,7 +70,7 @@ body{
     margin-top: 50px;
     margin-left: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 35px #555;
+    box-shadow: 0 0 35px;
 }
 
 .follow-panel{
@@ -295,22 +295,43 @@ body.loading .preloader {
 }
 
 
-//********************FILE INPUT****************************8
+
 
 .pic_input{
     margin-left: 198px;
     margin-top: 21px;
 }
-#user-search-list{
-    background-color: white;
-    height: 30px;
-    color: blue;
-    font-size: larger;
-    font-weight: bold;
+
+.who-to-follow:hover{
+    background-color: green;
+    opacity:.7;
+
 }
 
-#user-search-list:hover{
-    background-color: lightblue;
-    opacity: .8;
-
+.visitor_user_pic{
+    border-radius: 100%;
+    height: 300px;
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 10px;
+}
+.visitor-bio{
+    font-size: large;
+    font-weight: bold;
+}
+.vis-bio{
+    text-align: center;
+    word-wrap: break-word;
+}
+.tweet-info{
+    height: 80px;
+    width: 65%;
+    background-color: gainsboro;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+.tweet-info-coloumns{
+    word-wrap: break-word;
 }
