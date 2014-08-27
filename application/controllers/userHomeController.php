@@ -12,5 +12,11 @@ class UserHomeController extends CI_Controller{
         $this->load->view('user_home');
        else $this->load->view('home');
     }
+    
+    public function userSearch($handle){
+       // $current_handle = $this->session->userdata('handle');
+        $data = array($handle);
+        $this->load->view('user_home',$data);
+    }
 }
 

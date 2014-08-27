@@ -285,3 +285,9 @@ body.loading .preloader {
     margin-left: 198px;
     margin-top: 21px;
 }
+
+.who-to-follow:hover{
+    background-color: green;
+    opacity:.7;
+    
+}

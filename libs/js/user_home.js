@@ -97,7 +97,7 @@ $(document).ready(function() {
             for (var i = 0; i < msg[1].length; i++)
             {
                 var x = msg[1][i];
-                table = table + '<div class="media" id="' + x.user + '" style="padding-bottom: 2%;">' +
+                table = table + '<div class="media id="' + x.user + '" style="padding-bottom: 2%;">' +
                                     '<a class="pull-left">' +
                                         '<img class="media-object" src="http://localhost/twimini/profilepics/' + x.profile_pic + '" height="70px" width="70px">' +
                                     '</a>' +
@@ -118,6 +118,7 @@ $(document).ready(function() {
 // function for autocomplete search users ===================================
 
 var a = [];
+var k;
      $("#search_users").on("keyup", function() {
         var value = $("#search_users").val();
         //search_users
@@ -133,7 +134,7 @@ var a = [];
                         //dataType: 'json'
 
                     }).done(function(msg){
-                        var k = JSON.parse(msg);
+                         k = JSON.parse(msg);
                         for(var t = 0;t<k.length;t++){
                             a[t] = k[t].name;
                         }
@@ -143,7 +144,7 @@ var a = [];
                         
                     
     
-     
+     // autocomplete and redirect the user to other user's homepage
      
         $("#search_users").autocomplete({
       /*Source refers to the list of fruits that are available in the auto complete list. */
@@ -151,7 +152,16 @@ var a = [];
       source:a,
       /* auto focus true means, the first item in the auto complete list is selected by default. therefore when the user hits enter,
       it will be loaded in the textbox */
-      autoFocus: true
+      autoFocus: true,
+       select: function(event) {
+       
+       {
+           console.log(k[0].handle);
+         //  console.log();
+         window.location.assign("http://localhost/twimini/index.php/userHomeController/userSearch/"+k[0].handle);
+       }
+       
+      }
     });
  
 
