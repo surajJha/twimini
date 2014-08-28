@@ -22,7 +22,7 @@ $(document).ready(function() {
                 //"this.innerHTML = 'TheWorldwide Leader In Sports'" onmouseout="this.innerHTML = this.alt" alt="ESPN.com"
                 table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                         '<div class="media-body">' +
-                        '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a></span></h5>' +
+                        '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/' + x.handle + '">@' + x.handle + '</a></span></h5>' +
                         '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                         '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                         '</div>' +
@@ -62,7 +62,7 @@ $(document).ready(function() {
 
                     table = table + (((i % 3) ? '' : '<tr>') + '<td class="follow-table" style="max-width:33%;"><div id="' + x.userid + '" class="media follow-object">' +
                             '<div class="media-body">' +
-                            '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a></span></h5>' +
+                            '<h4 class="media-heading" style="text-align:center;"><span class="name">' + x.name + '</span></h4> <h5 class="media-heading" style="text-align:center;"><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/' + x.handle + '">@' + x.handle + '</a></span></h5>' +
                             '<div class="row">' + '<img src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '">' + '</div>' +
                             '<div class="follow-bio">' + (x.bio.length > 75 ? x.bio.substring(0, 75) + '...' : x.bio) + '</div>' +
                             '</div>' +
@@ -78,12 +78,13 @@ $(document).ready(function() {
 //            follow($(this));
 //        });
     });
-    
+
 // function for autocomplete search users ===================================
 
-var a = [];
-var k;
-     $("#search_users").on("keyup", function() {
+    var a = [];
+    var k;
+    $("#search_users").on("keyup", function() {
+        //e.preventDefault();
         var value = $("#search_users").val();
         //search_users
         var data = {'search_users': value};
@@ -95,39 +96,44 @@ var k;
                         url: 'http://localhost/twimini/index.php/userSearchController/searchUsers',
                         cache: false,
                         data: data,
-                        //dataType: 'json'
+                        async: false
+                                //dataType: 'json'
 
-                    }).done(function(msg){
-                         k = JSON.parse(msg);
-                        for(var t = 0;t<k.length;t++){
-                            a[t] = k[t].name;
-                        }
-                    });
+                    }).done(function(msg) {
+                k = JSON.parse(msg);
+//                console.log(k[0].handle);
+//                console.log(k[1].handle);
+//                console.log(k[2].handle);
+
+
+                for (var t = 0; t < k.length; t++) {
+                    a[t] = {'label': k[t].name, 'value': k[t].handle};
                 }
             });
-                        
-                    
-    
-     // autocomplete and redirect the user to other user's homepage
-     
-        $("#search_users").autocomplete({
-      /*Source refers to the list of fruits that are available in the auto complete list. */
-      minLength: 1,
-      source:a,
-      /* auto focus true means, the first item in the auto complete list is selected by default. therefore when the user hits enter,
-      it will be loaded in the textbox */
-      autoFocus: true,
-       select: function(event) {
-       
-       {
-           console.log(k[0].handle);
-         //  console.log();
-         window.location.assign("http://localhost/twimini/index.php/userHomeController/user/"+k[0].handle);
-       }
-       
-      }
+        }
     });
-     
+
+
+
+    //autocomplete and redirect the user to other user's homepage
+
+    $("#search_users").autocomplete({
+        /*Source refers to the list of fruits that are available in the auto complete list. */
+        minLength: 1,
+        source: a,
+        /* auto focus true means, the first item in the auto complete list is selected by default. therefore when the user hits enter,
+         it will be loaded in the textbox */
+        autoFocus: true,
+        focus: function(event, ui) {
+            event.preventDefault() // <-- prevent the textarea from being updated.
+        },
+        select: function(event, ui) {
+            //console.log(ui.item);
+            window.location.assign("http://localhost/twimini/index.php/userHomeController/user/" + ui.item.value);
+
+        }
+    });
+
     var lasttid = 0;
 
     $(window).scroll(function() {
@@ -138,10 +144,10 @@ var k;
 
         }
     });
-    
+
     $(".follow-button input").on("click", function() {
-            follow($(this));
-        });
+        follow($(this));
+    });
 
 });
 
@@ -203,7 +209,7 @@ function follow(e) {
     }
     else {
         requestURL = 'http://localhost/twimini/index.php/userFollow/Follow';
-         data = {'handle': sesshandle, 'follow': e.parent().attr('id')};
+        data = {'handle': sesshandle, 'follow': e.parent().attr('id')};
         $.ajax(
                 {
                     type: 'POST',
@@ -257,8 +263,8 @@ function getUserFeed(lasttid)
                         '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '"    style="height: 60px;width: 60px;margin-left: 10px;margin-bottom: 10px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a> - ' + t + '</span>' +
-                        ((x.retweeter_handle) ? '<span class="retweet">Retweeted by '+(x.retweeter_handle)+'</span><br>' : '</span><br>') +
+                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/' + x.handle + '">@' + x.handle + '</a> - ' + t + '</span>' +
+                        ((x.retweeter_handle) ? '<span class="retweet">Retweeted by ' + (x.retweeter_handle) + '</span><br>' : '</span><br>') +
                         x.tweet +
                         '</div>' +
                         '</div>');
