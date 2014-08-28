@@ -13,6 +13,7 @@ class UserSearchController extends CI_Controller{
        
         $this->load->model('usersearch');
         $result = $this->usersearch->searchUsers($input);
+        //print_r(json_encode($result));
         echo json_encode($result);
         
     }

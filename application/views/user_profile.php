@@ -3,6 +3,7 @@
     <head>
         <title>TwiMini..</title>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/jquery-ui.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>libs/css/user_home.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -44,7 +45,10 @@
                         <li>
                             <form class="navbar-form " role="search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" name="q">
+
+                                    <input type="text" class="form-control" placeholder="Search users" name="search_users" id="search_users">
+                                    <!--<datalist id="users"></datalist>-->
+                                    <ul id="user-list" style="list-style-type: none;margin-top: 35px;position: absolute;width: 100%;padding-left: 1px;padding-right: 0px;"></ul>
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                                     </div>
@@ -216,6 +220,7 @@
 
 
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/bootstrap.min.js"></script>
         <script type="text/javascript">var handle = '<?php echo $user_data['handle'] ?>';</script>
         <script type="text/javascript" src="<?php echo base_url(); ?>libs/js/user_profile.js"></script>

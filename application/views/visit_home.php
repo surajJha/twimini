@@ -164,8 +164,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
-                      <div id="<?php echo $user_info[0]['userid']; ?>" class="follow-button" style="position:absolute; bottom: 8px;"><input type ="button" style="width:50%;" class="btn btn-sm btn-primary <?php echo ($follows) ? 'following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"></div>' : 'notfollowing" value = "Follow">' ?>  
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <?php $string=($follows) ? 'following" value = "Following" onmouseover="this.value=\'Unfollow\'" onmouseout="this.value=\'Following\'"' : 'notfollowing" value = "Follow"';   ?>
+                      <div id="<?php echo $user_info[0]['userid']; ?>" class="follow-button" style=" bottom: 8px;"><input type ="button" style="width:50%;" class="btn btn-lg btn-primary <?php echo $string; ?>  "></div>
                     </div>
                 </div>
             </div>

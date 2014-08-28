@@ -21,10 +21,10 @@ $(document).ready(function() {
 // through the form
 
     $("#edit_profile").submit(function(e) {
-        
+
         e.preventDefault();
-         //event.preventDefault();
-  //e.stopPropagation();
+        //event.preventDefault();
+        //e.stopPropagation();
         var formData = new FormData($(this)[0]);
         console.log(formData);
 
@@ -45,7 +45,7 @@ $(document).ready(function() {
                     $('.tweets').empty();
                     getUserFeed(0);
                     $("#tweet-box").val('');
-                    
+
                 }
                 else {
                     $("#response-message").html("<div class='edit-message'><span style='color: red;font-weight: bold;'><center>There was some problem in updating your profile. Please try again.</center></span></div><br>");
@@ -58,15 +58,19 @@ $(document).ready(function() {
             });
         }
         else {
-           
+
             $("#response-message").html("<div class='edit-message'><span style='color: red;font-weight: bold;'><center>Please fill the form properly and try again.</center></span></div><br>");
-            setTimeout(function(){$("#response-message").fadeOut(1000);},2000,function (){$("#response-message").html("");});
-            
-            
+            setTimeout(function() {
+                $("#response-message").fadeOut(1000);
+            }, 2000, function() {
+                $("#response-message").html("");
+            });
+
+
         }
-      // $("#edit_profile").unbind('submit',function(){$("#edit_profile").bind('submit')});
-       
-     
+        // $("#edit_profile").unbind('submit',function(){$("#edit_profile").bind('submit')});
+
+
     });
 
     //=================UPDAE PROFILE VALIDATION
@@ -97,7 +101,60 @@ $(document).ready(function() {
         }
     });
 
+// function for autocomplete search users ===================================
 
+    var a = [];
+    var k;
+    $("#search_users").on("keyup", function() {
+        //e.preventDefault();
+        var value = $("#search_users").val();
+        //search_users
+        var data = {'search_users': value};
+        if (value != '')
+        {
+            $.ajax(
+                    {
+                        type: 'POST',
+                        url: 'http://localhost/twimini/index.php/userSearchController/searchUsers',
+                        cache: false,
+                        data: data,
+                        async: false
+                                //dataType: 'json'
+
+                    }).done(function(msg) {
+                k = JSON.parse(msg);
+//                console.log(k[0].handle);
+//                console.log(k[1].handle);
+//                console.log(k[2].handle);
+
+
+                for (var t = 0; t < k.length; t++) {
+                    a[t] = {'label': k[t].name, 'value': k[t].handle};
+                }
+            });
+        }
+    });
+
+
+
+    //autocomplete and redirect the user to other user's homepage
+
+    $("#search_users").autocomplete({
+        /*Source refers to the list of fruits that are available in the auto complete list. */
+        minLength: 1,
+        source: a,
+        /* auto focus true means, the first item in the auto complete list is selected by default. therefore when the user hits enter,
+         it will be loaded in the textbox */
+        autoFocus: true,
+        focus: function(event, ui) {
+            event.preventDefault() // <-- prevent the textarea from being updated.
+        },
+        select: function(event, ui) {
+            //console.log(ui.item);
+            window.location.assign("http://localhost/twimini/index.php/userHomeController/user/" + ui.item.value);
+
+        }
+    });
 
 
 
@@ -140,7 +197,7 @@ function getUserFeed(lasttid)
                         '<img class="media-object" src="http://localhost/twimini/profilepics/' + ((x.profile_pic != '') ? x.profile_pic : 'default.png') + '"    style="height: 60px;width: 60px;margin-left: 10px;margin-bottom: 10px;">' +
                         '</a>' +
                         '<div class="media-body">' +
-                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/'+x.handle+'">@' + x.handle + '</a> - ' + t + '</span>' +
+                        '<span class="media-heading"><span class="name">' + x.name + '</span><span class="handle-time"><a href="http://localhost/twimini/index.php/userHomeController/user/' + x.handle + '">@' + x.handle + '</a> - ' + t + '</span>' +
                         ((x.retweeter_handle) ? '<span class="retweet">Retweeted by You</span><br>' : '</span><br>') +
                         x.tweet +
                         '</div>' +

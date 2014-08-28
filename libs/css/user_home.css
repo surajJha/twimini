@@ -6,7 +6,8 @@
     overflow: scroll;
 }*/
 body{
-    background-image: url(../images/bk1.jpg);
+    /* background-image: url(../images/bk1.jpg); */
+    background-color: #6792A0;
     background-repeat: no-repeat;
     background-size: cover;
 }
